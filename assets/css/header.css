@@ -1,0 +1,99 @@
+/* TOP BAR */
+.waves-topbar {
+    background: #0d09a1;
+    height: 8px;
+}
+
+/* HEADER */
+.waves-header {
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.waves-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+/* LOGO */
+.waves-logo img {
+    height: 55px;
+    width: auto;
+}
+
+/* NAV */
+.waves-nav .waves-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.waves-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.waves-nav a:hover {
+    color: #2275d8;
+}
+
+/* SEARCH BAR */
+.waves-search form {
+    display: flex;
+    align-items: center;
+}
+
+.waves-search input {
+    width: 260px;
+    padding: 8px 12px;
+    border: 2px solid #acb6c1;
+    border-radius: 8px 0 0 8px;
+}
+
+.waves-search button {
+    background: #2275d8 !important;
+    border-radius: 0 8px 8px 0 !important;
+    padding: 8px 15px;
+    border: none;
+}
+
+.waves-search button:hover {
+    background: #0d09a1 !important;
+}
+
+/* ACTIONS (USER + CART) */
+.waves-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.waves-account,
+.waves-cart {
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+.waves-account:hover,
+.waves-cart:hover {
+    color: #2275d8;
+}
+
+.waves-cart-count {
+    background: #2275d8;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+}
