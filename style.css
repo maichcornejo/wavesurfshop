@@ -1,13 +1,406 @@
 /*
-Theme Name: Waves-Surf-Shop
-Theme URI: https://www.wpelemento.com/products/free-shoes-wordpress-theme
+Theme Name: Waves Surf Shop Child
 Template: shoes-store-elementor
-Author: wpelemento
-Author URI: https://www.wpelemento.com/
-Description: Shoes Store Elementor is a theme based on shopping E-stores for selling products. Selling business such as footwear, shoe accessories, sports shoes, luxury footwear, shoe repair, footwear brands, e-commerce stores, athletic retailers, department stores, online marketplaces, custom shoe makers, luxury fashion, streetwear shops, sustainable fashion, outlet malls and sportswear brands. Anyone can Build their website to sell or to showcase their products to the world. Thru online shopping features visitors can easily see and start doing shopping from your site. This theme has ample of features which will make any website look super attractive and updated. It has section to organize things and keep section sophisticatedly. Sections like testimonial section, team section, gallery, pricing and plans section, and many more. This Shoes Store Elementor theme is perfect for classic shoe seller and websites which are related to this. It also, has SEO friendly nature with that no one has to thing about the ranking as it has compatibility with woocommerce and SEO. The theme is multipurpose so any shopping related sites can go for this theme and can also customize it according to their business and brand. Personalization option of this theme is superb as it allows to change color and fonts. The theme uses One Click Demo Importer named WPElemento Importer that helps to import demo content using elementor. Theme Demo Link: https://preview.wpelemento.com/shoes-store-elementor/
-Tags: photography,portfolio,e-commerce,wide-blocks,one-column,two-columns,right-sidebar,left-sidebar,grid-layout,three-columns,four-columns,custom-background,custom-colors,custom-header,custom-logo,custom-menu,featured-images,flexible-header,footer-widgets,full-width-template,editor-style,sticky-post,theme-options,threaded-comments,translation-ready,rtl-language-support
-Version: 0.4.9.1765208193
-Updated: 2025-12-08 15:36:33
-
+Version: 1.0
 */
+
+/* ----------------------------- */
+/* HEADER PREMIUM NEGRO */
+/* ----------------------------- */
+
+.waves-header {
+    background:#000000;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.header-inner {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+}
+
+/* LOGO */
+.header-left .site-logo {
+    max-height:65px;
+    width:auto;
+    object-fit:contain;
+}
+
+/* ----------------------------- */ 
+/* TOP BAR PREMIUM NEGRO */ 
+/* ----------------------------- */ 
+.waves-topbar { 
+    background:#000000; 
+    color:#ffffff; 
+    padding:6px 0; 
+    text-align:center; 
+    font-size:14px; 
+    font-weight:500; 
+    letter-spacing:0.4px;
+ }
+
+/* ----------------------------- */
+/* MENÚ HORIZONTAL NORMAL */
+/* ----------------------------- */
+
+.header-menu {
+    flex:1; /* ocupa espacio para centrar */
+    display:flex;
+    justify-content:center;
+}
+
+.header-menu .nav {
+    display:flex;
+    gap:35px;
+    margin:0;
+    padding:0;
+}
+
+.header-menu li {
+    list-style:none;
+}
+
+.header-menu a {
+    font-size:15px;
+    font-weight:600;
+    text-transform:uppercase;
+    color:#ffffff !important;
+    opacity:0.85;
+    transition:.25s ease-in-out;
+    letter-spacing:0.5px;
+}
+
+.header-menu a:hover,
+.header-menu .current-menu-item a {
+    color:#2275d8 !important;
+    opacity:1;
+}
+
+/* ----------------------------- */
+/* ACCIONES DERECHA */
+/* ----------------------------- */
+
+.header-actions {
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+/* ICONOS */
+.header-actions i {
+    font-size:22px;
+    color:#ffffff;
+    opacity:0.85;
+    transition:.2s;
+}
+
+.header-actions i:hover {
+    color:#2275d8;
+    opacity:1;
+}
+
+/* CART BADGE */
+.cart-count {
+    background:#2275d8;
+    color:#ffffff;
+    padding:2px 7px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* ----------------------------- */
+/* BUSCADOR COMPACTO */
+/* ----------------------------- */
+
+.header-search form {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.header-search input[type="search"] {
+    background:#111 !important;
+    border:1px solid #333 !important;
+    border-radius:25px !important;
+    padding:7px 16px !important;
+    color:white !important;
+    width:190px !important;
+    transition:.25s;
+}
+
+.header-search button {
+    background:#2275d8 !important;
+    border:none !important;
+    color:white !important;
+    padding:7px 18px !important;
+    border-radius:25px !important;
+    font-size:14px;
+    font-weight:600;
+}
+
+.header-search button:hover {
+    background:#0d09a1 !important;
+}
+
+/* ----------------------------- */
+/* RESPONSIVE */
+/* ----------------------------- */
+
+@media (max-width:992px) {
+
+    .header-inner {
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .header-menu {
+        order:3;
+        width:100%;
+        margin-top:10px;
+    }
+
+    .header-menu .nav {
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .header-actions { 
+        order:2; 
+    }
+}
+
+
+
+/* ----------------------------- */
+/* grid de GENDER */
+/* ----------------------------- */
+
+/* GRID de género fijo a 600px */
+.gender-grid {
+    display: flex;
+    width: 100%;
+    height: 600px; /* 🔥 altura fija que pediste */
+    overflow: hidden;
+}
+
+/* Cada mitad del ancho */
+.gender-box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ambas imágenes EXACTAMENTE IGUALES en tamaño */
+.gender-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🔥 Recorta sobrante y mantiene proporción */
+    object-position: center; /* centra bien la imagen */
+    display: block;
+}
+
+/* Botones */
+.gender-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: #2275d8;
+    color: white;
+    padding: 10px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+/* Efecto hover */
+.gender-box:hover img {
+    transform: scale(1.05);
+    transition: .5s ease;
+}/* -------------------------------
+   FOOTER MODERNO - WAVES 2025
+-------------------------------- */
+
+/* PALETA */
+:root {
+    --blanco: #ffffff;
+    --gris: #acb6c1;
+    --azul: #2275d8;
+    --azul-oscuro: #0d09a1;
+    --negro: #000000;
+}
+
+/* ---------------------------
+   CONTENEDOR GENERAL
+---------------------------- */
+.main-footer-cc {
+    background: var(--gris);
+    color: var(--negro);
+    font-family: "Inter", Arial, sans-serif;
+    padding: 60px 0 0;
+}
+
+/* Layout */
+.row-cc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.col-cc-3 {
+    flex: 1 1 calc(25% - 40px);
+    min-width: 220px;
+}
+
+/* ---------------------------
+   TITULOS
+---------------------------- */
+.footer-heading-cc {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--azul-oscuro);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* ---------------------------
+   LOGOS
+---------------------------- */
+.footer-logo {
+    width: 170px;
+    margin-bottom: 15px;
+}
+
+.data-fiscal-img {
+    width: 95px;
+    margin-top: 10px;
+    border: 2px solid var(--negro);
+    padding: 4px;
+    background: var(--blanco);
+}
+
+/* ---------------------------
+   TEXTO EMPRESA
+---------------------------- */
+.empresa-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.empresa-text .read-more {
+    font-weight: 700;
+    color: var(--azul-oscuro);
+}
+
+/* ---------------------------
+   REDES SOCIALES
+---------------------------- */
+.social-links-cc {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links-cc a {
+    font-size: 20px;
+    color: var(--negro);
+    transition: 0.25s;
+}
+
+.social-links-cc a:hover {
+    color: var(--azul);
+}
+
+/* ---------------------------
+   LINKS
+---------------------------- */
+.footer-links-cc li a {
+    color: #333;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.footer-links-cc li a:hover {
+    color: var(--azul-oscuro);
+}
+
+/* ---------------------------
+   BOTON ARREPENTIMIENTO
+---------------------------- */
+.btn-arrepentimiento {
+    border: 2px solid var(--negro);
+    color: var(--negro);
+    background: transparent;
+    padding: 10px 18px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    transition: 0.3s;
+}
+
+.btn-arrepentimiento:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+/* LOGOS SSL/CACE */
+.security-logos img {
+    height: 30px;
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+/* ---------------------------
+   STAFF CALL-TO-ACTION
+---------------------------- */
+.staff-callout {
+    background: var(--azul-oscuro);
+    color: var(--blanco);
+    padding: 18px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.staff-callout:hover {
+    background: var(--azul);
+}
+
+.staff-big-text {
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 5px;
+}
+
+/* ---------------------------
+   FOOTER BOTTOM
+---------------------------- */
+.footer-bottom-cc {
+    background: var(--negro);
+    padding: 18px 0;
+    margin-top: 50px;
+    color: #aaa;
+    font-size: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom-cc p {
+    margin: 0;
+}
+
 

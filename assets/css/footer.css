@@ -1,0 +1,166 @@
+/* Estilos generales del footer */
+.main-footer-cc {
+    background-color: #212121; /* Fondo gris oscuro/negro */
+    color: #fff; /* Texto blanco */
+    font-family: Arial, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Contenedor principal (asumiendo una estructura de ancho fijo/fluido) */
+.container-cc {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estructura de columnas (si no usas Bootstrap) */
+.row-cc {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px; /* Para contrarrestar el padding de las columnas */
+}
+
+.col-cc-3 {
+    width: 25%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.footer-heading-cc {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #e50020; /* Color rojo para los títulos */
+    text-transform: uppercase;
+}
+
+/* Sección Logo y QR */
+.footer-logo {
+    max-width: 180px; /* Ajusta el tamaño del logo principal */
+    margin-bottom: 15px;
+}
+
+.logos-secundarios img {
+    height: 25px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.data-fiscal-img {
+    width: 100px; /* Tamaño del QR */
+    border: 3px solid #fff;
+    padding: 5px;
+    box-sizing: content-box;
+}
+
+/* Columna Empresa (Texto y Seguir) */
+.empresa-text {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.empresa-text .read-more {
+    color: #e50020;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.social-links-cc {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.social-links-cc li {
+    margin-right: 15px;
+}
+
+.social-links-cc a {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-links-cc a:hover {
+    color: #e50020;
+}
+
+/* Columna Contenidos */
+.footer-links-cc {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.footer-links-cc li {
+    margin-bottom: 5px;
+}
+
+.footer-links-cc a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links-cc a:hover {
+    color: #fff;
+}
+
+.arrepentimiento-btn-container {
+    margin-bottom: 20px;
+}
+
+.btn-arrepentimiento {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.security-logos img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Columna Ayuda y Staff */
+.staff-callout {
+    background-color: #e50020; /* Fondo rojo */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.staff-callout p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.staff-callout .staff-big-text {
+    font-size: 36px;
+    font-weight: 900;
+}
+
+/* Sección de Copyright */
+.footer-bottom-cc {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    font-size: 12px;
+}
+
+.copyright-cc, .design-by {
+    color: #999;
+    margin: 0;
+}
+
+/* Flexbox utilities para el footer-bottom */
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
