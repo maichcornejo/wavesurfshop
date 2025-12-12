@@ -1,0 +1,41 @@
+.faq {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.faq-question {
+    width: 100%;
+    background: #0d141d; /* color oscuro de tu marca */
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.faq-question.active {
+    background: #182433;
+}
+
+.faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    background: #f3f3f3;
+    padding: 0 15px;
+    border-radius: 0 0 6px 6px;
+    transition: max-height 0.35s ease-out;
+}
+
+.faq-answer p {
+    padding: 15px 0;
+}
+.faq-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
