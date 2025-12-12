@@ -1,99 +1,131 @@
-/* TOP BAR */
+/* ================================
+   TOP BAR
+================================ */
 .waves-topbar {
-    background: #0d09a1;
-    height: 8px;
+    background: #1f3a5f; /* azul sobrio */
+    height: 6px;
 }
 
-/* HEADER */
+/* ================================
+   HEADER
+================================ */
 .waves-header {
-    background: #ffffff;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
+    background: #ffffff !important;
+    border-bottom: 1px solid #e5ecf3; /* línea sutil */
+    padding: 14px 0;
     width: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
-.waves-header-inner {
+header.waves-header {
+    background: none !important;
+    background-color: #ffffff !important;
+}
+
+
+/* sombra MUY suave para separar del contenido */
+.waves-header {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
-/* LOGO */
-.waves-logo img {
-    height: 55px;
+/* ================================
+   LOGO
+================================ */
+.header-logo img {
+    height: 54px;
     width: auto;
 }
 
-/* NAV */
-.waves-nav .waves-menu {
+/* ================================
+   NAV
+================================ */
+.header-menu .nav {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
 }
 
-.waves-nav a {
+.header-menu .nav li a {
     text-decoration: none;
-    color: #000;
-    font-weight: 600;
+    color: #1f3a5f;
+    font-weight: 500;
     font-size: 15px;
+    letter-spacing: 0.3px;
+    position: relative;
 }
 
-.waves-nav a:hover {
-    color: #2275d8;
+/* underline moderno */
+.header-menu .nav li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #2f80ed;
+    transition: width 0.3s ease;
 }
 
-/* SEARCH BAR */
-.waves-search form {
-    display: flex;
-    align-items: center;
+.header-menu .nav li a:hover::after {
+    width: 100%;
 }
 
-.waves-search input {
-    width: 260px;
-    padding: 8px 12px;
-    border: 2px solid #acb6c1;
-    border-radius: 8px 0 0 8px;
+/* ================================
+   SEARCH
+================================ */
+.header-search input {
+    width: 240px;
+    padding: 9px 14px;
+    border: 1px solid #dbe4ee;
+    border-radius: 10px 0 0 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.waves-search button {
-    background: #2275d8 !important;
-    border-radius: 0 8px 8px 0 !important;
-    padding: 8px 15px;
+.header-search button {
+    background: #2f80ed;
+    border-radius: 0 10px 10px 0;
+    padding: 9px 16px;
     border: none;
 }
 
-.waves-search button:hover {
-    background: #0d09a1 !important;
+.header-search button:hover {
+    background: #1f3a5f;
 }
 
-/* ACTIONS (USER + CART) */
-.waves-actions {
+/* ================================
+   ACTIONS
+================================ */
+.header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
 }
 
-.waves-account,
-.waves-cart {
-    color: #000;
-    font-weight: 600;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
+.header-account a,
+.header-cart a {
+    color: #1f3a5f;
+    font-size: 18px;
 }
 
-.waves-account:hover,
-.waves-cart:hover {
-    color: #2275d8;
+.header-account a:hover,
+.header-cart a:hover {
+    color: #2f80ed;
 }
 
-.waves-cart-count {
-    background: #2275d8;
+.cart-count {
+    background: #2f80ed;
     color: #fff;
-    padding: 3px 8px;
+    padding: 2px 7px;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 11px;
+    margin-left: 4px;
 }
