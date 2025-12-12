@@ -1,6 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 
 <footer class="main-footer-cc">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- TOP SECTION -->
     <div class="footer-top-cc">
@@ -9,7 +10,7 @@
 
                 <!-- LOGO + QR -->
                 <div class="col-cc-3 logo-qr-section">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/footer/logo.png"
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logos/logo-sinfondo.png"
                          alt="Waves Surf Shop Logo"
                          class="footer-logo">
 
