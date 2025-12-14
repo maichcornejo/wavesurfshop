@@ -1,99 +1,132 @@
-/* TOP BAR */
+/* ================================
+   TOP BAR
+================================ */
 .waves-topbar {
-    background: #0d09a1;
-    height: 8px;
+    background: #1f3a5f;
+    height: 4px;
 }
 
-/* HEADER */
-.waves-header {
+/* ================================
+   HEADER WRAPPER
+================================ */
+header.waves-header {
     background: #ffffff;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
+    border-bottom: 1px solid #e6edf5;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    padding: 14px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================================
+   INNER
+================================ */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+/* ================================
+   MENU
+================================ */
+.header-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header-menu .nav {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu .nav li a {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #1f3a5f;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* underline elegante */
+.header-menu .nav li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #2f80ed;
+    transition: width .25s ease;
+}
+
+.header-menu .nav li a:hover::after,
+.header-menu .current-menu-item a::after {
     width: 100%;
 }
 
-.waves-header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-}
-
-/* LOGO */
-.waves-logo img {
-    height: 55px;
-    width: auto;
-}
-
-/* NAV */
-.waves-nav .waves-menu {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-}
-
-.waves-nav a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.waves-nav a:hover {
-    color: #2275d8;
-}
-
-/* SEARCH BAR */
-.waves-search form {
+/* ================================
+   ACTIONS
+================================ */
+.header-actions {
     display: flex;
     align-items: center;
+    gap: 18px;
 }
 
-.waves-search input {
-    width: 260px;
-    padding: 8px 12px;
-    border: 2px solid #acb6c1;
-    border-radius: 8px 0 0 8px;
+/* ================================
+   SEARCH (compact & clean)
+================================ */
+.header-search input[type="search"] {
+    background: #f5f8fc;
+    border: 1px solid #dbe4ee;
+    border-radius: 6px 0 0 6px;
+    padding: 7px 12px;
+    font-size: 13px;
+    width: 190px;
 }
 
-.waves-search button {
-    background: #2275d8 !important;
-    border-radius: 0 8px 8px 0 !important;
-    padding: 8px 15px;
+.header-search button {
+    background: #2f80ed;
     border: none;
+    color: white;
+    padding: 7px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    cursor: pointer;
 }
 
-.waves-search button:hover {
-    background: #0d09a1 !important;
+.header-search button:hover {
+    background: #1f3a5f;
 }
 
-/* ACTIONS (USER + CART) */
-.waves-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* ================================
+   ICONS
+================================ */
+.header-account a,
+.header-cart a {
+    color: #1f3a5f;
+    font-size: 17px;
 }
 
-.waves-account,
-.waves-cart {
-    color: #000;
-    font-weight: 600;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    text-decoration: none;
+.header-account a:hover,
+.header-cart a:hover {
+    color: #2f80ed;
 }
 
-.waves-account:hover,
-.waves-cart:hover {
-    color: #2275d8;
-}
-
-.waves-cart-count {
-    background: #2275d8;
-    color: #fff;
-    padding: 3px 8px;
+/* CART BADGE */
+.cart-count {
+    background: #2f80ed;
+    color: white;
+    font-size: 11px;
+    padding: 2px 6px;
     border-radius: 50%;
-    font-size: 12px;
+    margin-left: 4px;
 }

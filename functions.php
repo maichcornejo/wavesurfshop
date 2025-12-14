@@ -182,6 +182,13 @@ function waves_child_assets() {
         filemtime(get_stylesheet_directory() . '/assets/css/woocommerce.css')
     );
 
+     wp_enqueue_style(
+        'child-footer',
+        get_stylesheet_directory_uri() . '/assets/css/footer.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
+    );
+
     /* ============================
        3) JS DEL CARRUSEL DE MARCAS
     ============================= */
@@ -263,3 +270,54 @@ function waves_faq_styles() {
 add_action( 'wp_enqueue_scripts', 'waves_faq_styles' );
 
 
+function waves_enqueue_snap_scroll() {
+    if ( is_front_page() ) {
+        wp_enqueue_style(
+            'waves-snap-scroll',
+            get_stylesheet_directory_uri() . '/assets/css/snap-scroll.css',
+            array(),
+            time()
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'waves_enqueue_snap_scroll');
+
+function waves_story_scroll_script() {
+
+    if ( is_front_page() ) {
+        wp_enqueue_script(
+            'waves-story-scroll',
+            get_stylesheet_directory_uri() . '/assets/js/story-scroll.js',
+            array(),
+            time(),
+            true
+        );
+    }
+
+}
+add_action('wp_enqueue_scripts', 'waves_story_scroll_script');
+
+
+function waves_product_card_scripts() {
+
+    if ( function_exists('is_shop') && ( is_shop() || is_front_page() ) ) {
+        wp_enqueue_script(
+            'waves-product-card',
+            get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+            [],
+            time(),
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'waves_product_card_scripts');
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script(
+        'waves-product-card',
+        get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+        [],
+        time(),
+        true
+    );
+});

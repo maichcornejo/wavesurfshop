@@ -1,74 +1,83 @@
-/* Estilos generales del footer */
+/* ================================
+   FOOTER – White / Modern Style
+================================ */
+
 .main-footer-cc {
-    background-color: #212121; /* Fondo gris oscuro/negro */
-    color: #fff; /* Texto blanco */
-    font-family: Arial, sans-serif;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    background-color: #ffffff;
+    color: #1f3a5f; /* Azul principal */
+    font-family: 'Inter', sans-serif;
+    padding-top: 60px;
+    padding-bottom: 25px;
 }
 
-/* Contenedor principal (asumiendo una estructura de ancho fijo/fluido) */
+
+footer.main-footer-cc {
+    background: #f8eded !important;
+}
+
+/* Contenedor */
 .container-cc {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Estructura de columnas (si no usas Bootstrap) */
+/* Grid */
 .row-cc {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px; /* Para contrarrestar el padding de las columnas */
+    margin: 0 -15px;
 }
 
 .col-cc-3 {
     width: 25%;
     padding: 0 15px;
     box-sizing: border-box;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
+/* Títulos */
 .footer-heading-cc {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #e50020; /* Color rojo para los títulos */
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: #1f3a5f;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-/* Sección Logo y QR */
+/* Logo + QR */
 .footer-logo {
-    max-width: 180px; /* Ajusta el tamaño del logo principal */
-    margin-bottom: 15px;
-}
-
-.logos-secundarios img {
-    height: 25px;
-    margin-right: 10px;
-    margin-bottom: 15px;
+    max-width: 180px;
+    margin-bottom: 20px;
 }
 
 .data-fiscal-img {
-    width: 100px; /* Tamaño del QR */
-    border: 3px solid #fff;
-    padding: 5px;
-    box-sizing: content-box;
+    width: 95px;
+    border: 1px solid #dfe6ee;
+    padding: 6px;
+    background: #fff;
 }
 
-/* Columna Empresa (Texto y Seguir) */
+/* Texto empresa */
 .empresa-text {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    color: #4a6480;
 }
 
 .empresa-text .read-more {
-    color: #e50020;
+    color: #2f80ed;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
 }
 
+.empresa-text .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Redes */
 .social-links-cc {
     list-style: none;
     padding: 0;
@@ -80,16 +89,16 @@
 }
 
 .social-links-cc a {
-    color: #fff;
+    color: #1f3a5f;
     font-size: 20px;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .social-links-cc a:hover {
-    color: #e50020;
+    color: #2f80ed;
 }
 
-/* Columna Contenidos */
+/* Links */
 .footer-links-cc {
     list-style: none;
     padding: 0;
@@ -97,70 +106,74 @@
 }
 
 .footer-links-cc li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .footer-links-cc a {
-    color: #ccc;
+    color: #4a6480;
     text-decoration: none;
     font-size: 14px;
+    transition: color 0.2s ease;
 }
 
 .footer-links-cc a:hover {
-    color: #fff;
+    color: #1f3a5f;
 }
 
-.arrepentimiento-btn-container {
-    margin-bottom: 20px;
-}
-
+/* Botón arrepentimiento */
 .btn-arrepentimiento {
-    background: none;
-    border: 2px solid #fff;
-    color: #fff;
-    padding: 8px 15px;
+    background: transparent;
+    border: 2px solid #2f80ed;
+    color: #2f80ed;
+    padding: 9px 18px;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
+.btn-arrepentimiento:hover {
+    background-color: #2f80ed;
+    color: #ffffff;
+}
+
+/* Logos seguridad */
 .security-logos img {
     height: 30px;
     margin-right: 10px;
+    opacity: 0.85;
 }
 
-/* Columna Ayuda y Staff */
+/* Staff */
 .staff-callout {
-    background-color: #e50020; /* Fondo rojo */
-    color: #fff;
-    padding: 15px;
+    background-color: #f1f6fb;
+    color: #1f3a5f;
+    padding: 18px;
     text-align: center;
-    margin-top: 25px;
-}
-
-.staff-callout p {
-    margin: 0;
-    line-height: 1.2;
+    margin-top: 30px;
+    border-radius: 12px;
 }
 
 .staff-callout .staff-big-text {
-    font-size: 36px;
-    font-weight: 900;
+    font-size: 32px;
+    font-weight: 700;
 }
 
-/* Sección de Copyright */
+/* Footer bottom */
 .footer-bottom-cc {
-    border-top: 1px solid #333;
-    padding-top: 15px;
+    border-top: 1px solid #e5ecf3;
+    padding-top: 18px;
     font-size: 12px;
 }
 
-.copyright-cc, .design-by {
-    color: #999;
+.copyright-cc,
+.design-by {
+    color: #7a8fa6;
     margin: 0;
 }
 
-/* Flexbox utilities para el footer-bottom */
+/* Utilities */
 .d-flex { display: flex; }
 .justify-content-between { justify-content: space-between; }
