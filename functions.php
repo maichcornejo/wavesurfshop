@@ -321,3 +321,23 @@ add_action('wp_enqueue_scripts', function () {
         true
     );
 });
+
+
+add_action( 'wp_enqueue_scripts', function () {
+  if ( is_product() ) {
+    wp_enqueue_script(
+      'waves-variations',
+      get_stylesheet_directory_uri() . '/assets/js/single-product-variations.js',
+      [ 'jquery', 'wc-add-to-cart-variation' ],
+      null,
+      true
+    );
+  }
+});
+
+
+add_action( 'wp_enqueue_scripts', function () {
+    if ( is_product() ) {
+        wp_enqueue_script( 'wc-add-to-cart-variation' );
+    }
+});
