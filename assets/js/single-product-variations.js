@@ -164,7 +164,6 @@ document.querySelectorAll('.waves-accordion-header').forEach(header => {
 
   });
 });
-<<<<<<< HEAD
 
 
 jQuery(function ($) {
@@ -188,5 +187,3 @@ jQuery(function ($) {
   });
 
 });
-=======
->>>>>>> e4d28d2 (empezando 15/12)
