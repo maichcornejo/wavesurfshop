@@ -2,99 +2,100 @@
    TOP BAR
 ================================ */
 .waves-topbar {
-    background: #1f3a5f;
-    height: 4px;
+    background: #1f3a5f; /* azul sobrio */
+    height: 6px;
 }
 
 /* ================================
-   HEADER WRAPPER
+   HEADER
 ================================ */
-header.waves-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e6edf5;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+.waves-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e5ecf3; /* línea sutil */
     padding: 14px 0;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
 }
 
-/* ================================
-   INNER
-================================ */
+header.waves-header {
+    background: none !important;
+    background-color: #ffffff !important;
+}
+
+
+/* sombra MUY suave para separar del contenido */
+.waves-header {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
 .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    align-items: center;
+    gap: 30px;
 }
 
 /* ================================
-   MENU
+   LOGO
 ================================ */
-.header-menu {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+.header-logo img {
+    height: 54px;
+    width: auto;
 }
 
+/* ================================
+   NAV
+================================ */
 .header-menu .nav {
     display: flex;
     gap: 28px;
     list-style: none;
+    gap: 32px;
     margin: 0;
     padding: 0;
 }
 
 .header-menu .nav li a {
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: #1f3a5f;
     text-decoration: none;
+    color: #1f3a5f;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.3px;
     position: relative;
-    padding-bottom: 4px;
 }
 
-/* underline elegante */
+/* underline moderno */
 .header-menu .nav li a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -6px;
     width: 0;
     height: 2px;
     background: #2f80ed;
-    transition: width .25s ease;
+    transition: width 0.3s ease;
 }
 
-.header-menu .nav li a:hover::after,
-.header-menu .current-menu-item a::after {
+.header-menu .nav li a:hover::after {
     width: 100%;
 }
 
 /* ================================
-   ACTIONS
+   SEARCH
 ================================ */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-/* ================================
-   SEARCH (compact & clean)
-================================ */
-.header-search input[type="search"] {
-    background: #f5f8fc;
+.header-search input {
+    width: 240px;
+    padding: 9px 14px;
     border: 1px solid #dbe4ee;
-    border-radius: 6px 0 0 6px;
-    padding: 7px 12px;
-    font-size: 13px;
-    width: 190px;
+    border-radius: 10px 0 0 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header-search button {
     background: #2f80ed;
+    border-radius: 0 10px 10px 0;
+    padding: 9px 16px;
     border: none;
     color: white;
     padding: 7px 14px;
@@ -108,12 +109,18 @@ header.waves-header {
 }
 
 /* ================================
-   ICONS
+   ACTIONS
 ================================ */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
 .header-account a,
 .header-cart a {
     color: #1f3a5f;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .header-account a:hover,
@@ -121,12 +128,11 @@ header.waves-header {
     color: #2f80ed;
 }
 
-/* CART BADGE */
 .cart-count {
     background: #2f80ed;
-    color: white;
-    font-size: 11px;
-    padding: 2px 6px;
+    color: #fff;
+    padding: 2px 7px;
     border-radius: 50%;
+    font-size: 11px;
     margin-left: 4px;
 }

@@ -164,3 +164,26 @@ document.querySelectorAll('.waves-accordion-header').forEach(header => {
 
   });
 });
+
+
+jQuery(function ($) {
+
+  $(document).on('click', '#wavesNotifyBtn', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('CLICK OK');
+
+    $('#wavesNotifyModal').addClass('active');
+  });
+
+  $(document).on('click', '#wavesNotifyClose', function () {
+    $('#wavesNotifyModal').removeClass('active');
+  });
+
+  $(document).on('click', '#wavesNotifyModal', function (e) {
+    if ($(e.target).is('#wavesNotifyModal')) {
+      $('#wavesNotifyModal').removeClass('active');
+    }
+  });
+
+});

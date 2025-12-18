@@ -4,52 +4,14 @@ Template: shoes-store-elementor
 Version: 1.0
 */
 
+html:root {
+  --primary-theme-color: #0d09a1 !important;
+}
+
 /* =============================
    HEADER – BASE ESTRUCTURAL
 ============================= */
 
-.waves-header {
-    background: transparent;
-    padding: 18px 0;
-    border-bottom: none;
-}
-
-.header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.header-menu {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-/* Responsive estructural */
-@media (max-width: 992px) {
-    .header-inner {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .header-menu {
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .header-actions {
-        order: 2;
-    }
-}
 
 
 /* ----------------------------- */

@@ -189,6 +189,13 @@ function waves_child_assets() {
         filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
     );
 
+     wp_enqueue_style(
+        'child-footer',
+        get_stylesheet_directory_uri() . '/assets/css/footer.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
+    );
+
     /* ============================
        3) JS DEL CARRUSEL DE MARCAS
     ============================= */
@@ -341,3 +348,42 @@ add_action( 'wp_enqueue_scripts', function () {
         wp_enqueue_script( 'wc-add-to-cart-variation' );
     }
 });
+
+
+add_filter( 'woocommerce_account_menu_items', 'waves_remove_downloads_menu' );
+function waves_remove_downloads_menu( $items ) {
+
+    unset( $items['downloads'] );
+
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'waves_add_favorites_menu' );
+function waves_add_favorites_menu( $items ) {
+
+    $items['favorites'] = __('Mis favoritos');
+
+    return $items;
+}
+add_action( 'init', 'waves_add_favorites_endpoint' );
+function waves_add_favorites_endpoint() {
+    add_rewrite_endpoint( 'favorites', EP_ROOT | EP_PAGES );
+}
+add_action( 'woocommerce_account_favorites_endpoint', 'waves_favorites_content' );
+function waves_favorites_content() {
+    echo '<h2>Mis favoritos</h2>';
+    echo '<p>Acá vas a ver los productos guardados.</p>';
+}
+add_action( 'wp_enqueue_scripts', 'waves_enqueue_account_styles' );
+function waves_enqueue_account_styles() {
+
+    // Solo páginas de Mi Cuenta
+    if ( is_account_page() ) {
+
+        wp_enqueue_style(
+            'waves-account-style',
+            get_stylesheet_directory_uri() . '/assets/css/account.css',
+            array(), // dependencias
+            filemtime( get_stylesheet_directory() . '/assets/css/account.css' )
+        );
+    }
+}
