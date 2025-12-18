@@ -1,33 +1,65 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-
 <section class="story-section">
+  <div class="story-sticky">
+    <div class="story-track">
 
-    <div class="story-sticky">
+    <!-- ESCENA 1 -->
+    <article class="story-scene">
 
-        <!-- ESCENA 1 -->
-        <div class="story-scene scene-1">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/brands/zapatilla1.png" alt="zap1">
-            <div class="story-text">
-                <h2>Surf & Streetwear</h2>
-                <p>
-                    Waves Surf Shop nace de la cultura urbana y el espíritu del surf.
-                    Autenticidad, diseño y calle real.
-                </p>
-            </div>
+        <div class="story-main">
+        <div class="story-media">
+            <img
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/brands/zapatilla1.png"
+            alt="Waves Surf Zapatilla"
+            />
         </div>
 
-        <!-- ESCENA 2 -->
-        <div class="story-scene scene-2">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/brands/zapatilla2.png" alt="zap2">
-            <div class="story-text">
-                <h2>Calidad que se siente</h2>
-                <p>
-                    No es solo calzado.
-                    Es identidad, movimiento y libertad.
-                </p>
-            </div>
+        <div class="story-text-main">
+            <span class="story-eyebrow">WAVES SURF SHOP</span>
+            <h2>Una tienda, muchas influencias</h2>
+            <p>
+            Somos una tienda de surf y streetwear.  
+            Trabajamos con marcas nacionales e internacionales,  
+            combinando productos clásicos con propuestas distintas.
+            </p>
+        </div>
         </div>
 
+        <div class="story-text-secondary">
+        Calidad, variedad y estilo.
+        </div>
+
+    </article>
+
+    <!-- ESCENA 2 -->
+    <article class="story-scene scene-alt">
+
+        <div class="story-main">
+        <div class="story-media">
+            <img
+            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/brands/primera.png"
+            alt="Waves Surf Zapatilla Negraaa"
+            />
+        </div>
+
+        <div class="story-text-main">
+          <span class="story-eyebrow"></span>
+            <h2>Desde lo conocido hasta lo diferente</h2>
+            <p>
+            Ofrecemos marcas reconocidas y otras menos comunes,  
+            con fuerte presencia de productos de  
+            la cultura skate y urbana.
+            </p>
+        </div>
+        </div>
+
+        <div class="story-text-secondary">
+        Surf, skate y streetwear en un solo lugar.
+        </div>
+
+    </article>
+
+    
     </div>
 
+  </div>
 </section>

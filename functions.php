@@ -189,6 +189,41 @@ function waves_child_assets() {
         filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
     );
 
+    wp_enqueue_style(
+        'child-woocommerce-cards',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-cards.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-cards.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-cart',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-cart.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-cart.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-shop',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-shop.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-shop.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-singleproduct',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-singleproduct.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-singleproduct.css')
+    );
+
+    wp_enqueue_style(
+        'child-filtros',
+        get_stylesheet_directory_uri() . '/assets/css/filtros.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/filtros.css')
+    );
+
     /* ============================
        3) JS DEL CARRUSEL DE MARCAS
     ============================= */
@@ -281,3 +316,102 @@ function waves_enqueue_snap_scroll() {
     }
 }
 add_action('wp_enqueue_scripts', 'waves_enqueue_snap_scroll');
+
+function waves_story_scroll_script() {
+
+    if ( is_front_page() ) {
+        wp_enqueue_script(
+            'waves-story-scroll',
+            get_stylesheet_directory_uri() . '/assets/js/story-scroll.js',
+            array(),
+            time(),
+            true
+        );
+    }
+
+}
+add_action('wp_enqueue_scripts', 'waves_story_scroll_script');
+
+
+function waves_product_card_scripts() {
+
+    if ( function_exists('is_shop') && ( is_shop() || is_front_page() ) ) {
+        wp_enqueue_script(
+            'waves-product-card',
+            get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+            [],
+            time(),
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'waves_product_card_scripts');
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script(
+        'waves-product-card',
+        get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+        [],
+        time(),
+        true
+    );
+});
+
+
+add_action( 'wp_enqueue_scripts', function () {
+  if ( is_product() ) {
+    wp_enqueue_script(
+      'waves-variations',
+      get_stylesheet_directory_uri() . '/assets/js/single-product-variations.js',
+      [ 'jquery', 'wc-add-to-cart-variation' ],
+      null,
+      true
+    );
+  }
+});
+
+
+add_action( 'wp_enqueue_scripts', function () {
+    if ( is_product() ) {
+        wp_enqueue_script( 'wc-add-to-cart-variation' );
+    }
+});
+
+
+add_filter( 'woocommerce_account_menu_items', 'waves_remove_downloads_menu' );
+function waves_remove_downloads_menu( $items ) {
+
+    unset( $items['downloads'] );
+
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'waves_add_favorites_menu' );
+function waves_add_favorites_menu( $items ) {
+
+    $items['favorites'] = __('Mis favoritos');
+
+    return $items;
+}
+add_action( 'init', 'waves_add_favorites_endpoint' );
+function waves_add_favorites_endpoint() {
+    add_rewrite_endpoint( 'favorites', EP_ROOT | EP_PAGES );
+}
+add_action( 'woocommerce_account_favorites_endpoint', 'waves_favorites_content' );
+function waves_favorites_content() {
+    echo '<h2>Mis favoritos</h2>';
+    echo '<p>Acá vas a ver los productos guardados.</p>';
+}
+add_action( 'wp_enqueue_scripts', 'waves_enqueue_account_styles' );
+function waves_enqueue_account_styles() {
+
+    // Solo páginas de Mi Cuenta
+    if ( is_account_page() ) {
+
+        wp_enqueue_style(
+            'waves-account-style',
+            get_stylesheet_directory_uri() . '/assets/css/account.css',
+            array(), // dependencias
+            filemtime( get_stylesheet_directory() . '/assets/css/account.css' )
+        );
+    }
+}
