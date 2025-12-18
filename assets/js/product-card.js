@@ -22,7 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ===== CAMBIO DE IMAGEN POR COLOR ===== */
     document.querySelectorAll('.product-card').forEach(card => {
 
-        const img = card.querySelector('.img-main');
+        // Evitar duplicar eventos
+        if (card.dataset.init === 'true') return;
+        card.dataset.init = 'true';
+
+        /* ===== CAMBIO DE IMAGEN POR COLOR ===== */
+        const img  = card.querySelector('.img-main');
         const dots = card.querySelectorAll('.color-dot');
 >>>>>>> e4d28d2 (empezando 15/12)
         if (!img || !dots.length) return;

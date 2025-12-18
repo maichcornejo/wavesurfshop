@@ -1,4 +1,13 @@
-/* ================================
+/* ===============================
+   HEADER WAVES – FIX DEFINITIVO
+================================ */
+
+/* RESET */
+.waves-header * {
+    box-sizing: border-box;
+}
+
+/* ===============================
    TOP BAR
 ================================ */
 .waves-topbar {
@@ -29,7 +38,8 @@ header.waves-header {
 }
 
 .header-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     justify-content: space-between;
     align-items: center;
@@ -67,7 +77,7 @@ header.waves-header {
 
 /* underline moderno */
 .header-menu .nav li a::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -97,9 +107,8 @@ header.waves-header {
     border-radius: 0 10px 10px 0;
     padding: 9px 16px;
     border: none;
-    color: white;
-    padding: 7px 14px;
-    border-radius: 0 6px 6px 0;
+    background: transparent;
+    padding: 0 14px;
     font-size: 13px;
     cursor: pointer;
 }
@@ -125,7 +134,7 @@ header.waves-header {
 
 .header-account a:hover,
 .header-cart a:hover {
-    color: #2f80ed;
+    color: #2275d8;
 }
 
 .cart-count {
