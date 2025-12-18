@@ -13,12 +13,20 @@
 .waves-topbar {
     background: #1f3a5f; /* azul sobrio */
     height: 6px;
+    background: #1f3a5f; /* azul sobrio */
+    height: 6px;
 }
 
 /* ================================
    HEADER
 ================================ */
+/* ================================
+   HEADER
+================================ */
 .waves-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e5ecf3; /* línea sutil */
+    padding: 14px 0;
     background: #ffffff !important;
     border-bottom: 1px solid #e5ecf3; /* línea sutil */
     padding: 14px 0;
@@ -44,8 +52,14 @@ header.waves-header {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    gap: 30px;
 }
 
+/* ================================
+   LOGO
+================================ */
+.header-logo img {
+    height: 54px;
 /* ================================
    LOGO
 ================================ */
@@ -58,19 +72,31 @@ header.waves-header {
    NAV
 ================================ */
 .header-menu .nav {
+/* ================================
+   NAV
+================================ */
+.header-menu .nav {
     display: flex;
     gap: 28px;
     list-style: none;
     gap: 32px;
     margin: 0;
     padding: 0;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
 }
 
+.header-menu .nav li a {
 .header-menu .nav li a {
     text-decoration: none;
     color: #1f3a5f;
     font-weight: 500;
+    color: #1f3a5f;
+    font-weight: 500;
     font-size: 15px;
+    letter-spacing: 0.3px;
+    position: relative;
     letter-spacing: 0.3px;
     position: relative;
 }
@@ -100,8 +126,21 @@ header.waves-header {
     border: 1px solid #dbe4ee;
     border-radius: 10px 0 0 10px;
     font-family: 'Poppins', sans-serif;
+/* ================================
+   SEARCH
+================================ */
+.header-search input {
+    width: 240px;
+    padding: 9px 14px;
+    border: 1px solid #dbe4ee;
+    border-radius: 10px 0 0 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
+.header-search button {
+    background: #2f80ed;
+    border-radius: 0 10px 10px 0;
+    padding: 9px 16px;
 .header-search button {
     background: #2f80ed;
     border-radius: 0 10px 10px 0;
@@ -115,8 +154,14 @@ header.waves-header {
 
 .header-search button:hover {
     background: #1f3a5f;
+.header-search button:hover {
+    background: #1f3a5f;
 }
 
+/* ================================
+   ACTIONS
+================================ */
+.header-actions {
 /* ================================
    ACTIONS
 ================================ */
@@ -124,8 +169,13 @@ header.waves-header {
     display: flex;
     align-items: center;
     gap: 22px;
+    gap: 22px;
 }
 
+.header-account a,
+.header-cart a {
+    color: #1f3a5f;
+    font-size: 18px;
 .header-account a,
 .header-cart a {
     color: #1f3a5f;
@@ -139,9 +189,14 @@ header.waves-header {
 
 .cart-count {
     background: #2f80ed;
+.cart-count {
+    background: #2f80ed;
     color: #fff;
     padding: 2px 7px;
+    padding: 2px 7px;
     border-radius: 50%;
+    font-size: 11px;
+    margin-left: 4px;
     font-size: 11px;
     margin-left: 4px;
 }
