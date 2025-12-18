@@ -10,7 +10,7 @@
         <span class="gender-label">Hombres</span>
 
         <!-- Botón secundario (solo visible en hover) -->
-        <span class="gender-action">Ver Hombre</span>
+
     </a>
 
     <!-- MUJERES -->
@@ -20,7 +20,7 @@
         </div>
 
         <span class="gender-label">Mujeres</span>
-        <span class="gender-action">Ver Mujer</span>
+
     </a>
 
 </div>

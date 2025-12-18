@@ -1,0 +1,339 @@
+/*
+=========================================
+WAVES SURF SHOP – MI CUENTA
+Sidebar + Layout base
+=========================================
+*/
+
+/* =========================
+   VARIABLES
+========================= */
+:root {
+    --blanco: #ffffff;
+    --negro: #111111;
+    --gris-claro: #f5f7fb;
+    --gris-borde: #e6ebf2;
+    --gris-texto: #6b7280;
+    --azul: #2275d8;
+    --azul-oscuro: #0d09a1;
+}
+
+/* =========================
+   LAYOUT GENERAL
+========================= */
+.woocommerce-account .woocommerce {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* =========================
+   SIDEBAR / NAV
+========================= */
+.woocommerce-MyAccount-navigation,
+.myaccount-menu {
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: 16px;
+    padding: 18px;
+    height: fit-content;
+}
+
+/* Título opcional */
+.myaccount-menu::before {
+    content: "Mi cuenta";
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--gris-texto);
+    margin-bottom: 14px;
+}
+
+/* =========================
+   LISTA
+========================= */
+.myaccount-menu ul,
+.woocommerce-MyAccount-navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* =========================
+   ITEMS
+========================= */
+.myaccount-menu li a,
+.woocommerce-MyAccount-navigation li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--negro);
+    transition: all .2s ease;
+    position: relative;
+}
+
+/* Hover */
+.myaccount-menu li a:hover,
+.woocommerce-MyAccount-navigation li a:hover {
+    background: var(--gris-claro);
+    color: var(--azul);
+}
+
+/* ACTIVO */
+.myaccount-menu li.is-active a,
+.woocommerce-MyAccount-navigation li.is-active a {
+    background: var(--azul);
+    color: var(--blanco);
+}
+
+/* Línea indicadora */
+.myaccount-menu li.is-active a::before,
+.woocommerce-MyAccount-navigation li.is-active a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    width: 4px;
+    height: 80%;
+    background: var(--azul-oscuro);
+    border-radius: 0 4px 4px 0;
+}
+
+/* =========================
+   ICONOS (si agregás después)
+========================= */
+.myaccount-menu li a i,
+.woocommerce-MyAccount-navigation li a i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* =========================
+   CONTENT AREA (BASE)
+========================= */
+.woocommerce-MyAccount-content {
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: 16px;
+    padding: 28px;
+}
+
+/* =========================
+   TITULOS
+========================= */
+.woocommerce-MyAccount-content h2,
+.woocommerce-MyAccount-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+.woocommerce-MyAccount-content p {
+    color: var(--gris-texto);
+    line-height: 1.6;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.woocommerce-MyAccount-content .button {
+    background: var(--azul);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    border: none;
+}
+
+.woocommerce-MyAccount-content .button:hover {
+    background: var(--azul-oscuro);
+}
+
+/* =========================
+   LOGOUT (DESTACADO)
+========================= */
+.myaccount-menu li--customer-logout a,
+.woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--customer-logout a {
+    margin-top: 10px;
+    color: #b91c1c;
+}
+
+.myaccount-menu li--customer-logout a:hover {
+    background: rgba(185,28,28,.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+
+    .woocommerce-account .woocommerce {
+        grid-template-columns: 1fr;
+    }
+
+    .woocommerce-MyAccount-navigation,
+    .myaccount-menu {
+        order: -1;
+    }
+}
+/* =====================================
+   DASHBOARD – WAVES MI CUENTA
+===================================== */
+
+/* CONTENEDOR SALUDO */
+.dashboard-welcome {
+    background: #ffffff;
+    border: 1px solid #e6ebf2;
+    border-radius: 16px;
+    padding: 26px 28px;
+    margin-bottom: 24px;
+}
+
+/* TÍTULO */
+.dashboard-welcome h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #111;
+}
+
+/* TEXTO */
+.dashboard-welcome p {
+    font-size: 15px;
+    color: #6b7280;
+    margin: 0;
+    max-width: 520px;
+}
+
+/* =====================================
+   ACCIONES
+===================================== */
+
+.dashboard-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* CARD / BOTÓN */
+.dash-btn {
+    background: #f7f9fc;
+    border: 1px solid #e6ebf2;
+    border-radius: 16px;
+    padding: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    transition: all .25s ease;
+    position: relative;
+}
+
+/* INDICADOR VISUAL */
+.dash-btn::after {
+    content: "→";
+    position: absolute;
+    right: 22px;
+    font-size: 18px;
+    opacity: .4;
+}
+
+/* HOVER */
+.dash-btn:hover {
+    background: #2275d8;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.dash-btn:hover::after {
+    opacity: 1;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+    .dashboard-welcome {
+        padding: 22px;
+    }
+
+    .dash-btn {
+        padding: 20px;
+    }
+}
+/* =====================================
+   ESPACIALIDAD GENERAL – MI CUENTA
+===================================== */
+
+/* Contenedor principal */
+.woocommerce-account .woocommerce {
+    max-width: 1200px;          /* centra visualmente */
+    margin: 60px auto;          /* espacio arriba/abajo */
+    padding: 0 40px;            /* aire lateral */
+}
+
+/* Grid sidebar + contenido */
+.woocommerce-account .woocommerce {
+    grid-template-columns: 280px 1fr;
+    gap: 60px;                  /* 🔥 MÁS separación */
+}
+
+/* Sidebar un poco más aireado */
+.myaccount-menu,
+.woocommerce-MyAccount-navigation {
+    padding: 24px;
+}
+
+/* Contenido principal */
+.woocommerce-MyAccount-content {
+    padding: 40px;              /* 🔥 aire interno */
+}
+
+/* =====================================
+   DASHBOARD – MÁS AIRE
+===================================== */
+
+/* Saludo */
+.dashboard-welcome {
+    margin-bottom: 36px;
+}
+
+/* Cards */
+.dashboard-actions {
+    gap: 28px;                  /* más espacio entre cards */
+}
+
+/* Card individual */
+.dash-btn {
+    padding: 32px;              /* cards más grandes */
+}
+@media (max-width: 1024px) {
+    .woocommerce-account .woocommerce {
+        padding: 0 24px;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .woocommerce-account .woocommerce {
+        grid-template-columns: 1fr;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .woocommerce-MyAccount-content {
+        padding: 28px;
+    }
+}

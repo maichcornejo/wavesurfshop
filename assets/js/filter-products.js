@@ -1,11 +1,26 @@
-jQuery(function($){
+jQuery(function ($) {
+
+    function collectFilters() {
+        let filters = {};
+
+        $('.filter-term:checked').each(function () {
+            const taxonomy = $(this).data('taxonomy');
+            const value    = $(this).val();
+
+            if (!filters[taxonomy]) {
+                filters[taxonomy] = [];
+            }
+
+            filters[taxonomy].push(value);
+        });
+
+        return filters;
+    }
 
     function applyFilters(page = 1) {
 
-        const genders = $('.filter-gender:checked').map((_, el) => el.value).get();
-        const brands  = $('.filter-brand:checked').map((_, el) => el.value).get();
-        const sizes   = $('.filter-size:checked').map((_, el) => el.value).get();
-        const price   = $('#filter-price').val();
+        const filters = collectFilters();
+        const price   = $('#price-filter').val() || null;
 
         $.ajax({
             url: waves_ajax.ajax_url,
@@ -13,72 +28,63 @@ jQuery(function($){
             data: {
                 action: 'filter_products',
                 nonce: waves_ajax.nonce,
-                genders: genders,
-                brands: brands,
-                sizes: sizes,
+                filters: filters,
                 price: price,
                 page: page
             },
-            beforeSend: function() {
-                $('#products-list').addClass('loading');
-                $('#products-list').html('<div class="spinner"></div>');
+            beforeSend() {
+                $('#products-list')
+                    .addClass('loading')
+                    .html('<div class="spinner"></div>');
             },
-            success: function(response){
-                $('#products-list').removeClass('loading');
-                $('#products-list').html(response);
+            success(response) {
+                $('#products-list')
+                    .removeClass('loading')
+                    .html(response);
+
+                // 🔥 Re-inicializar product cards
+                if (window.initProductCard) {
+                    window.initProductCard();
+                }
             }
         });
     }
 
-    // EVENTOS
-    $('.filter-gender, .filter-brand, .filter-size').on('change', function(){
+    /* =====================
+       EVENTOS
+    ===================== */
+
+    $(document).on('change', '.filter-term', function () {
         applyFilters();
     });
 
-    $('#filter-price').on('input', function(){
-        $('#price-value').text("Hasta $" + $(this).val());
+    $('#price-filter').on('input change', function () {
+        $('#price-output').text('Hasta $' + $(this).val());
         applyFilters();
     });
 
-});
+    /* =====================
+       URL → FILTROS
+       ?pa_marca=nike,adidas&pa_talle=40,41
+    ===================== */
 
-// Leer parámetros GET de la URL
-function getUrlParam(param) {
-    const url = new URL(window.location.href);
-    return url.searchParams.get(param);
-}
+    function applyFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
 
-// Al cargar la página, aplicar filtros desde URL
-jQuery(function($){
+        params.forEach((value, key) => {
+            const values = value.split(',');
 
-    // Aplicar género
-    const genderParam = getUrlParam("gender");
-    if (genderParam) {
-        $('.filter-gender[value="'+genderParam+'"]').prop('checked', true);
+            values.forEach(val => {
+                $(`.filter-term[data-taxonomy="${key}"][value="${val}"]`)
+                    .prop('checked', true);
+            });
+        });
+
+        if (params.toString()) {
+            applyFilters();
+        }
     }
 
-    // Aplicar marca
-    const brandParam = getUrlParam("brand");
-    if (brandParam) {
-        $('.filter-brand[value="'+brandParam+'"]').prop('checked', true);
-    }
-
-    // Aplicar talle
-    const sizeParam = getUrlParam("size");
-    if (sizeParam) {
-        $('.filter-size[value="'+sizeParam+'"]').prop('checked', true);
-    }
-
-    // Aplicar precio máximo desde URL (opcional)
-    const priceParam = getUrlParam("max_price");
-    if (priceParam) {
-        $('#filter-price').val(priceParam);
-        $('#price-value').text("Hasta $" + priceParam);
-    }
-
-    // Ejecutar AJAX automáticamente si hay parámetros
-    if (genderParam || brandParam || sizeParam || priceParam) {
-        applyFilters();
-    }
+    applyFiltersFromURL();
 
 });

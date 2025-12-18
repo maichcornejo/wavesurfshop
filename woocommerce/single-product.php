@@ -23,8 +23,9 @@ do_action('woocommerce_before_main_content');
 
       <h1><?php the_title(); ?></h1>
 
-      <?php woocommerce_template_single_price(); ?>
-
+      <div class="price-2">
+          <?php woocommerce_template_single_price(); ?>
+      </div>
       <?php if ( $product->is_type( 'variable' ) ) :
 
         $available_variations = $product->get_available_variations();
@@ -110,7 +111,9 @@ do_action('woocommerce_before_main_content');
 
 
         <div class="waves-size-guide">📏 Ver guía de talles</div>
-        <div class="waves-notify">🔔 Avisarme cuando haya stock</div>
+        <button type="button" class="waves-notify" id="wavesNotifyBtn">
+          🔔 Avisarme cuando haya stock
+        </button>
 
         <!-- ===== WC ===== -->
         <div class="single_variation_wrap">
@@ -179,6 +182,55 @@ do_action('woocommerce_before_main_content');
 <?php endwhile; ?>
 
 </div>
+
+<!-- ================= MODAL AVISO STOCK ================= -->
+
+<div class="waves-notify-modal" id="wavesNotifyModal">
+
+  <div class="waves-notify-box">
+
+    <button class="waves-notify-close" id="wavesNotifyClose">✕</button>
+
+    <h3>Te avisamos cuando vuelva a estar disponible</h3>
+    <p class="waves-notify-sub">
+      Recibí un mensaje de WhatsApp apenas ingrese tu talle.
+    </p>
+
+    <form class="waves-notify-form">
+
+      <label>Talle</label>
+      <select required>
+        <option value="">Seleccionar talle</option>
+        <option>35</option>
+        <option>36</option>
+        <option>37</option>
+        <option>38</option>
+        <option>39</option>
+        <option>40</option>
+        <option>41</option>
+        <option>42</option>
+        <option>43</option>
+        <option>44</option>
+        <option>45</option>
+      </select>
+
+      <label>WhatsApp</label>
+      <input type="tel" placeholder="Ej: 2804123456" required>
+
+      <button type="submit">
+        NOTIFICARME CUANDO INGRESE
+      </button>
+
+      <small>
+        Promesa sin spam. Solo para este producto.
+      </small>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ================= FIN MODAL ================= -->
 
 <?php
 do_action('woocommerce_after_main_content');
