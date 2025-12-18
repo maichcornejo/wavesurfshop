@@ -8,6 +8,16 @@
 }
 
 /* ===============================
+/* ===============================
+   HEADER WAVES – FIX DEFINITIVO
+================================ */
+
+/* RESET */
+.waves-header * {
+    box-sizing: border-box;
+}
+
+/* ===============================
    TOP BAR
 ================================ */
 .waves-topbar {
@@ -31,6 +41,7 @@
     border-bottom: 1px solid #e5ecf3; /* línea sutil */
     padding: 14px 0;
     width: 100%;
+    width: 100%;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -45,7 +56,20 @@ header.waves-header {
     box-shadow: 0 2px 6px rgba(0,0,0,0.03);
 }
 
+header.waves-header {
+    background: none !important;
+    background-color: #ffffff !important;
+}
+
+
+/* sombra MUY suave para separar del contenido */
+.waves-header {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
 .header-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -63,6 +87,9 @@ header.waves-header {
 /* ================================
    LOGO
 ================================ */
+.header-logo img {
+    height: 54px;
+    width: auto;
 .header-logo img {
     height: 54px;
     width: auto;
@@ -102,22 +129,28 @@ header.waves-header {
 }
 
 /* underline moderno */
+/* underline moderno */
 .header-menu .nav li a::after {
+    content: "";
     content: "";
     position: absolute;
     left: 0;
+    bottom: -6px;
     bottom: -6px;
     width: 0;
     height: 2px;
     background: #2f80ed;
     transition: width 0.3s ease;
+    transition: width 0.3s ease;
 }
 
+.header-menu .nav li a:hover::after {
 .header-menu .nav li a:hover::after {
     width: 100%;
 }
 
 /* ================================
+   SEARCH
    SEARCH
 ================================ */
 .header-search input {
@@ -133,6 +166,8 @@ header.waves-header {
     width: 240px;
     padding: 9px 14px;
     border: 1px solid #dbe4ee;
+    border-radius: 10px 0 0 10px;
+    font-family: 'Poppins', sans-serif;
     border-radius: 10px 0 0 10px;
     font-family: 'Poppins', sans-serif;
 }
@@ -146,6 +181,8 @@ header.waves-header {
     border-radius: 0 10px 10px 0;
     padding: 9px 16px;
     border: none;
+    background: transparent;
+    padding: 0 14px;
     background: transparent;
     padding: 0 14px;
     font-size: 13px;
@@ -180,10 +217,12 @@ header.waves-header {
 .header-cart a {
     color: #1f3a5f;
     font-size: 18px;
+    font-size: 18px;
 }
 
 .header-account a:hover,
 .header-cart a:hover {
+    color: #2275d8;
     color: #2275d8;
 }
 
