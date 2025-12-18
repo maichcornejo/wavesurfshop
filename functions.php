@@ -189,16 +189,6 @@ function waves_child_assets() {
         filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
     );
 
-<<<<<<< HEAD
-     wp_enqueue_style(
-        'child-footer',
-        get_stylesheet_directory_uri() . '/assets/css/footer.css',
-        array('parent-style'),
-        filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
-    );
-
-=======
->>>>>>> e4d28d2 (empezando 15/12)
     /* ============================
        3) JS DEL CARRUSEL DE MARCAS
     ============================= */
@@ -351,7 +341,6 @@ add_action( 'wp_enqueue_scripts', function () {
         wp_enqueue_script( 'wc-add-to-cart-variation' );
     }
 });
-<<<<<<< HEAD
 
 
 add_filter( 'woocommerce_account_menu_items', 'waves_remove_downloads_menu' );
@@ -391,5 +380,3 @@ function waves_enqueue_account_styles() {
         );
     }
 }
-=======
->>>>>>> e4d28d2 (empezando 15/12)
