@@ -107,7 +107,7 @@
 
 
 .price-2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
   color: #6ee7c8;
   display: flex;
@@ -125,7 +125,7 @@
 /* ================= VARIACIONES ================= */
 
 .variations {
-  margin-top: 30px;
+  margin-top: 28px;
 }
 
 .variations select {
@@ -134,10 +134,10 @@
   pointer-events: none !important;
 }
 
-/* ================= COLOR SWATCHES ================= */
+/* ================= COLOR ================= */
 
 .waves-color-swatches {
-  margin-top: 16px;
+  margin-top: 14px;
   display: flex;
   gap: 14px;
 }
@@ -149,7 +149,7 @@
 }
 
 .color-swatch:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .color-swatch input {
@@ -158,10 +158,10 @@
 
 .color-swatch .swatch-image {
   height: 64px;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  background: #111;
-  border: 1px solid rgba(255,255,255,.1);
+  background: #0e1111;
+  border: 1px solid rgba(255,255,255,.12);
   transition: all .25s ease;
 }
 
@@ -171,15 +171,178 @@
   object-fit: cover;
 }
 
-.color-swatch.active .swatch-image,
-.color-swatch input:checked + .swatch-image {
+.color-swatch.active .swatch-image {
   border-color: #6ee7c8;
   box-shadow:
-    0 0 0 2px rgba(110,231,200,.35),
-    0 8px 24px rgba(110,231,200,.35);
+    0 0 0 2px rgba(110,231,200,.4),
+    0 12px 28px rgba(110,231,200,.35);
+}
+
+/* ================= LABEL TALLE ================= */
+
+.waves-size-label {
+  margin-top: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.waves-size-label strong {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.waves-size-label span {
+  font-size: 12px;
+  opacity: .7;
+}
+
+/* ================= TALLE GRID ================= */
+
+.waves-size-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  gap: 10px;
+  max-width: 420px;
+}
+
+.size-box {
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .18s ease;
+  backdrop-filter: blur(6px);
+}
+
+.size-box:hover {
+  border-color: #6ee7c8;
+  background: rgba(110,231,200,.12);
+  transform: translateY(-1px);
+}
+
+.size-box.active {
+  background: linear-gradient(135deg, #6ee7c8, #3fd3b0);
+  color: #000;
+  border-color: #6ee7c8;
+  box-shadow: 0 8px 26px rgba(110,231,200,.45);
+}
+
+/* agotado */
+.size-box.disabled {
+  opacity: .35;
+  cursor: not-allowed;
+  background: rgba(255,255,255,.04);
+  border-style: dashed;
+  text-decoration: line-through;
+}
+
+/* ===== FIX FONDO BLANCO WOO ===== */
+
+.variations td,
+.variations .value {
+  background: transparent !important;
+}
+
+.variations tr {
+  background: transparent !important;
+}
+
+/* ===== OCULTAR LABEL FEO DE WOO PARA TALLE ===== */
+
+.variations tr:has(.waves-size-grid) th.label {
+  display: none;
+}
+
+/* ===== OCULTAR LABELS WOO ===== */
+
+.variations th.label {
+  display: none;
+}
+
+
+
+/* ================= VARIACIONES ================= */
+
+.variations {
+  margin-top: 28px;
+  border-collapse: collapse;
+}
+
+.variations tr {
+  border: none;
+}
+
+.variations td,
+.variations th {
+  padding: 0;
+  background: transparent !important;
+}
+
+/* ================= COLOR ================= */
+
+.waves-color-swatches {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+}
+
+/* ================= TALLE ================= */
+
+.waves-size-label {
+  margin-top: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.waves-size-label strong {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.waves-size-label span {
+  font-size: 12px;
+  opacity: .7;
+}
+
+.waves-size-grid {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  gap: 10px;
+  max-width: 420px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .waves-size-grid {
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  }
 }
 
 /* ================= STOCK ================= */
+
+.waves-stock-text {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  /* El color lo cambiará el JS, pero le damos uno por defecto */
+  color: #fff; 
+  transition: color 0.4s ease;
+}
 
 .waves-stock {
   margin-top: 20px;
@@ -240,21 +403,62 @@
 
 /* ================= LINKS EXTRA ================= */
 
+
+
+/* ================= ACCIONES SECUNDARIAS ================= */
+
 .waves-size-guide,
 .waves-notify {
-  margin-top: 14px;
-  font-size: 13px;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .04em;
+
+  border-radius: 12px;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
+
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  backdrop-filter: blur(6px);
+
+  transition: all .2s ease;
 }
 
-.waves-size-guide { color: #9ff0d6; }
-.waves-notify { color: #ff7b7b; }
+/* Guía de talles */
+.waves-size-guide {
+  color: #9ff0d6;
+}
+
+.waves-size-guide:hover {
+  background: rgba(159,240,214,.15);
+  border-color: rgba(159,240,214,.6);
+  transform: translateY(-1px);
+}
+
+/* Avisarme */
+.waves-notify {
+  color: #ff9b9b;
+}
+
+.waves-notify:hover {
+  background: rgba(255,123,123,.18);
+  border-color: rgba(255,123,123,.6);
+  transform: translateY(-1px);
+}
+
 
 /* ================= BOTÓN ================= */
 
 .single_add_to_cart_button {
-  margin-top: 24px;
+  width: -webkit-fill-available;
+  margin-top: 36px;
   padding: 20px;
   font-size: 15px;
   font-weight: 800;
@@ -438,4 +642,22 @@
   font-size: 13px;
   cursor: pointer;
   text-decoration: underline;
+}
+
+/* ================= MODAL PRODUCT INFO ================= */
+
+.waves-notify-product {
+  margin: 10px 0 16px;
+}
+
+.notify-product-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.notify-product-meta {
+  display: block;
+  font-size: 13px;
+  color: #666;
 }

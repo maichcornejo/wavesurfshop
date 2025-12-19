@@ -60,8 +60,33 @@ do_action('woocommerce_before_main_content');
                   'product'   => $product,
                 ] );
                 ?>
+                <?php if ( strpos( $attribute_name, 'talle' ) !== false ) : ?>
+                <div class="waves-size-label">
+                  <strong>Talle</strong>
+                  <span>Seleccioná tu talle</span>
+                </div>
+                <div
+                  class="waves-size-grid"
+                  data-attribute="attribute_pa_talle-calzado">
+
+                  <?php foreach ( $options as $option ) : ?>
+                    <button
+                      type="button"
+                      class="size-box"
+                      data-value="<?php echo esc_attr( $option ); ?>">
+                      <?php echo esc_html( $option ); ?>
+                    </button>
+                  <?php endforeach; ?>
+
+                </div>
+              <?php endif; ?>
+
 
                 <?php if ( $is_color ) : ?>
+                  <div class="waves-size-label">
+                    <strong>Color</strong>
+                    <span>Elegí un color</span>
+                  </div>
                 <div class="waves-color-swatches">
 
                   <?php foreach ( $options as $option ) :
@@ -101,32 +126,36 @@ do_action('woocommerce_before_main_content');
         </table>
 
         <!-- ===== INFO EXTRA ===== -->
-		<div class="waves-stock">
-			<small class="waves-stock-text">Seleccioná un talle</small>
-			<div class="waves-stock-bar">
-				<span></span>
-			</div>
-		</div>
+      <div class="waves-stock">
+        
+        <div class="single_variation_wrap">
+          <div class="woocommerce-variation single_variation"></div>
+        </div>
+        
+        <small class="waves-stock-text">Selecciona una opción</small> 
+        <div class="waves-stock-bar">
+          <span></span>
+        </div>
+      </div>
 
 
 
-        <div class="waves-size-guide">📏 Ver guía de talles</div>
+      <div class="waves-size-guide">📏 Ver guía de talles</div>
         <button type="button" class="waves-notify" id="wavesNotifyBtn">
           🔔 Avisarme cuando haya stock
         </button>
 
         <!-- ===== WC ===== -->
-        <div class="single_variation_wrap">
-          <div class="woocommerce-variation single_variation"></div>
-        </div>
 
         <input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>">
         <input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>">
         <input type="hidden" name="variation_id" class="variation_id" value="0">
 
-        <button type="submit" class="single_add_to_cart_button button">
-          AGREGAR AL CARRITO
-        </button>
+        <div>
+          <button type="submit" class="single_add_to_cart_button">
+            AGREGAR AL CARRITO
+          </button>
+        </div>
 
       </form>
 
@@ -170,7 +199,7 @@ do_action('woocommerce_before_main_content');
     <div class="waves-accordion-content">
       <p>💳 Tarjetas de crédito y débito.</p>
       <p>💰 Hasta 6 cuotas sin interés con débito.</p>
-      <p>🔒 Pagos 100% seguros.</p>
+      <p>🔒 Pagos 100% seguros.a</p>
     </div>
   </div>
 
@@ -192,9 +221,16 @@ do_action('woocommerce_before_main_content');
     <button class="waves-notify-close" id="wavesNotifyClose">✕</button>
 
     <h3>Te avisamos cuando vuelva a estar disponible</h3>
+
+    <div class="waves-notify-product">
+      <strong class="notify-product-name"></strong>
+      <span class="notify-product-meta"></span>
+    </div>
+
     <p class="waves-notify-sub">
       Recibí un mensaje de WhatsApp apenas ingrese tu talle.
     </p>
+
 
     <form class="waves-notify-form">
 
