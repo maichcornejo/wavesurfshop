@@ -165,25 +165,67 @@ document.querySelectorAll('.waves-accordion-header').forEach(header => {
   });
 });
 
-
 jQuery(function ($) {
+  const $modal = $('#wavesNotifyModal');
+  const $btnOpen = $('#wavesNotifyBtn');
+  const $btnClose = $('#wavesNotifyClose');
+  const $formNotify = $('.waves-notify-form');
 
-  $(document).on('click', '#wavesNotifyBtn', function (e) {
+  /* ===== 1. ABRIR MODAL ===== */
+  $btnOpen.on('click', function (e) {
     e.preventDefault();
-    e.stopPropagation();
-    console.log('CLICK OK');
-
-    $('#wavesNotifyModal').addClass('active');
+    $modal.addClass('active');
+    // Bloquea el scroll del fondo (opcional pero recomendado)
+    $('body').css('overflow', 'hidden');
   });
 
-  $(document).on('click', '#wavesNotifyClose', function () {
-    $('#wavesNotifyModal').removeClass('active');
-  });
+  /* ===== 2. CERRAR MODAL ===== */
+  function closeModal() {
+    $modal.removeClass('active');
+    $('body').css('overflow', '');
+  }
 
-  $(document).on('click', '#wavesNotifyModal', function (e) {
-    if ($(e.target).is('#wavesNotifyModal')) {
-      $('#wavesNotifyModal').removeClass('active');
+  $btnClose.on('click', closeModal);
+
+  // Cerrar al hacer clic fuera del cuadro blanco
+  $modal.on('click', function (e) {
+    if ($(e.target).is($modal)) {
+      closeModal();
     }
   });
 
+  /* ===== 3. LÓGICA DE STOCK (WOOCOMMERCE) ===== */
+  // Ocultamos el botón por defecto si el producto tiene stock al cargar
+  $('.variations_form').on('found_variation', function (e, variation) {
+    if (!variation.is_in_stock) {
+      $btnOpen.show(); // Aparece si está agotado
+    } else {
+      $btnOpen.hide(); // Se oculta si hay stock
+    }
+  });
+
+  $('.variations_form').on('reset_data', function () {
+    $btnOpen.hide();
+  });
+
+  /* ===== 4. ENVÍO DEL FORMULARIO ===== */
+  $formNotify.on('submit', function (e) {
+    e.preventDefault();
+    
+    const talle = $(this).find('select').val();
+    const whatsapp = $(this).find('input[type="tel"]').val();
+
+    // Aquí podrías conectar con una API o mostrar un mensaje de éxito
+    const originalBtnText = $(this).find('button').text();
+    $(this).find('button').text('¡ANOTADO! ✅').prop('disabled', true);
+
+    setTimeout(() => {
+      alert(`¡Listo! Te avisaremos al ${whatsapp} cuando el talle ${talle} esté disponible.`);
+      closeModal();
+      
+      // Resetear botón para la próxima vez
+      $(this).find('button').text(originalBtnText).prop('disabled', false);
+      $formNotify[0].reset();
+    }, 1000);
+  });
 });

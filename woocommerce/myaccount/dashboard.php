@@ -13,4 +13,5 @@ $user = wp_get_current_user();
     <a href="<?php echo wc_get_endpoint_url('orders'); ?>" class="dash-btn">Mis pedidos</a>
     <a href="<?php echo wc_get_endpoint_url('edit-account'); ?>" class="dash-btn">Editar cuenta</a>
     <a href="<?php echo wc_get_endpoint_url('edit-address'); ?>" class="dash-btn">Direcciones</a>
+    <a href="<?php echo wc_get_endpoint_url('wishlist'); ?>" class="dash-btn">Mis favoritos</a>
 </div>

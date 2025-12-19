@@ -328,7 +328,6 @@ function waves_story_scroll_script() {
             true
         );
     }
-
 }
 add_action('wp_enqueue_scripts', 'waves_story_scroll_script');
 
