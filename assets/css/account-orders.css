@@ -1,0 +1,142 @@
+/* ===============================
+   MIS PEDIDOS – WAVES
+================================ */
+
+.waves-orders {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.waves-orders-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.waves-orders-list {
+  display: grid;
+  gap: 25px;
+}
+
+.waves-order-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  display: grid;
+  gap: 16px;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.waves-order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.order-main {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.order-number {
+  color: #000;
+}
+
+.order-date {
+  color: #777;
+  font-size: 14px;
+}
+
+.order-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-status {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Estados */
+.status-completed .order-status {
+  background: #e6f9f0;
+  color: #0f8a5f;
+}
+
+.status-processing .order-status {
+  background: #fff4e5;
+  color: #c77700;
+}
+
+.status-pending .order-status {
+  background: #f5f5f5;
+  color: #555;
+}
+
+.order-total {
+  text-align: right;
+  font-weight: 700;
+}
+
+.order-total small {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  font-weight: 400;
+}
+
+.order-actions {
+  text-align: right;
+}
+
+.waves-btn {
+  background: linear-gradient(135deg, #003cff, #00c6ff);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all .25s;
+}
+
+.waves-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Empty */
+.waves-orders-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+/* ===============================
+   VOLVER AL DASHBOARD
+================================ */
+
+.waves-orders-back {
+  margin-bottom: 30px;
+}
+
+.waves-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003cff;
+  text-decoration: none;
+  transition: all .25s;
+}
+
+.waves-back-btn:hover {
+  color: #00c6ff;
+  transform: translateX(-4px);
+}

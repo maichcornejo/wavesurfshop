@@ -60,6 +60,7 @@
     border-radius: 12px;
     border: 2px solid #acb6c1;
     transition: 0.25s ease;
+    max-width: min-content;
 }
 
 .qty-wrapper:hover {
@@ -113,8 +114,8 @@
 }
 
 .woocommerce-cart-form th {
-    background: #0d09a1;
-    color: #ffffff;
+   /* background: #0d09a1;
+    color: #ffffff; */
     padding: 14px;
     font-size: 15px;
     letter-spacing: 0.6px;
@@ -126,9 +127,7 @@
     background: #ffffff;
 }
 
-.woocommerce-cart-form tr:nth-child(even) td {
-    background: #f5f7fa;
-}
+
 
 /* -------- PRICE + SUBTOTAL -------- */
 .product-price,
@@ -144,8 +143,8 @@
 
 /* -------- REMOVE BUTTON (X) -------- */
 a.remove {
-    background: #ff2a2a !important;
-    color: #fff !important;
+    background: #a3ff2a00 !important;
+    color: #ff0000 !important;
     border-radius: 10px;
     width: 26px;
     height: 26px;
@@ -225,101 +224,386 @@ button[name="update_cart"]:hover {
 }
 
 
-/* ==========================================
-   WAVES SURF SHOP — CART TOTALS PREMIUM UI
-   ========================================== */
-
-.cart_totals {
-    background: #ffffff;
-    padding: 25px 30px;
-    border-radius: 18px;
-    border: 2px solid #acb6c1;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    max-width: 420px;
-    margin-left: auto;
-    transition: 0.3s ease;
+/* CONTENEDOR GENERAL */
+.woocommerce-cart-form__contents {
+    border-collapse: separate;
+    border-spacing: 0 14px;
 }
 
-.cart_totals:hover {
-    box-shadow: 0 14px 35px rgba(0,0,0,0.15);
+/* HEADER */
+.woocommerce-cart-form thead tr {
+    background: linear-gradient(135deg, #0d09a1, #2275d8);
+    border-radius: 16px;
+    overflow: hidden;
 }
 
-/* TÍTULO */
-.cart_totals h2 {
-    font-size: 22px;
+.woocommerce-cart-form thead th {
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
     font-weight: 700;
-    margin-bottom: 18px;
-    color: #0d09a1;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: 2px solid #2275d8;
-    padding-bottom: 6px;
+    text-transform: uppercase;
+    padding: 18px 16px;
+    border: none;
 }
 
-/* TABLA */
-.cart_totals table {
-    width: 100%;
-    border: none !important;
-    border-collapse: collapse;
-    margin-bottom: 18px;
+/* REDONDEO EXTREMOS */
+.woocommerce-cart-form thead th:first-child {
+    border-radius: 16px 0 0 16px;
+}
+.woocommerce-cart-form thead th:last-child {
+    border-radius: 0 16px 16px 0;
 }
 
-.cart_totals th {
-    text-align: left;
-    font-weight: 600;
-    padding: 12px 0;
+/* FILAS DE PRODUCTO */
+.woocommerce-cart-form tbody tr.cart_item {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
+}
+
+.woocommerce-cart-form tbody td {
+    background: transparent;
+    border: none;
+    padding: 18px 16px;
+    vertical-align: middle;
+}
+
+/* PRODUCTO */
+.product-name a {
+    font-weight: 700;
+    color: #0d09a1;
+    text-decoration: none;
+}
+
+.product-name a:hover {
+    text-decoration: underline;
+}
+
+/* PRECIO / SUBTOTAL */
+.product-price,
+.product-subtotal {
+    font-weight: 800;
     font-size: 15px;
-    color: #000;
 }
 
-.cart_totals td {
-    text-align: right;
-    padding: 12px 0;
-    font-size: 15px;
-    font-weight: 600;
+.product-subtotal {
     color: #2275d8;
 }
 
-.cart_totals tr:not(:last-child) td,
-.cart_totals tr:not(:last-child) th {
-    border-bottom: 1px solid #e0e5ea;
+/* ==========================================
+   ACTION BAR (CUPÓN + ACTUALIZAR)
+========================================== */
+
+.actions {
+    padding: 22px !important;
+    background: #f6f8fb;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px #e0e5ea;
 }
 
-/* TOTAL FINAL */
-.cart_totals .order-total th {
-    font-size: 17px;
-    font-weight: 700;
+/* CUPÓN */
+.actions .coupon {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.cart_totals .order-total td {
-    font-size: 20px;
-    font-weight: 800;
-    color: #0d09a1 !important;
-}
-
-/* BOTÓN FINAL (Ir a finalizar compra) */
-.wc-proceed-to-checkout a.checkout-button {
-    background: linear-gradient(135deg, #2275d8 0%, #0d09a1 100%);
-    color: #ffffff !important;
-    padding: 16px 22px;
-    font-size: 17px;
-    font-weight: 700;
+.actions .coupon input {
+    height: 44px;
     border-radius: 12px;
-    display: block;
-    text-align: center;
-    letter-spacing: 0.8px;
-    box-shadow: 0 6px 18px rgba(34,117,216,0.35);
-    transition: 0.25s ease;
+    border: 2px solid #acb6c1;
+    padding: 0 14px;
+    font-size: 14px;
 }
 
-.wc-proceed-to-checkout a.checkout-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.30);
+.actions .coupon button {
+    height: 44px;
+    border-radius: 12px;
+    padding: 0 22px;
+    background: linear-gradient(135deg, #0d09a1, #2275d8);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    transition: .25s;
 }
 
-.wc-proceed-to-checkout a.checkout-button:active {
-    transform: scale(0.96);
+.actions .coupon button:hover {
+    transform: translateY(-2px);
 }
+
+/* BOTÓN ACTUALIZAR */
+button[name="update_cart"] {
+    margin-left: auto;
+    height: 46px;
+    border-radius: 14px !important;
+    padding: 0 26px !important;
+    font-weight: 700 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .woocommerce-cart-form thead {
+        display: none;
+    }
+
+    .woocommerce-cart-form tbody tr.cart_item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    button[name="update_cart"] {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   WAVES — CART STYLE (ML INSPIRED, SAFE)
+========================================== */
+
+/* TABLA GENERAL */
+.woocommerce-cart-form table {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+/* HEADER */
+.woocommerce-cart-form thead th {
+  background: #0d09a1;
+  color: #fdfdfd;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* FILA PRODUCTO */
+.woocommerce-cart-form tbody tr.cart_item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+/* CELDAS */
+.woocommerce-cart-form tbody td {
+  padding: 16px;
+  vertical-align: middle;
+  border-bottom: none;
+}
+
+/* PRODUCTO */
+
+/* IMAGEN */
+.product-thumbnail img {
+  width: 64px;
+  border-radius: 8px;
+}
+
+/* PRECIO */
+.product-price,
+.product-subtotal {
+  font-weight: 700;
+}
+
+.product-subtotal {
+  color: #2275d8;
+}
+
+
+
+/* ==========================================
+   CANTIDAD (simple, ML style)
+========================================== */
+
+.qty-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+
+.qty-btn {
+  background: none;
+  color: #2275d8;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  box-shadow: none;
+}
+
+.qty-btn:hover {
+  background: #f0f4ff;
+}
+
+.qty-wrapper input.qty {
+  width: 36px !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   CUPÓN / ACCIONES
+========================================== */
+
+.actions {
+  background: #f9f9f9;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.actions .coupon input {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.actions .coupon button {
+  height: 40px;
+  border-radius: 8px;
+  background: #2275d8;
+  color: #fff;
+  font-weight: 600;
+}
+
+button[name="update_cart"] {
+  border-radius: 8px !important;
+}
+
+/* ==========================================
+   MOBILE SAFE
+========================================== */
+
+@media (max-width: 768px) {
+  .woocommerce-cart-form thead {
+    display: none;
+  }
+
+  .woocommerce-cart-form tbody td {
+    padding: 12px;
+  }
+}
+
+
+
+/* ==========================================
+   WAVES SURF SHOP — CART TOTALS PREMIUM UI
+   ========================================== */
+/* ==============================
+   WAVES – CART TOTALS PRO UI
+============================== */
+
+.waves-cart-totals {
+  background: #fff;
+  border-radius: 22px;
+  border: 2px solid #e6ebf2;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+  max-width: 420px;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+/* HEADER */
+.waves-cart-header {
+  padding: 22px 26px;
+  background: linear-gradient(135deg,#0d09a1,#2275d8);
+}
+
+.waves-cart-header h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* BODY */
+.waves-cart-body {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.waves-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #222;
+}
+
+.waves-row strong {
+  font-weight: 700;
+  color: #2275d8;
+}
+
+.waves-row.total {
+  padding-top: 16px;
+  border-top: 2px dashed #e0e5ea;
+  font-size: 18px;
+}
+
+.waves-row.total strong {
+  font-size: 22px;
+  color: #0d09a1;
+}
+
+/* SHIPPING */
+.waves-shipping {
+  padding: 14px;
+  background: #f6f8fb;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+/* CTA */
+.waves-cart-cta {
+  padding: 22px 26px;
+}
+
+.waves-cart-cta a.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff !important;
+  background: linear-gradient(135deg,#2275d8,#0d09a1);
+  box-shadow: 0 12px 28px rgba(34,117,216,.45);
+  transition: all .25s ease;
+}
+
+.waves-cart-cta a.checkout-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(13,9,161,.55);
+}
+
+.waves-cart-cta a.checkout-button:active {
+  transform: scale(.96);
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .waves-cart-totals {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}
+
 
 /* ===========================================
    WAVES SURF SHOP — CART ITEM DATA (PREMIUM)
@@ -405,3 +689,5 @@ button[name="update_cart"]:hover {
         padding: 14px;
     }
 }
+
+

@@ -182,12 +182,12 @@
    HOVER → EFECTO PREMIUM
 ================================ */
 .gender-box:hover .gender-img-wrapper {
-    border-radius: 50%; /* círculo */
+    border-radius: 20%; /* círculo */
     transform: scale(1.02);
 }
 
 .gender-box:hover img {
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
 .gender-box:hover .gender-label {

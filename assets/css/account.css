@@ -21,42 +21,22 @@ Sidebar + Layout base
 /* =========================
    LAYOUT GENERAL
 ========================= */
-.woocommerce-account .woocommerce {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 40px;
-    margin-top: 40px;
+/* Centrar dashboard Mi Cuenta */
+.woocommerce-account .woocommerce-MyAccount-content {
+    display: flex;
+    justify-content: center;
 }
 
-/* =========================
-   SIDEBAR / NAV
-========================= */
-.woocommerce-MyAccount-navigation,
-.myaccount-menu {
-    background: var(--blanco);
-    border: 1px solid var(--gris-borde);
-    border-radius: 16px;
-    padding: 18px;
-    height: fit-content;
+.woocommerce-account .woocommerce-MyAccount-content > * {
+    width: 100%;
+    max-width: 720px; 
 }
 
-/* Título opcional */
-.myaccount-menu::before {
-    content: "Mi cuenta";
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    color: var(--gris-texto);
-    margin-bottom: 14px;
-}
 
 /* =========================
    LISTA
 ========================= */
-.myaccount-menu ul,
-.woocommerce-MyAccount-navigation ul {
+.myaccount-menu ul {
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -65,8 +45,7 @@ Sidebar + Layout base
 /* =========================
    ITEMS
 ========================= */
-.myaccount-menu li a,
-.woocommerce-MyAccount-navigation li a {
+.myaccount-menu li a {
     display: flex;
     align-items: center;
     padding: 12px 14px;
@@ -79,22 +58,19 @@ Sidebar + Layout base
 }
 
 /* Hover */
-.myaccount-menu li a:hover,
-.woocommerce-MyAccount-navigation li a:hover {
+.myaccount-menu li a:hover {
     background: var(--gris-claro);
     color: var(--azul);
 }
 
 /* ACTIVO */
-.myaccount-menu li.is-active a,
-.woocommerce-MyAccount-navigation li.is-active a {
+.myaccount-menu li.is-active a {
     background: var(--azul);
     color: var(--blanco);
 }
 
 /* Línea indicadora */
-.myaccount-menu li.is-active a::before,
-.woocommerce-MyAccount-navigation li.is-active a::before {
+.myaccount-menu li.is-active a::before {
     content: "";
     position: absolute;
     left: 0;
@@ -108,8 +84,7 @@ Sidebar + Layout base
 /* =========================
    ICONOS (si agregás después)
 ========================= */
-.myaccount-menu li a i,
-.woocommerce-MyAccount-navigation li a i {
+.myaccount-menu li a i {
     margin-right: 10px;
     font-size: 16px;
 }
@@ -251,7 +226,12 @@ Sidebar + Layout base
 
 /* HOVER */
 .dash-btn:hover {
-    background: #2275d8;
+    background: linear-gradient(
+        135deg,
+        #2275d8 0%,
+        #1e40af 50%,
+        #0d09a1 100%
+    );
     color: #ffffff;
     transform: translateY(-2px);
 }
@@ -336,4 +316,34 @@ Sidebar + Layout base
     .woocommerce-MyAccount-content {
         padding: 28px;
     }
+}
+.woocommerce-account.woocommerce-dashboard .woocommerce {
+    margin-top: 0px; /* probá 0, 10 o 20 */
+}
+
+.dash-btn,
+.dash-btn a {
+    text-decoration: none !important;
+}
+
+.dash-btn:hover,
+.dash-btn:hover a {
+    text-decoration: none !important;
+}
+/* Eliminar bordes/outline fantasma */
+.dash-btn {
+    border: 1px solid #e6ebf2;
+    outline: none;
+}
+
+.dash-btn:focus,
+.dash-btn:focus-visible,
+.dash-btn a:focus,
+.dash-btn a:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+.dash-btn {
+    border: 1px solid #e6ebf2;
+    background-clip: padding-box;
 }

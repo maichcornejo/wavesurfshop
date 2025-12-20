@@ -224,6 +224,13 @@ function waves_child_assets() {
         filemtime(get_stylesheet_directory() . '/assets/css/filtros.css')
     );
 
+    wp_enqueue_style(
+        'child-favoritos',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-favoritos.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-favoritos.css')
+    );
+
     /* ============================
        3) JS DEL CARRUSEL DE MARCAS
     ============================= */
@@ -414,3 +421,56 @@ function waves_enqueue_account_styles() {
         );
     }
 }
+add_action( 'wp_enqueue_scripts', function () {
+
+    if ( is_account_page() ) {
+        wp_enqueue_style(
+            'waves-account-orders',
+            get_stylesheet_directory_uri() . '/assets/css/account-orders.css',
+            [],
+            filemtime( get_stylesheet_directory() . '/assets/css/account-orders.css' )
+        );
+    }
+
+});
+
+
+add_action('wp_ajax_toggle_favorite', 'toggle_favorite_product');
+add_action('wp_ajax_nopriv_toggle_favorite', 'toggle_favorite_product');
+
+function toggle_favorite_product() {
+
+  if ( ! is_user_logged_in() ) {
+    wp_send_json_error();
+  }
+
+  $user_id    = get_current_user_id();
+  $product_id = intval($_POST['product_id']);
+
+  $favorites = get_user_meta($user_id, 'wc_favorites', true);
+  $favorites = is_array($favorites) ? $favorites : [];
+
+  if ( in_array($product_id, $favorites) ) {
+    $favorites = array_diff($favorites, [$product_id]);
+    $is_favorite = false;
+  } else {
+    $favorites[] = $product_id;
+    $is_favorite = true;
+  }
+
+  update_user_meta($user_id, 'wc_favorites', $favorites);
+
+  wp_send_json_success([
+    'is_favorite' => $is_favorite
+  ]);
+}
+
+
+add_action('template_redirect', function () {
+
+  if ( is_page('wishlist') ) {
+    wp_redirect( home_url('/favoritos'), 301 );
+    exit;
+  }
+
+});
