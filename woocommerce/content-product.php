@@ -43,6 +43,26 @@ if ($product->is_type('variable')) {
 
     <div class="product-info">
 
+        <?php
+        $user_id    = get_current_user_id();
+        $product_id = get_the_ID();
+        $favorites  = get_user_meta( $user_id, 'wc_favorites', true );
+        $favorites  = is_array($favorites) ? $favorites : [];
+
+        $is_fav = in_array( $product_id, $favorites );
+        ?>
+
+        <button
+            class="fav-heart <?php echo $is_fav ? 'active' : ''; ?>"
+            data-product-id="<?php echo esc_attr( $product_id ); ?>"
+            aria-label="Agregar a favoritos"
+        >
+            ♥
+            <span class="fav-tooltip">
+            <?php echo $is_fav ? 'Quitar de favoritos' : 'Agregar a favoritos'; ?>
+            </span>
+        </button>
+
         <h3 class="product-title"><?php the_title(); ?></h3>
 
         <span class="product-price">

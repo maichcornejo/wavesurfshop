@@ -434,15 +434,18 @@ jQuery(function ($) {
 
 });
 
-
-
 jQuery(function ($) {
 
-  $('.fav-heart').on('click', function () {
+  $(document).on('click', '.fav-heart', function (e) {
+
+    e.preventDefault();
+    e.stopPropagation();
 
     const $btn = $(this);
     const productId = $btn.data('product-id');
     const $tooltip = $btn.find('.fav-tooltip');
+
+    if (!productId) return;
 
     $.ajax({
       url: wc_add_to_cart_params.ajax_url,

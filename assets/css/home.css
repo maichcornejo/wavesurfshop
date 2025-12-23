@@ -245,9 +245,7 @@
 }
 
 /* WooCommerce Sections */
-.wc-section {
-    margin-top: 60px;
-}
+
 .section-title {
     margin-bottom: 20px;
     font-weight: bold;
@@ -256,4 +254,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+}
+
+header a {
+  text-decoration: none;
 }

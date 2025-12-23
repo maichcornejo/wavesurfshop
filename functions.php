@@ -46,30 +46,24 @@ add_action('wp_enqueue_scripts', 'child_remove_parent_assets', 20);
    CARGAR JS PARA FILTROS AJAX
 ============================================================ */
 function waves_filters_scripts() {
-    // Registrar script
+
     wp_register_script(
         'waves-filter-products',
         get_stylesheet_directory_uri() . '/assets/js/filter-products.js',
-        array('jquery'),
+        ['jquery'],
         time(),
         true
     );
 
-    // Localizar (pasar datos PHP → JS)
-    wp_localize_script('waves-filter-products', 'waves_ajax', array(
+    wp_localize_script('waves-filter-products', 'waves_ajax', [
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('waves_filter_nonce'),
-    ));
+    ]);
 
-    // Cargar script
     wp_enqueue_script('waves-filter-products');
 }
 add_action('wp_enqueue_scripts', 'waves_filters_scripts');
 
-
-/* ============================================================
-   HANDLER AJAX: FILTRAR PRODUCTOS
-============================================================ */
 add_action('wp_ajax_filter_products', 'waves_filter_products');
 add_action('wp_ajax_nopriv_filter_products', 'waves_filter_products');
 
@@ -77,80 +71,93 @@ function waves_filter_products() {
 
     check_ajax_referer('waves_filter_nonce', 'nonce');
 
-    $args = array(
-        'post_type' => 'product',
+    $filters = $_POST['filters'] ?? [];
+    $price   = isset($_POST['price']) ? intval($_POST['price']) : 0;
+    $page    = max(1, intval($_POST['page'] ?? 1));
+
+    /* =========================
+       TAX QUERY (ATRIBUTOS)
+    ========================= */
+
+    $tax_query = [
+        'relation' => 'AND'
+    ];
+
+    foreach ($filters as $taxonomy => $terms) {
+
+        if (empty($terms)) continue;
+
+        $tax_query[] = [
+            'taxonomy' => sanitize_text_field($taxonomy),
+            'field'    => 'slug',
+            'terms'    => array_map('sanitize_text_field', $terms),
+            'operator' => 'IN'
+        ];
+    }
+
+    /* =========================
+       META QUERY (PRECIO)
+    ========================= */
+
+    $meta_query = [
+        'relation' => 'AND'
+    ];
+
+    if ($price > 0) {
+        $meta_query[] = [
+            'relation' => 'OR',
+
+            // Productos simples
+            [
+                'key'     => '_price',
+                'value'   => $price,
+                'compare' => '<=',
+                'type'    => 'NUMERIC'
+            ],
+
+            // Productos variables
+            [
+                'key'     => '_min_variation_price',
+                'value'   => $price,
+                'compare' => '<=',
+                'type'    => 'NUMERIC'
+            ]
+        ];
+    }
+
+    /* =========================
+       QUERY FINAL
+    ========================= */
+
+    $args = [
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
         'posts_per_page' => 12,
-    );
+        'paged'          => $page,
+        'tax_query'      => $tax_query,
+        'meta_query'     => $meta_query,
+    ];
 
-    /* -------------------------
-        FILTRO: GÉNERO
-    --------------------------*/
-    if (!empty($_POST['genders'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_genero',
-            'field'    => 'slug',
-            'terms'    => $_POST['genders'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: MARCA
-    --------------------------*/
-    if (!empty($_POST['brands'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_marca',
-            'field'    => 'slug',
-            'terms'    => $_POST['brands'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: TALLE
-    --------------------------*/
-    if (!empty($_POST['sizes'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_talle',
-            'field'    => 'slug',
-            'terms'    => $_POST['sizes'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: PRECIO
-    --------------------------*/
-    if (!empty($_POST['price'])) {
-        $args['meta_query'][] = array(
-            'key'     => '_price',
-            'value'   => intval($_POST['price']),
-            'compare' => '<=',
-            'type'    => 'NUMERIC',
-        );
-    }
-
-    /* -------------------------
-        CONSULTA
-    --------------------------*/
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) :
+    if ($query->have_posts()) {
 
-        ob_start();
         woocommerce_product_loop_start();
 
-        while ($query->have_posts()) : $query->the_post();
+        while ($query->have_posts()) {
+            $query->the_post();
             wc_get_template_part('content', 'product');
-        endwhile;
+        }
 
         woocommerce_product_loop_end();
 
-        echo ob_get_clean();
-
-    else :
-        echo "<p>No se encontraron productos.</p>";
-    endif;
+    } else {
+        echo '<p class="no-results">No se encontraron productos.</p>';
+    }
 
     wp_die();
 }
+
 
 /* ============================================================
    CARGA ORDENADA DE CSS & JS DEL TEMA HIJO
@@ -365,17 +372,26 @@ add_action('wp_enqueue_scripts', function () {
 
 
 add_action( 'wp_enqueue_scripts', function () {
-  if ( is_product() ) {
+
+  // Páginas donde hay PRODUCT CARDS con corazón
+  if (
+    is_shop() ||
+    is_product_category() ||
+    is_product_tag() ||
+    is_product_taxonomy() ||
+    is_post_type_archive('product') ||
+    is_front_page()
+  ) {
     wp_enqueue_script(
-      'waves-variations',
+      'waves-favorites',
       get_stylesheet_directory_uri() . '/assets/js/single-product-variations.js',
-      [ 'jquery', 'wc-add-to-cart-variation' ],
-      null,
+      ['jquery'],
+      filemtime(get_stylesheet_directory() . '/assets/js/single-product-variations.js'),
       true
     );
   }
-});
 
+});
 
 add_action( 'wp_enqueue_scripts', function () {
     if ( is_product() ) {

@@ -6,6 +6,7 @@ get_header();
 <div id="home-wrapper">
 
     <?php get_template_part('components/brands'); ?>
+    <?php get_template_part('components/snap-scroll'); ?>
 
     <?php get_template_part('components/gender-grid'); ?>
 
@@ -13,7 +14,6 @@ get_header();
 
     <?php get_template_part('components/wc-featured'); ?>
 
-    <?php get_template_part('components/snap-scroll'); ?>
 
 </div>
 

@@ -54,6 +54,7 @@
 .wc-carousel .wc-track {
   display: flex;
   gap: 30px;
+  margin-bottom: 30px;
 }
 
 .wc-carousel .product-card {
@@ -196,3 +197,4 @@
     font-size: 15px;
     font-weight: 600;
 }
+  
