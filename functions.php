@@ -46,30 +46,24 @@ add_action('wp_enqueue_scripts', 'child_remove_parent_assets', 20);
    CARGAR JS PARA FILTROS AJAX
 ============================================================ */
 function waves_filters_scripts() {
-    // Registrar script
+
     wp_register_script(
         'waves-filter-products',
         get_stylesheet_directory_uri() . '/assets/js/filter-products.js',
-        array('jquery'),
+        ['jquery'],
         time(),
         true
     );
 
-    // Localizar (pasar datos PHP → JS)
-    wp_localize_script('waves-filter-products', 'waves_ajax', array(
+    wp_localize_script('waves-filter-products', 'waves_ajax', [
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('waves_filter_nonce'),
-    ));
+    ]);
 
-    // Cargar script
     wp_enqueue_script('waves-filter-products');
 }
 add_action('wp_enqueue_scripts', 'waves_filters_scripts');
 
-
-/* ============================================================
-   HANDLER AJAX: FILTRAR PRODUCTOS
-============================================================ */
 add_action('wp_ajax_filter_products', 'waves_filter_products');
 add_action('wp_ajax_nopriv_filter_products', 'waves_filter_products');
 
@@ -77,80 +71,93 @@ function waves_filter_products() {
 
     check_ajax_referer('waves_filter_nonce', 'nonce');
 
-    $args = array(
-        'post_type' => 'product',
+    $filters = $_POST['filters'] ?? [];
+    $price   = isset($_POST['price']) ? intval($_POST['price']) : 0;
+    $page    = max(1, intval($_POST['page'] ?? 1));
+
+    /* =========================
+       TAX QUERY (ATRIBUTOS)
+    ========================= */
+
+    $tax_query = [
+        'relation' => 'AND'
+    ];
+
+    foreach ($filters as $taxonomy => $terms) {
+
+        if (empty($terms)) continue;
+
+        $tax_query[] = [
+            'taxonomy' => sanitize_text_field($taxonomy),
+            'field'    => 'slug',
+            'terms'    => array_map('sanitize_text_field', $terms),
+            'operator' => 'IN'
+        ];
+    }
+
+    /* =========================
+       META QUERY (PRECIO)
+    ========================= */
+
+    $meta_query = [
+        'relation' => 'AND'
+    ];
+
+    if ($price > 0) {
+        $meta_query[] = [
+            'relation' => 'OR',
+
+            // Productos simples
+            [
+                'key'     => '_price',
+                'value'   => $price,
+                'compare' => '<=',
+                'type'    => 'NUMERIC'
+            ],
+
+            // Productos variables
+            [
+                'key'     => '_min_variation_price',
+                'value'   => $price,
+                'compare' => '<=',
+                'type'    => 'NUMERIC'
+            ]
+        ];
+    }
+
+    /* =========================
+       QUERY FINAL
+    ========================= */
+
+    $args = [
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
         'posts_per_page' => 12,
-    );
+        'paged'          => $page,
+        'tax_query'      => $tax_query,
+        'meta_query'     => $meta_query,
+    ];
 
-    /* -------------------------
-        FILTRO: GÉNERO
-    --------------------------*/
-    if (!empty($_POST['genders'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_genero',
-            'field'    => 'slug',
-            'terms'    => $_POST['genders'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: MARCA
-    --------------------------*/
-    if (!empty($_POST['brands'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_marca',
-            'field'    => 'slug',
-            'terms'    => $_POST['brands'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: TALLE
-    --------------------------*/
-    if (!empty($_POST['sizes'])) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'pa_talle',
-            'field'    => 'slug',
-            'terms'    => $_POST['sizes'],
-        );
-    }
-
-    /* -------------------------
-        FILTRO: PRECIO
-    --------------------------*/
-    if (!empty($_POST['price'])) {
-        $args['meta_query'][] = array(
-            'key'     => '_price',
-            'value'   => intval($_POST['price']),
-            'compare' => '<=',
-            'type'    => 'NUMERIC',
-        );
-    }
-
-    /* -------------------------
-        CONSULTA
-    --------------------------*/
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) :
+    if ($query->have_posts()) {
 
-        ob_start();
         woocommerce_product_loop_start();
 
-        while ($query->have_posts()) : $query->the_post();
+        while ($query->have_posts()) {
+            $query->the_post();
             wc_get_template_part('content', 'product');
-        endwhile;
+        }
 
         woocommerce_product_loop_end();
 
-        echo ob_get_clean();
-
-    else :
-        echo "<p>No se encontraron productos.</p>";
-    endif;
+    } else {
+        echo '<p class="no-results">No se encontraron productos.</p>';
+    }
 
     wp_die();
 }
+
 
 /* ============================================================
    CARGA ORDENADA DE CSS & JS DEL TEMA HIJO
@@ -187,6 +194,48 @@ function waves_child_assets() {
         get_stylesheet_directory_uri() . '/assets/css/footer.css',
         array('parent-style'),
         filemtime(get_stylesheet_directory() . '/assets/css/footer.css')
+    );
+
+    wp_enqueue_style(
+        'child-woocommerce-cards',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-cards.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-cards.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-cart',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-cart.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-cart.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-shop',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-shop.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-shop.css')
+    );
+
+      wp_enqueue_style(
+        'child-woocommerce-singleproduct',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-singleproduct.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-singleproduct.css')
+    );
+
+    wp_enqueue_style(
+        'child-filtros',
+        get_stylesheet_directory_uri() . '/assets/css/filtros.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/filtros.css')
+    );
+
+    wp_enqueue_style(
+        'child-favoritos',
+        get_stylesheet_directory_uri() . '/assets/css/woocommerce-favoritos.css',
+        array('parent-style'),
+        filemtime(get_stylesheet_directory() . '/assets/css/woocommerce-favoritos.css')
     );
 
     /* ============================
@@ -281,3 +330,163 @@ function waves_enqueue_snap_scroll() {
     }
 }
 add_action('wp_enqueue_scripts', 'waves_enqueue_snap_scroll');
+
+function waves_story_scroll_script() {
+
+    if ( is_front_page() ) {
+        wp_enqueue_script(
+            'waves-story-scroll',
+            get_stylesheet_directory_uri() . '/assets/js/story-scroll.js',
+            array(),
+            time(),
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'waves_story_scroll_script');
+
+
+function waves_product_card_scripts() {
+
+    if ( function_exists('is_shop') && ( is_shop() || is_front_page() ) ) {
+        wp_enqueue_script(
+            'waves-product-card',
+            get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+            [],
+            time(),
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'waves_product_card_scripts');
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script(
+        'waves-product-card',
+        get_stylesheet_directory_uri() . '/assets/js/product-card.js',
+        [],
+        time(),
+        true
+    );
+});
+
+
+add_action( 'wp_enqueue_scripts', function () {
+
+  // Páginas donde hay PRODUCT CARDS con corazón
+  if (
+    is_shop() ||
+    is_product_category() ||
+    is_product_tag() ||
+    is_product_taxonomy() ||
+    is_post_type_archive('product') ||
+    is_front_page()
+  ) {
+    wp_enqueue_script(
+      'waves-favorites',
+      get_stylesheet_directory_uri() . '/assets/js/single-product-variations.js',
+      ['jquery'],
+      filemtime(get_stylesheet_directory() . '/assets/js/single-product-variations.js'),
+      true
+    );
+  }
+
+});
+
+add_action( 'wp_enqueue_scripts', function () {
+    if ( is_product() ) {
+        wp_enqueue_script( 'wc-add-to-cart-variation' );
+    }
+});
+
+
+add_filter( 'woocommerce_account_menu_items', 'waves_remove_downloads_menu' );
+function waves_remove_downloads_menu( $items ) {
+
+    unset( $items['downloads'] );
+
+    return $items;
+}
+add_filter( 'woocommerce_account_menu_items', 'waves_add_favorites_menu' );
+function waves_add_favorites_menu( $items ) {
+
+    $items['favorites'] = __('Mis favoritos');
+
+    return $items;
+}
+add_action( 'init', 'waves_add_favorites_endpoint' );
+function waves_add_favorites_endpoint() {
+    add_rewrite_endpoint( 'favorites', EP_ROOT | EP_PAGES );
+}
+add_action( 'woocommerce_account_favorites_endpoint', 'waves_favorites_content' );
+function waves_favorites_content() {
+    echo '<h2>Mis favoritos</h2>';
+    echo '<p>Acá vas a ver los productos guardados.</p>';
+}
+add_action( 'wp_enqueue_scripts', 'waves_enqueue_account_styles' );
+function waves_enqueue_account_styles() {
+
+    // Solo páginas de Mi Cuenta
+    if ( is_account_page() ) {
+
+        wp_enqueue_style(
+            'waves-account-style',
+            get_stylesheet_directory_uri() . '/assets/css/account.css',
+            array(), // dependencias
+            filemtime( get_stylesheet_directory() . '/assets/css/account.css' )
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', function () {
+
+    if ( is_account_page() ) {
+        wp_enqueue_style(
+            'waves-account-orders',
+            get_stylesheet_directory_uri() . '/assets/css/account-orders.css',
+            [],
+            filemtime( get_stylesheet_directory() . '/assets/css/account-orders.css' )
+        );
+    }
+
+});
+
+
+add_action('wp_ajax_toggle_favorite', 'toggle_favorite_product');
+add_action('wp_ajax_nopriv_toggle_favorite', 'toggle_favorite_product');
+
+function toggle_favorite_product() {
+
+  if ( ! is_user_logged_in() ) {
+    wp_send_json_error();
+  }
+
+  $user_id    = get_current_user_id();
+  $product_id = intval($_POST['product_id']);
+
+  $favorites = get_user_meta($user_id, 'wc_favorites', true);
+  $favorites = is_array($favorites) ? $favorites : [];
+
+  if ( in_array($product_id, $favorites) ) {
+    $favorites = array_diff($favorites, [$product_id]);
+    $is_favorite = false;
+  } else {
+    $favorites[] = $product_id;
+    $is_favorite = true;
+  }
+
+  update_user_meta($user_id, 'wc_favorites', $favorites);
+
+  wp_send_json_success([
+    'is_favorite' => $is_favorite
+  ]);
+}
+
+
+add_action('template_redirect', function () {
+
+  if ( is_page('wishlist') ) {
+    wp_redirect( home_url('/favoritos'), 301 );
+    exit;
+  }
+
+});

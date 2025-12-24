@@ -1,0 +1,693 @@
+
+/* =============================================
+   carrito lucas
+   ============================================= */
+
+/* Ocultar flechas de input number */
+.qty::-webkit-outer-spin-button,
+.qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.qty-btn:hover {
+    background: #333;
+}
+
+.qty-wrapper input.qty {
+    width: 50px !important;
+    text-align: center;
+    font-size: 16px;
+    height: 32px;
+}
+
+/* =============================================
+   WAVES SURF SHOP — CART FUTURISTIC DESIGN
+   Colores oficiales: #ffffff #acb6c1 #2275d8 #0d09a1 #000000
+   ============================================= */
+
+/* Remove number arrows */
+.qty::-webkit-outer-spin-button,
+.qty::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* -------- QUANTITY WRAPPER -------- */
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 8px 14px;
+    border-radius: 12px;
+    border: 2px solid #acb6c1;
+    transition: 0.25s ease;
+    max-width: min-content;
+}
+
+.qty-wrapper:hover {
+    border-color: #2275d8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* -------- BUTTONS + / - -------- */
+.qty-btn {
+    width: 36px;
+    height: 36px;
+    background: #2275d8;
+    color: #ffffff;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(34,117,216,0.25);
+}
+
+.qty-btn:hover {
+    background: #0d09a1;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+}
+
+.qty-btn:active {
+    transform: scale(0.92);
+}
+
+/* -------- QUANTITY FIELD -------- */
+.qty-wrapper input.qty {
+    width: 55px !important;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    color: #000;
+    border: none;
+    background: transparent;
+}
+
+/* -------- CART TABLE -------- */
+.woocommerce-cart-form table {
+    border-radius: 14px;
+    border: none;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.woocommerce-cart-form th {
+   /* background: #0d09a1;
+    color: #ffffff; */
+    padding: 14px;
+    font-size: 15px;
+    letter-spacing: 0.6px;
+}
+
+.woocommerce-cart-form td {
+    padding: 14px;
+    font-size: 15px;
+    background: #ffffff;
+}
+
+
+
+/* -------- PRICE + SUBTOTAL -------- */
+.product-price,
+.product-subtotal {
+    color: #000;
+    font-weight: 700;
+}
+
+.product-subtotal {
+    font-size: 17px;
+    color: #2275d8;
+}
+
+/* -------- REMOVE BUTTON (X) -------- */
+a.remove {
+    background: #a3ff2a00 !important;
+    color: #ff0000 !important;
+    border-radius: 10px;
+    width: 26px;
+    height: 26px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: .25s ease;
+}
+
+a.remove:hover {
+    background: #b80000 !important;
+    transform: rotate(90deg);
+}
+
+/* -------- UPDATE CART BUTTON -------- */
+button[name="update_cart"] {
+    background: #2275d8 !important;
+    color: #ffffff !important;
+    padding: 14px 26px !important;
+    border-radius: 10px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    transition: 0.25s ease !important;
+}
+
+button[name="update_cart"]:hover {
+    background: #0d09a1 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* -------- COUPON INPUT -------- */
+.coupon input {
+    padding: 11px !important;
+    border-radius: 10px !important;
+    border: 2px solid #acb6c1 !important;
+    width: 180px !important;
+    background: #ffffff;
+    transition: .25s ease;
+}
+
+.coupon input:focus {
+    border-color: #2275d8 !important;
+    box-shadow: 0 0 8px rgba(34,117,216,0.4);
+}
+
+/* -------- APPLY COUPON BUTTON -------- */ 
+.coupon button {
+    background: #0d09a1 !important;
+    color: #ffffff !important;
+    padding: 12px 20px !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    border: none !important;
+    transition: .25s ease !important;
+}
+
+.coupon button:hover {
+    background: #2275d8 !important;
+    transform: translateY(-2px);
+}
+
+/* -------- RESPONSIVE -------- */
+@media (max-width: 768px) {
+    .qty-wrapper {
+        padding: 6px 10px;
+    }
+    .qty-btn {
+        width: 34px;
+        height: 34px;
+    }
+    .qty-wrapper input.qty {
+        width: 45px !important;
+    }
+}
+
+
+/* CONTENEDOR GENERAL */
+.woocommerce-cart-form__contents {
+    border-collapse: separate;
+    border-spacing: 0 14px;
+}
+
+/* HEADER */
+.woocommerce-cart-form thead tr {
+    background: linear-gradient(135deg, #0d09a1, #2275d8);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.woocommerce-cart-form thead th {
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 18px 16px;
+    border: none;
+}
+
+/* REDONDEO EXTREMOS */
+.woocommerce-cart-form thead th:first-child {
+    border-radius: 16px 0 0 16px;
+}
+.woocommerce-cart-form thead th:last-child {
+    border-radius: 0 16px 16px 0;
+}
+
+/* FILAS DE PRODUCTO */
+.woocommerce-cart-form tbody tr.cart_item {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.06);
+}
+
+.woocommerce-cart-form tbody td {
+    background: transparent;
+    border: none;
+    padding: 18px 16px;
+    vertical-align: middle;
+}
+
+/* PRODUCTO */
+.product-name a {
+    font-weight: 700;
+    color: #0d09a1;
+    text-decoration: none;
+}
+
+.product-name a:hover {
+    text-decoration: underline;
+}
+
+/* PRECIO / SUBTOTAL */
+.product-price,
+.product-subtotal {
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.product-subtotal {
+    color: #2275d8;
+}
+
+/* ==========================================
+   ACTION BAR (CUPÓN + ACTUALIZAR)
+========================================== */
+
+.actions {
+    padding: 22px !important;
+    background: #f6f8fb;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 1px #e0e5ea;
+}
+
+/* CUPÓN */
+.actions .coupon {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.actions .coupon input {
+    height: 44px;
+    border-radius: 12px;
+    border: 2px solid #acb6c1;
+    padding: 0 14px;
+    font-size: 14px;
+}
+
+.actions .coupon button {
+    height: 44px;
+    border-radius: 12px;
+    padding: 0 22px;
+    background: linear-gradient(135deg, #0d09a1, #2275d8);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    transition: .25s;
+}
+
+.actions .coupon button:hover {
+    transform: translateY(-2px);
+}
+
+/* BOTÓN ACTUALIZAR */
+button[name="update_cart"] {
+    margin-left: auto;
+    height: 46px;
+    border-radius: 14px !important;
+    padding: 0 26px !important;
+    font-weight: 700 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .woocommerce-cart-form thead {
+        display: none;
+    }
+
+    .woocommerce-cart-form tbody tr.cart_item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 16px;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    button[name="update_cart"] {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   WAVES — CART STYLE (ML INSPIRED, SAFE)
+========================================== */
+
+/* TABLA GENERAL */
+.woocommerce-cart-form table {
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+/* HEADER */
+.woocommerce-cart-form thead th {
+  background: #0d09a1;
+  color: #fdfdfd;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* FILA PRODUCTO */
+.woocommerce-cart-form tbody tr.cart_item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+/* CELDAS */
+.woocommerce-cart-form tbody td {
+  padding: 16px;
+  vertical-align: middle;
+  border-bottom: none;
+}
+
+/* PRODUCTO */
+
+/* IMAGEN */
+.product-thumbnail img {
+  width: 64px;
+  border-radius: 8px;
+}
+
+/* PRECIO */
+.product-price,
+.product-subtotal {
+  font-weight: 700;
+}
+
+.product-subtotal {
+  color: #2275d8;
+}
+
+
+
+/* ==========================================
+   CANTIDAD (simple, ML style)
+========================================== */
+
+.qty-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+
+.qty-btn {
+  background: none;
+  color: #2275d8;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  box-shadow: none;
+}
+
+.qty-btn:hover {
+  background: #f0f4ff;
+}
+
+.qty-wrapper input.qty {
+  width: 36px !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   CUPÓN / ACCIONES
+========================================== */
+
+.actions {
+  background: #f9f9f9;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.actions .coupon input {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.actions .coupon button {
+  height: 40px;
+  border-radius: 8px;
+  background: #2275d8;
+  color: #fff;
+  font-weight: 600;
+}
+
+button[name="update_cart"] {
+  border-radius: 8px !important;
+}
+
+/* ==========================================
+   MOBILE SAFE
+========================================== */
+
+@media (max-width: 768px) {
+  .woocommerce-cart-form thead {
+    display: none;
+  }
+
+  .woocommerce-cart-form tbody td {
+    padding: 12px;
+  }
+}
+
+
+
+/* ==========================================
+   WAVES SURF SHOP — CART TOTALS PREMIUM UI
+   ========================================== */
+/* ==============================
+   WAVES – CART TOTALS PRO UI
+============================== */
+
+.waves-cart-totals {
+  background: #fff;
+  border-radius: 22px;
+  border: 2px solid #e6ebf2;
+  box-shadow: 0 18px 40px rgba(0,0,0,.08);
+  max-width: 420px;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+/* HEADER */
+.waves-cart-header {
+  padding: 22px 26px;
+  background: linear-gradient(135deg,#0d09a1,#2275d8);
+}
+
+.waves-cart-header h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* BODY */
+.waves-cart-body {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.waves-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #222;
+}
+
+.waves-row strong {
+  font-weight: 700;
+  color: #2275d8;
+}
+
+.waves-row.total {
+  padding-top: 16px;
+  border-top: 2px dashed #e0e5ea;
+  font-size: 18px;
+}
+
+.waves-row.total strong {
+  font-size: 22px;
+  color: #0d09a1;
+}
+
+/* SHIPPING */
+.waves-shipping {
+  padding: 14px;
+  background: #f6f8fb;
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+/* CTA */
+.waves-cart-cta {
+  padding: 22px 26px;
+}
+
+.waves-cart-cta a.checkout-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff !important;
+  background: linear-gradient(135deg,#2275d8,#0d09a1);
+  box-shadow: 0 12px 28px rgba(34,117,216,.45);
+  transition: all .25s ease;
+}
+
+.waves-cart-cta a.checkout-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(13,9,161,.55);
+}
+
+.waves-cart-cta a.checkout-button:active {
+  transform: scale(.96);
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+  .waves-cart-totals {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}
+
+
+/* ===========================================
+   WAVES SURF SHOP — CART ITEM DATA (PREMIUM)
+   =========================================== */
+
+.waves-cart-attributes {
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: #f7f9fb;
+    border-left: 4px solid #2275d8;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Cada fila (Talle, Color, etc.) */
+.waves-attr-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(172,182,193,0.45);
+}
+
+.waves-attr-row:last-child {
+    border-bottom: none;
+}
+
+/* Etiqueta (Talle, Color) */
+.waves-attr-label {
+    font-weight: 700;
+    color: #0d09a1;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Valor (M, Azul, etc.) */
+.waves-attr-value {
+    font-weight: 600;
+    color: #2275d8;
+}
+
+/* ==============================================
+   WAVES SURF SHOP — CHECKOUT BUTTON (PREMIUM UI)
+   ============================================== */
+
+.waves-checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 16px 22px;
+    text-align: center;
+    border-radius: 14px;
+
+    /* Colores principales */
+    background: linear-gradient(135deg, #2275d8 0%, #0d09a1 100%);
+    color: #ffffff !important;
+
+    /* Tipografía */
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+
+    /* Animaciones & sombras */
+    box-shadow: 0 8px 24px rgba(34,117,216,0.35);
+    transition: all 0.25s ease;
+}
+
+.waves-checkout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(13,9,161,0.45);
+    background: linear-gradient(135deg, #0d09a1 0%, #2275d8 100%);
+}
+
+.waves-checkout-btn:active {
+    transform: scale(0.97);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .waves-checkout-btn {
+        font-size: 16px;
+        padding: 14px;
+    }
+}
+
+

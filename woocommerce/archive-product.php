@@ -1,92 +1,95 @@
 <?php
-/**
- * Custom Product Archive Template (AJAX Ready)
- */
-
 defined('ABSPATH') || exit;
 
 get_header();
 
-// HOOKS CRÍTICOS — WooCommerce detecta la página desde acá
-do_action( 'woocommerce_before_main_content' );
-do_action( 'woocommerce_before_shop_loop' ); 
+do_action('woocommerce_before_main_content');
 ?>
 
-<div id="product-results-wrapper" class="container py-4">
-
-    <div class="results-layout" style="display:flex; gap:30px;">
-
-
-        <aside id="product-filters" style="width:260px;">
-            <h3>Filtros</h3>
-
-            <!-- Género -->
-            <div class="filter-block">
-                <h4>Género</h4>
-                <label><input type="checkbox" class="filter-gender" value="hombre"> Hombre</label><br>
-                <label><input type="checkbox" class="filter-gender" value="mujer"> Mujer</label><br>
-                <label><input type="checkbox" class="filter-gender" value="niños"> Niños</label><br>
-            </div>
-
-            <div class="filter-block" style="margin-top:20px;">
-                <h4>Precio máx</h4>
-                <input type="range" id="filter-price" min="0" max="1000000" step="500" value="1000000">
-                <span id="price-value">Hasta $1.000.000</span>
-            </div>
-
-            <div class="filter-block" style="margin-top:20px;">
-                <h4>Marca</h4>
-                <label><input type="checkbox" class="filter-brand" value="nike"> Nike</label><br>
-                <label><input type="checkbox" class="filter-brand" value="adidas"> Adidas</label><br>
-                <label><input type="checkbox" class="filter-brand" value="fila"> Fila</label><br>
-                <label><input type="checkbox" class="filter-brand" value="dc"> DC Shoes</label>
-            </div>
-
-            <div class="filter-block" style="margin-top:20px;">
-                <h4>Talle</h4>
-                <?php for ($i = 35; $i <= 46; $i++) : ?>
-                    <label><input type="checkbox" class="filter-size" value="<?php echo $i; ?>"> <?php echo $i; ?></label><br>
-                <?php endfor; ?>
-            </div>
-
-        </aside>
+<header class="shop-header">
+  <h1><?php woocommerce_page_title(); ?></h1>
+</header>
+<div class="container shop-layout">
 
 
-        <div id="products-container" style="flex:1;">
+  <aside class="shop-filters">
 
-            <header class="woocommerce-products-header">
-                <h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
-            </header>
+    <h3>Filtrar</h3>
 
-            <div id="products-list">
-                <?php
-                if (woocommerce_product_loop()) {
+    <?php
+    /**
+     * ATRIBUTOS DINÁMICOS
+     * Ej: pa_talle, pa_color, pa_marca
+     */
+    $attributes = wc_get_attribute_taxonomies();
 
-                    woocommerce_product_loop_start();
+    foreach ($attributes as $attribute) :
 
-                    while (have_posts()) {
-                        the_post();
-                        wc_get_template_part('content', 'product');
-                    }
+        $taxonomy = wc_attribute_taxonomy_name($attribute->attribute_name);
 
-                    woocommerce_product_loop_end();
+        if (!taxonomy_exists($taxonomy)) continue;
 
-                } else {
-                    echo "<p>No se encontraron productos.</p>";
-                }
-                ?>
-            </div>
+        // Obtener términos SOLO si hay productos en esta query
+        $terms = get_terms([
+            'taxonomy'   => $taxonomy,
+            'hide_empty' => true,
+        ]);
 
-        </div>
+        if (empty($terms)) continue;
+    ?>
 
+    <div class="filter-block">
+      <h4><?php echo esc_html($attribute->attribute_label); ?></h4>
+
+      <div class="filter-options">
+        <?php foreach ($terms as $term) : ?>
+          <label class="filter-checkbox">
+            <input type="checkbox"
+                  class="filter-term"
+                  data-taxonomy="<?php echo esc_attr($taxonomy); ?>"
+                  value="<?php echo esc_attr($term->slug); ?>">
+            <?php echo esc_html($term->name); ?>
+          </label>
+        <?php endforeach; ?>
+      </div>
     </div>
+
+
+    <?php endforeach; ?>
+
+    <!-- PRECIO -->
+    <div class="filter-block">
+      <h4>Precio</h4>
+      <input type="range" id="price-filter" min="0" max="1000000" step="1000">
+      <span id="price-output"></span>
+    </div>
+
+  </aside>
+
+  <main class="shop-results">
+
+
+
+    <div id="products-list">
+      <?php if (woocommerce_product_loop()) : ?>
+
+        <?php woocommerce_product_loop_start(); ?>
+
+        <?php while (have_posts()) : the_post(); ?>
+          <?php wc_get_template_part('content', 'product'); ?>
+        <?php endwhile; ?>
+
+        <?php woocommerce_product_loop_end(); ?>
+
+      <?php else : ?>
+        <p>No se encontraron productos.</p>
+      <?php endif; ?>
+    </div>
+
+  </main>
 
 </div>
 
 <?php
-// HOOKS DE CIERRE — WooCommerce necesita esto para ejecutar scripts y estilos
-do_action( 'woocommerce_after_shop_loop' );
-do_action( 'woocommerce_after_main_content' );
-do_action( 'woocommerce_sidebar' );
-
+do_action('woocommerce_after_main_content');
 get_footer();
