@@ -1,0 +1,100 @@
+/* ============================================================
+   MI CUENTA – DIRECCIONES (FIX LAYOUT)
+============================================================ */
+
+/* Wrapper general de contenido */
+.woocommerce-account .woocommerce {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+/* ============================================================
+   MI CUENTA – DIRECCIONES (UNA POR FILA)
+============================================================ */
+
+.woocommerce-account .woocommerce-Addresses {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Card */
+.woocommerce-account .woocommerce-Address {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Hover sutil */
+.woocommerce-account .woocommerce-Address:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+}
+
+/* Header card */
+.woocommerce-account .woocommerce-Address header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+/* Título */
+.woocommerce-account .woocommerce-Address h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Botón editar */
+.woocommerce-account .woocommerce-Address .edit {
+  align-self: flex-start;
+  background: #1f3a5f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .25s ease;
+}
+
+.woocommerce-account .woocommerce-Address .edit:hover {
+  background: #162c4a;
+}
+
+/* Texto dirección */
+.woocommerce-account .woocommerce-Address address {
+  font-style: normal;
+  line-height: 1.8;
+  color: #444;
+  font-size: 15px;
+}
+
+/* Texto introductorio */
+.woocommerce-account .woocommerce-MyAccount-content > p {
+  max-width: 700px;
+  margin: 0 0 20px;
+  color: #666;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .woocommerce-account .woocommerce-Addresses {
+    flex-direction: column;
+  }
+}
+
+.woocommerce-account .woocommerce-Address {
+  flex: 1;
+  min-width: 0;
+}
+/* Desactivar floats legacy de Woo */
+.woocommerce-account .col2-set,
+.woocommerce-account .col2-set .col-1,
+.woocommerce-account .col2-set .col-2 {
+  float: none;
+  width: auto;
+}

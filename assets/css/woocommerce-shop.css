@@ -133,30 +133,149 @@
    RESPONSIVE
 ========================= */
 
-@media (max-width: 1024px) {
+/* =========================================================
+   RESPONSIVE FINAL – SHOP LAYOUT (PEGAR AL FINAL)
+========================================================= */
+
+/* =========================
+   FIX HEADER
+========================= */
+
+.shop-header h1 {
+  margin-left: 0 !important;
+  text-align: center;
+}
+
+
+/* =========================
+   TABLET & MOBILE (≤ 900px)
+========================= */
+
+@media (max-width: 900px) {
+
+  /* Layout general */
   .shop-layout {
     grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 24px 16px 60px;
   }
 
+  /* Filtros visibles arriba */
   .shop-filters {
-    position: relative;
-    top: auto;
+    display: block;
+    order: -1;
+    padding: 18px;
+    border-radius: 20px;
   }
 
-  #products-list ul.products {
-    grid-template-columns: repeat(2, 1fr);
+  /* Grid productos */
+  .shop-layout #products-list ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  /* Card completa (visual) */
+  .shop-layout #products-list ul.products li.product {
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    padding-bottom: 12px;
+  }
+
+  /* Imagen */
+  .shop-layout #products-list ul.products li.product > a {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .shop-layout #products-list ul.products li.product img {
+    padding: 14px;
+  }
+
+  /* Título */
+  .shop-layout #products-list .woocommerce-loop-product__title {
+    font-size: 12px;
+    padding: 8px 12px 0;
+    line-height: 1.3;
+  }
+
+  /* Precio */
+  .shop-layout #products-list .price {
+    font-size: 14px;
+    padding: 4px 12px 8px;
+    white-space: nowrap;
+  }
+
+  /* Colores */
+  .shop-layout #products-list .color-dot {
+    width: 8px;
+    height: 8px;
   }
 }
 
 
-@media (max-width: 1024px) {
-  #products-list ul.products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* =========================
+   MOBILE CHICO (≤ 420px)
+========================= */
 
-@media (max-width: 600px) {
-  #products-list ul.products {
+@media (max-width: 420px) {
+
+  .shop-layout #products-list ul.products {
     grid-template-columns: 1fr;
+  }
+
+  .shop-layout #products-list ul.products li.product > a {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+
+/* =========================
+   DESKTOP GRANDE (≥ 1100px)
+   (reafirma desktop, no pisa)
+========================= */
+
+@media (min-width: 1100px) {
+
+  .shop-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 50px;
+    padding: 40px 0 80px;
+  }
+
+  .shop-layout #products-list ul.products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px;
+  }
+
+  .shop-layout #products-list ul.products li.product > a {
+    height: 260px;
+    aspect-ratio: auto;
+  }
+
+  .shop-layout #products-list ul.products li.product img {
+    padding: 24px;
+  }
+
+  .shop-layout #products-list .woocommerce-loop-product__title {
+    font-size: 14px;
+    padding: 0 18px;
+  }
+
+  .shop-layout #products-list .price {
+    font-size: 16px;
+    padding: 6px 18px 18px;
+  }
+}
+
+
+/* =========================
+   DESACTIVAR HOVER EN MOBILE
+========================= */
+
+@media (hover: none) {
+  .shop-layout #products-list ul.products li.product:hover img {
+    transform: none;
   }
 }

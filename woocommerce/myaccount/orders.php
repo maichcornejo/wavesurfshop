@@ -38,19 +38,15 @@ $customer_orders = wc_get_orders([
 
                 <div class="order-meta">
                     <span class="order-status"><?php echo esc_html($status); ?></span>
-<<<<<<< HEAD
                     <span class="order-total">
                         <?php echo wp_kses_post($total); ?>
-                        <small><?php echo esc_html($items_count); ?> productos</small>
-                    </span>
-=======
-                    <small>
-                        <?php
-                        echo esc_html($items_count) . ' ' . ($items_count === 1 ? 'producto' : 'productos');
-                        ?>
-                    </small>
+                        <small>
+                            <?php
+                            echo esc_html($items_count) . ' ' . ($items_count === 1 ? 'producto' : 'productos');
+                            ?>
+                        </small>
 
->>>>>>> refs/remotes/origin/maia
+                    </span>
                 </div>
 
                 <div class="order-actions">

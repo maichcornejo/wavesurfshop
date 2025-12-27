@@ -156,7 +156,7 @@ a.remove {
 
 a.remove:hover {
     background: #b80000 !important;
-    transform: rotate(90deg);
+    
 }
 
 /* -------- UPDATE CART BUTTON -------- */
@@ -213,6 +213,7 @@ button[name="update_cart"]:hover {
 @media (max-width: 768px) {
     .qty-wrapper {
         padding: 6px 10px;
+        margin-left: auto;
     }
     .qty-btn {
         width: 34px;
@@ -507,22 +508,23 @@ button[name="update_cart"] {
   border-radius: 22px;
   border: 2px solid #e6ebf2;
   box-shadow: 0 18px 40px rgba(0,0,0,.08);
-  max-width: 420px;
-  margin-left: auto;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 /* HEADER */
 .waves-cart-header {
-  padding: 22px 26px;
+  padding: 14px 20px;
   background: linear-gradient(135deg,#0d09a1,#2275d8);
 }
 
 .waves-cart-header h2 {
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: .4px;
   font-weight: 800;
-  letter-spacing: .8px;
   text-transform: uppercase;
   margin: 0;
 }
@@ -690,4 +692,102 @@ button[name="update_cart"] {
     }
 }
 
+.waves-shipping {
+  background: #f4f7fb;
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid #e0e6ef;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
+/* Título del método */
+.waves-shipping strong,
+.waves-shipping label {
+  font-weight: 700;
+  color: #0d09a1;
+  font-size: 14px;
+}
+
+/* Precio del envío */
+.waves-shipping .amount {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2275d8;
+}
+
+/* Texto largo de sucursal */
+.waves-shipping small,
+.waves-shipping p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+.waves-shipping select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #cfd7e3;
+  background: #fff;
+  font-size: 14px;
+  transition: .2s ease;
+}
+
+.waves-shipping select:focus {
+  border-color: #2275d8;
+  box-shadow: 0 0 0 2px rgba(34,117,216,.2);
+  outline: none;
+}
+.waves-shipping a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2275d8;
+  text-decoration: none;
+  margin-top: 6px;
+}
+
+.waves-shipping a:hover {
+  text-decoration: underline;
+}
+.waves-row.total {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 2px solid #e6ebf2;
+}
+.waves-shipping::before {
+  content: "Elegí cómo querés recibir tu pedido";
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+@media (min-width: 992px) {
+  .waves-cart-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .waves-row.total {
+    grid-column: 1 / -1;
+    justify-content: space-between;
+  }
+
+
+  .waves-shipping {
+    grid-column: 1 / -1;
+  }
+}
+/* Ocultar aviso técnico de zona de envío (solo carrito) */
+.woocommerce-cart .woocommerce-notices-wrapper {
+  display: none !important;
+}
+.shipping-loading,
+.sucursal-loading {
+  display: none !important;
+}

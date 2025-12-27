@@ -71,7 +71,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 								);
 							?>
 						</td>
-
 						<td class="product-thumbnail">
 						<?php
 						/**

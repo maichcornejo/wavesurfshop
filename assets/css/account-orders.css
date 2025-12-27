@@ -17,23 +17,28 @@
 
 .waves-orders-list {
   display: grid;
-  gap: 25px;
+  gap: 32px;
+}
+.waves-order-card + .waves-order-card {
+  margin-top: 4px;
 }
 
 .waves-order-card {
   background: #fff;
-  border-radius: 18px;
-  padding: 24px 28px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 26px 30px;
   display: grid;
-  gap: 16px;
-  transition: transform .25s, box-shadow .25s;
+  gap: 18px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: border-color .25s, background .25s;
 }
 
+/* Hover MUY sutil */
 .waves-order-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  border-color: rgba(0,60,255,0.25);
+  background: #fafbff;
 }
+
 
 .order-main {
   display: flex;
@@ -51,10 +56,10 @@
 }
 
 .order-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(0,0,0,0.08);
 }
+
 
 .order-status {
   padding: 6px 14px;
@@ -95,22 +100,58 @@
   text-align: right;
 }
 
+/* ===============================
+   BOTÓN "VER PEDIDO"
+================================ */
+
 .waves-btn {
-  background: linear-gradient(135deg, #003cff, #00c6ff);
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 10px 22px;
   border-radius: 999px;
+
+  background: #fff;
+  color: #003cff;
+
+  border: 2px solid #003cff;
+
   font-size: 14px;
   font-weight: 600;
+
   text-decoration: none;
-  display: inline-block;
-  transition: all .25s;
+  cursor: pointer;
+
+  transition: 
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .15s ease;
 }
 
-.waves-btn:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
+/* Hover + focus */
+.waves-btn:hover,
+.waves-btn:focus-visible {
+  background-color: #003cff;
+  color: #fff;
+  text-decoration: none;
 }
+
+/* Click (active) */
+.waves-btn:active {
+  transform: scale(0.97);
+}
+
+/* Accesibilidad */
+.waves-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,60,255,0.25);
+}
+.order-actions {
+  margin-top: 8px;
+}
+
 
 /* Empty */
 .waves-orders-empty {
@@ -139,4 +180,21 @@
 .waves-back-btn:hover {
   color: #00c6ff;
   transform: translateX(-4px);
+}
+
+/* ===============================
+   FORZAR SIN SUBRAYADO "VER PEDIDO"
+================================ */
+
+/* Normal */
+.waves-orders a.waves-btn,
+.waves-orders a.waves-btn:visited {
+  text-decoration: none !important;
+}
+
+/* Hover / focus / active */
+.waves-orders a.waves-btn:hover,
+.waves-orders a.waves-btn:focus,
+.waves-orders a.waves-btn:active {
+  text-decoration: none !important;
 }

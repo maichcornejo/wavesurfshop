@@ -19,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
       <?php wc_cart_totals_shipping_html(); ?>
     </div>
 
+    
     <?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
       <div class="waves-row">
         <span><?php echo esc_html( $fee->name ); ?></span>

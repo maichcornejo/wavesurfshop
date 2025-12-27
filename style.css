@@ -8,11 +8,6 @@ html:root {
   --primary-theme-color: #0d09a1 !important;
 }
 
-/* =============================
-   HEADER – BASE ESTRUCTURAL
-============================= */
-
-
 
 /* ----------------------------- */
 /* grid de GENDER */
@@ -107,7 +102,7 @@ html:root {
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: var(--azul-oscuro);
+    color: var(--blanco);
     margin-bottom: 15px;
     text-transform: uppercase;
 }
@@ -134,7 +129,7 @@ html:root {
 .empresa-text {
     font-size: 14px;
     line-height: 1.55;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -155,7 +150,7 @@ html:root {
 
 .social-links-cc a {
     font-size: 20px;
-    color: var(--negro);
+    color: var(--blanco);
     transition: 0.25s;
 }
 
@@ -167,7 +162,7 @@ html:root {
    LINKS
 ---------------------------- */
 .footer-links-cc li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     transition: 0.25s;
 }
@@ -242,4 +237,33 @@ html:root {
     margin: 0;
 }
 
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+  position: relative;
+  padding-right: 50px;
+}
 
+.waves-close-notice {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.waves-close-notice:hover {
+  opacity: 1;
+}
+
+
+
+/* Ocultar login nativo Woo */
+.woocommerce-form-login {
+  display: none !important;
+}

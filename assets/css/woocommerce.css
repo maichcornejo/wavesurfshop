@@ -170,6 +170,69 @@
 }
 
 
+/* ======================================================
+   RESPONSIVE – WAVES ACCORDION
+====================================================== */
+
+@media (max-width: 900px) {
+
+  .waves-accordion {
+    margin-top: 48px;
+    padding: 0 16px; /* aire lateral */
+  }
+
+  .waves-accordion-item {
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  .waves-accordion-header {
+    padding: 18px 0;
+    font-size: 15px;
+  }
+
+  .waves-accordion-header span {
+    max-width: 85%;
+    line-height: 1.3;
+  }
+
+  .accordion-icon {
+    font-size: 18px;
+  }
+
+  .waves-accordion-content {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .waves-accordion-item.is-open .waves-accordion-content {
+    padding-bottom: 18px;
+    max-height: 600px;
+  }
+}
+
+/* MOBILE CHICO */
+@media (max-width: 480px) {
+
+  .waves-accordion {
+    margin-top: 36px;
+    padding: 0 14px;
+  }
+
+  .waves-accordion-header {
+    padding: 16px 0;
+    font-size: 14px;
+  }
+
+  .accordion-icon {
+    font-size: 16px;
+  }
+
+  .waves-accordion-content {
+    font-size: 13.5px;
+  }
+}
+
+
 /* ===============================
    MODAL AVISO STOCK
 ================================ */

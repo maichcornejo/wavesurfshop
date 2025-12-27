@@ -189,18 +189,16 @@ document.querySelectorAll('.waves-accordion-header').forEach(header => {
     const icon = header.querySelector('.accordion-icon');
     const isOpen = item.classList.contains('is-open');
 
-    document.querySelectorAll('.waves-accordion-item').forEach(i => {
-      i.classList.remove('is-open');
-      const ic = i.querySelector('.accordion-icon');
-      if (ic) ic.textContent = '+';
-    });
+    // Toggle SOLO este item
+    item.classList.toggle('is-open', !isOpen);
 
-    if (!isOpen) {
-      item.classList.add('is-open');
-      icon.textContent = '–';
+    // Icono
+    if (icon) {
+      icon.textContent = isOpen ? '+' : '–';
     }
   });
 });
+
 
 
 jQuery(function ($) {
@@ -434,15 +432,18 @@ jQuery(function ($) {
 
 });
 
-
-
 jQuery(function ($) {
 
-  $('.fav-heart').on('click', function () {
+  $(document).on('click', '.fav-heart', function (e) {
+
+    e.preventDefault();
+    e.stopPropagation();
 
     const $btn = $(this);
     const productId = $btn.data('product-id');
     const $tooltip = $btn.find('.fav-tooltip');
+
+    if (!productId) return;
 
     $.ajax({
       url: wc_add_to_cart_params.ajax_url,
@@ -452,7 +453,7 @@ jQuery(function ($) {
         product_id: productId
       },
       success: function (res) {
-
+        
         if (!res.success) return;
 
         $btn
@@ -468,9 +469,90 @@ jQuery(function ($) {
             ? 'Quitar de favoritos'
             : 'Agregar a favoritos'
         );
+        $(`.favorite-row[data-product-id="${productId}"]`)
+        .slideUp(250, function () {
+          $(this).remove();
+        });
       }
     });
 
   });
 
 });
+
+
+document.querySelectorAll('.waves-stock').forEach(el => {
+  const stock = parseInt(el.dataset.stock, 10);
+
+  if (isNaN(stock)) return;
+
+  // scope local
+  const bar = el.querySelector('.waves-stock-bar span');
+  const text = el.querySelector('.waves-stock-text');
+
+  const MAX_STOCK = 30;
+  let percentage = Math.max(0, Math.min((stock / MAX_STOCK) * 100, 100));
+  bar.style.width = `${percentage}%`;
+
+  let color = '';
+  let label = '';
+
+  if (stock <= 0) {
+    color = '#dc2626';
+    label = 'Sin stock';
+  } else if (stock <= 3) {
+    color = '#dc2626';
+    label = 'Última disponible';
+  } else if (stock <= 5) {
+    color = '#dc2626';
+    label = '¡Últimas unidades!';
+  } else if (stock <= 15) {
+    color = '#f97316';
+    label = 'Quedan pocas unidades';
+  } else {
+    color = '#22c55e';
+    label = 'Disponible';
+  }
+
+  bar.style.backgroundColor = color;
+  text.textContent = label;
+  text.style.color = color;
+});
+
+jQuery(function ($) {
+
+  $(document).on('click', '.btn-remove-favorite', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const $btn = $(this);
+    const productId = $btn.data('product-id');
+
+    if (!productId) return;
+
+    $.ajax({
+      url: wc_add_to_cart_params.ajax_url,
+      type: 'POST',
+      data: {
+        action: 'remove_favorite',
+        product_id: productId
+      },
+      success: function (res) {
+        console.log('REMOVE', res);
+
+        if (!res || !res.success) return;
+
+        // Animación: remover de la lista
+        $btn
+          .closest('.favorite-row')
+          .slideUp(250, function () {
+            $(this).remove();
+          });
+
+      }
+    });
+
+  });
+
+});
+

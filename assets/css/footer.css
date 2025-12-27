@@ -12,7 +12,7 @@
 
 
 footer.main-footer-cc {
-    background: #f8eded !important;
+    background: #000000 !important;
 }
 
 /* Contenedor */
@@ -41,7 +41,7 @@ footer.main-footer-cc {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 18px;
-    color: #1f3a5f;
+    color: #ffffff;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -64,11 +64,11 @@ footer.main-footer-cc {
     font-size: 14px;
     line-height: 1.7;
     margin-bottom: 22px;
-    color: #4a6480;
+    color: #ffffff;
 }
 
 .empresa-text .read-more {
-    color: #2f80ed;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
 }
@@ -89,13 +89,13 @@ footer.main-footer-cc {
 }
 
 .social-links-cc a {
-    color: #1f3a5f;
+    color: #ffffff;
     font-size: 20px;
     transition: color 0.3s ease;
 }
 
 .social-links-cc a:hover {
-    color: #2f80ed;
+    color: #ffffff;
 }
 
 /* Links */
@@ -110,7 +110,7 @@ footer.main-footer-cc {
 }
 
 .footer-links-cc a {
-    color: #4a6480;
+    color: #ffffff;
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s ease;
