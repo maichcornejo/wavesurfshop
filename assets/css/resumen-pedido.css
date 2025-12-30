@@ -1,0 +1,235 @@
+/* ===============================
+   RESUMEN DEL PEDIDO – WAVES
+================================ */
+
+.resumen-pedido {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* TÍTULO */
+.resumen-pedido h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #0f172a;
+}
+
+/* CAJAS */
+.resumen-box {
+  background: #ffffff;
+  border: 1px solid #e5ecf3;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* SUBTÍTULOS */
+.resumen-box h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+/* ITEMS */
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 15px;
+  border-bottom: 1px dashed #e5ecf3;
+}
+
+.resumen-item:last-child {
+  border-bottom: none;
+}
+
+/* CUPONES */
+.resumen-cupones {
+  margin-top: 12px;
+}
+
+.resumen-cupon {
+  color: #15803d;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* SUBTOTAL */
+.resumen-subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ===============================
+   ENVÍO
+================================ */
+
+.resumen-shipping .woocommerce-shipping-calculator {
+  margin-top: 10px;
+}
+
+.resumen-shipping select,
+.resumen-shipping input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.resumen-shipping button {
+  margin-top: 12px;
+  background: #1f3a8a;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.resumen-shipping button:hover {
+  background: #162c6b;
+}
+
+/* ===============================
+   TOTAL
+================================ */
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1f3a8a, #2563eb);
+  color: #fff;
+}
+
+/* ===============================
+   PAGO
+================================ */
+
+.resumen-pago h3 {
+  margin-bottom: 16px;
+}
+
+.resumen-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-pago {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #0f172a;
+  color: #fff;
+  transition: 0.25s;
+}
+
+.btn-pago:hover {
+  background: #2563eb;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 640px) {
+  .resumen-pedido h1 {
+    font-size: 28px;
+  }
+
+  .resumen-total {
+    font-size: 18px;
+  }
+}
+.shipping-calculator-form {
+  display: block !important;
+}
+.shipping-calculator-button {
+  display: none;
+}
+/* Campos de envío */
+.resumen-shipping select,
+.resumen-shipping input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+/* Labels */
+.resumen-shipping label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Botón submit interno */
+.resumen-shipping button,
+.resumen-shipping input[type="submit"] {
+  background: #1f3a8a;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resumen-shipping button:hover {
+  background: #162c6b;
+}
+/* ===============================
+   PAGO – OPCIONES
+================================ */
+
+.resumen-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pago-opcion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e5ecf3;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pago-opcion:hover {
+  border-color: #2563eb;
+  background: #f8fafc;
+}
+
+.pago-opcion input {
+  accent-color: #2563eb;
+}
+
+.waves-btn-pagar {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}

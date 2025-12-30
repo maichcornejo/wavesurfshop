@@ -779,23 +779,109 @@ add_action('woocommerce_cart_calculate_fees', function () {
 }, 1);
 
 
-// Reemplazar login de WooCommerce por User Registration
 add_action( 'woocommerce_before_customer_login_form', function () {
 
     if ( is_user_logged_in() ) {
         return;
     }
 
-    echo '<div class="waves-custom-login">';
+    echo '<div class="waves-auth-wrapper">';
 
-    // Login
+    // LOGIN
     echo do_shortcode('[user_registration_login]');
-
-    echo '<div class="waves-login-separator">o</div>';
-
-    // Register
-    echo do_shortcode('[user_registration_form id="133"]'); // CAMBIAR ID
 
     echo '</div>';
 
 }, 1 );
+
+add_action('wp_enqueue_scripts', function () {
+
+  if (
+    is_page_template('page-login.php') ||
+    is_page_template('page-register.php') ||
+    is_page_template('page-lost-password.php')
+  ) {
+    wp_enqueue_style(
+      'waves-auth',
+      get_stylesheet_directory_uri() . '/assets/css/auth.css',
+      [],
+      filemtime( get_stylesheet_directory() . '/assets/css/auth.css' )
+    );
+  }
+
+});
+
+add_action('woocommerce_cart_actions', function () {
+
+  if ( WC()->cart && ! WC()->cart->is_empty() ) {
+    echo '<a href="' . esc_url( site_url('/resumen-pedido') ) . '" 
+             class="button alt waves-btn-continuar">
+            Continuar
+          </a>';
+  }
+
+});
+add_action('wp_enqueue_scripts', function () {
+
+  if ( ! is_page('resumen-pedido') ) {
+    return;
+  }
+
+  wp_enqueue_style(
+    'waves-resumen-pedido',
+    get_stylesheet_directory_uri() . '/assets/css/resumen-pedido.css',
+    [],
+    filemtime( get_stylesheet_directory() . '/assets/css/resumen-pedido.css' )
+  );
+
+});
+
+
+/**
+ * Redirigir Mi Cuenta a /login si el usuario no está logueado
+ */
+add_action('template_redirect', function () {
+
+  if ( (is_cart() || is_account_page() ) && ! is_user_logged_in() ) {
+    wp_redirect( home_url('/login') );
+    exit;
+  }
+
+});
+
+/**
+ * POST → REDIRECT → GET para el calculador de envío
+ */
+add_action('woocommerce_shipping_calculator_calculated', function () {
+
+  if ( is_page('resumen-pedido') ) {
+    wp_safe_redirect( site_url('/resumen-pedido') );
+    exit;
+  }
+
+});
+add_action('wp_enqueue_scripts', function () {
+
+  if ( ! is_page('resumen-pedido') ) {
+    return;
+  }
+
+  wp_enqueue_script(
+    'waves-resumen-pago',
+    get_stylesheet_directory_uri() . '/assets/js/resumen-pago.js',
+    ['jquery'],
+    filemtime( get_stylesheet_directory() . '/assets/js/resumen-pago.js' ),
+    true
+  );
+
+});
+
+wp_enqueue_script(
+    'waves-resumen-envio',
+    get_stylesheet_directory_uri() . '/assets/js/resumen-envio.js',
+    ['jquery'],
+    filemtime( get_stylesheet_directory() . '/assets/js/resumen-envio.js' ),
+    true
+  );
+
+

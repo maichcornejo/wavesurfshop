@@ -556,3 +556,25 @@ jQuery(function ($) {
 
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  const openBtn  = document.getElementById('openSizeGuide');
+  const modal    = document.getElementById('sizeGuideModal');
+  const closeBtn = modal.querySelector('.waves-size-close');
+  const backdrop = modal.querySelector('.waves-size-modal-backdrop');
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+});
