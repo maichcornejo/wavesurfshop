@@ -160,7 +160,26 @@ do_action('woocommerce_before_main_content');
 
 
 
-      <div class="waves-size-guide">📏 Ver guía de talles</div>
+        <!-- BOTÓN -->
+        <div class="waves-size-guide" id="openSizeGuide">
+          📏 Ver guía de talles
+        </div>
+
+        <!-- MODAL -->
+        <div class="waves-size-modal" id="sizeGuideModal">
+
+          <div class="waves-size-modal-backdrop"></div>
+
+          <div class="waves-size-modal-content">
+            <button class="waves-size-close" aria-label="Cerrar">✕</button>
+
+            <img
+              src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logos/talleszapas.jpeg"
+              alt="Guía de talles"
+            >
+          </div>
+
+        </div>
         <button type="button" class="waves-notify" id="wavesNotifyBtn">
           🔔 Avisarme cuando haya stock
         </button>

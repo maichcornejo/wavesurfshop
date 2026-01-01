@@ -898,3 +898,158 @@
     aspect-ratio: 1 / 1; /* más cuadrado en mobile */
   }
 }
+
+/* BOTÓN */
+.waves-size-guide {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.waves-size-guide:hover {
+  text-decoration: underline;
+}
+
+/* MODAL BASE */
+.waves-size-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+/* BACKDROP */
+.waves-size-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+/* CONTENIDO */
+.waves-size-modal-content {
+  position: relative;
+  z-index: 2;
+  max-width: 60vw;
+  max-height: 90vh;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* IMAGEN */
+.waves-size-modal-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  margin: 0 auto;
+}
+
+/* BOTÓN CERRAR */
+.waves-size-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: rgba(0,0,0,0.08);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.waves-size-close:hover {
+  background: rgba(0,0,0,0.15);
+}
+
+
+@media (max-width: 900px) {
+  .waves-size-modal-content {
+  max-width: 90vw;
+  }
+}
+/* =========================
+   FIX GO CUOTAS EN PRECIO
+========================= */
+
+/* El bloque precio + cuotas en columna y alineado a la izquierda */
+.price-2{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+/* El precio principal queda grande */
+.price-2 .price{
+  margin: 0 !important;
+  font-size: 30px !important;
+  font-weight: 900 !important;
+  color: #6ee7c8 !important;
+}
+
+/* TODO lo que el plugin meta después del <p class="price"> lo reseteamos a “banner chico” */
+.price-2 .price ~ *{
+  width: 100% !important;
+  margin: 0 !important;
+
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+
+  color: rgba(234,234,234,.78) !important;
+  text-align: left !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 6px 10px !important;
+}
+
+/* Si el banner trae “montos” en strong/b, los pintamos como marca */
+.price-2 .price ~ * strong,
+.price-2 .price ~ * b{
+  color: #6ee7c8 !important;
+}
+
+/* Logo/chiquitajes */
+.price-2 .price ~ * img{
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* =========================
+   SINGLE PRODUCT: solo STOCK (sin precio duplicado)
+========================= */
+
+/* Oculta precio de la variación dentro del bloque de stock */
+.waves-stock .woocommerce-variation-price,
+.waves-stock .woocommerce-variation-price * {
+  display: none !important;
+}
+
+/* Si GoCuotas te inyecta texto extra en la variación */
+.waves-stock .custom-price-prefix,
+.waves-stock .custom-price-prefix * {
+  display: none !important;
+}
+
+/* Dejá prolijo el espacio del bloque */
+.waves-stock .woocommerce-variation {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Mantener SOLO disponibilidad/stock */
+.waves-stock .woocommerce-variation-availability {
+  margin: 0 !important;
+}

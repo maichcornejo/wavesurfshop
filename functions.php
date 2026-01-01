@@ -779,23 +779,200 @@ add_action('woocommerce_cart_calculate_fees', function () {
 }, 1);
 
 
-// Reemplazar login de WooCommerce por User Registration
 add_action( 'woocommerce_before_customer_login_form', function () {
 
     if ( is_user_logged_in() ) {
         return;
     }
 
-    echo '<div class="waves-custom-login">';
+    echo '<div class="waves-auth-wrapper">';
 
-    // Login
+    // LOGIN
     echo do_shortcode('[user_registration_login]');
-
-    echo '<div class="waves-login-separator">o</div>';
-
-    // Register
-    echo do_shortcode('[user_registration_form id="133"]'); // CAMBIAR ID
 
     echo '</div>';
 
 }, 1 );
+
+add_action('wp_enqueue_scripts', function () {
+
+  if (
+    is_page_template('page-login.php') ||
+    is_page_template('page-register.php') ||
+    is_page_template('page-lost-password.php')
+  ) {
+    wp_enqueue_style(
+      'waves-auth',
+      get_stylesheet_directory_uri() . '/assets/css/auth.css',
+      [],
+      filemtime( get_stylesheet_directory() . '/assets/css/auth.css' )
+    );
+  }
+
+});
+
+add_action('woocommerce_cart_actions', function () {
+
+  if ( WC()->cart && ! WC()->cart->is_empty() ) {
+    echo '<a href="' . esc_url( site_url('/resumen-pedido') ) . '" 
+             class="button alt waves-btn-continuar">
+            Continuar
+          </a>';
+  }
+
+});
+add_action('wp_enqueue_scripts', function () {
+
+  if ( ! is_page('resumen-pedido') ) {
+    return;
+  }
+
+  wp_enqueue_style(
+    'waves-resumen-pedido',
+    get_stylesheet_directory_uri() . '/assets/css/resumen-pedido.css',
+    [],
+    filemtime( get_stylesheet_directory() . '/assets/css/resumen-pedido.css' )
+  );
+
+});
+
+
+/**
+ * Redirigir Mi Cuenta a /login si el usuario no está logueado
+ */
+add_action('template_redirect', function () {
+
+  if ( (is_cart() || is_account_page() ) && ! is_user_logged_in() ) {
+    wp_redirect( home_url('/login') );
+    exit;
+  }
+
+});
+
+/**
+ * POST → REDIRECT → GET para el calculador de envío
+ */
+add_action('woocommerce_shipping_calculator_calculated', function () {
+
+  if ( is_page('resumen-pedido') ) {
+    wp_safe_redirect( site_url('/resumen-pedido') );
+    exit;
+  }
+
+});
+add_action('wp_enqueue_scripts', function () {
+
+  if ( ! is_page('resumen-pedido') ) {
+    return;
+  }
+
+  wp_enqueue_script(
+    'waves-resumen-pago',
+    get_stylesheet_directory_uri() . '/assets/js/resumen-pago.js',
+    ['jquery'],
+    filemtime( get_stylesheet_directory() . '/assets/js/resumen-pago.js' ),
+    true
+  );
+
+});
+
+wp_enqueue_script(
+    'waves-resumen-envio',
+    get_stylesheet_directory_uri() . '/assets/js/resumen-envio.js',
+    ['jquery'],
+    filemtime( get_stylesheet_directory() . '/assets/js/resumen-envio.js' ),
+    true
+  );
+
+add_filter('woocommerce_add_to_cart_fragments', function ($fragments) {
+
+  ob_start(); ?>
+  
+  <div class="resumen-box resumen-total">
+    <div class="resumen-total-inner">
+      <span>Total</span>
+      <strong><?php echo WC()->cart->get_total(); ?></strong>
+    </div>
+
+    <div class="resumen-total-loader">
+      <span class="spinner"></span>
+      <small>Calculando total…</small>
+    </div>
+  </div>
+
+  <?php
+  $fragments['.resumen-total'] = ob_get_clean();
+  return $fragments;
+});
+
+add_action('wp_ajax_waves_update_shipping_address', 'waves_update_shipping_address');
+add_action('wp_ajax_nopriv_waves_update_shipping_address', 'waves_update_shipping_address');
+
+function waves_update_shipping_address() {
+
+  if ( ! WC()->customer || ! WC()->cart || ! WC()->session ) {
+    wp_send_json_error('Woo no inicializado');
+  }
+
+  // 1️⃣ Guardar dirección REAL
+  $map = [
+    'calc_shipping_country'  => 'shipping_country',
+    'calc_shipping_state'    => 'shipping_state',
+    'calc_shipping_city'     => 'shipping_city',
+    'calc_shipping_postcode' => 'shipping_postcode',
+  ];
+
+  foreach ($map as $from => $to) {
+    if (isset($_POST[$from])) {
+      WC()->customer->{"set_$to"}(wc_clean($_POST[$from]));
+    }
+  }
+
+  WC()->customer->save();
+
+  // 2️⃣ 🔥 BORRAR CACHE DE SHIPPING
+  WC()->session->set('shipping_for_package_0', false);
+  WC()->session->set('shipping_method_counts', []);
+
+  // 3️⃣ Forzar nuevo cálculo
+  WC()->cart->calculate_shipping();
+  WC()->cart->calculate_totals();
+
+  // ===============================
+// DEBUG: LOG DE SHIPPING METHODS
+// ===============================
+
+    $packages = WC()->shipping()->get_packages();
+
+    foreach ($packages as $index => $package) {
+
+    error_log('================ SHIPPING PACKAGE ' . $index . ' ================');
+    error_log('Provincia: ' . WC()->customer->get_shipping_state());
+    error_log('Ciudad: ' . WC()->customer->get_shipping_city());
+    error_log('CP: ' . WC()->customer->get_shipping_postcode());
+
+    if (!empty($package['rates'])) {
+        foreach ($package['rates'] as $rate_id => $rate) {
+        error_log(
+            sprintf(
+            'Metodo: %s | ID: %s | Precio: %s',
+            $rate->get_label(),
+            $rate_id,
+            wc_price($rate->get_cost())
+            )
+        );
+        }
+    } else {
+        error_log('⚠️ No hay rates disponibles');
+    }
+    }
+  wp_send_json_success([
+    'shipping' => [
+      'country'  => WC()->customer->get_shipping_country(),
+      'state'    => WC()->customer->get_shipping_state(),
+      'city'     => WC()->customer->get_shipping_city(),
+      'postcode' => WC()->customer->get_shipping_postcode(),
+    ]
+  ]);
+}
+

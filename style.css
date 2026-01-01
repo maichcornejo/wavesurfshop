@@ -261,9 +261,3 @@ html:root {
   opacity: 1;
 }
 
-
-
-/* Ocultar login nativo Woo */
-.woocommerce-form-login {
-  display: none !important;
-}

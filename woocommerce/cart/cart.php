@@ -18,6 +18,21 @@
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_cart' ); ?>
+<div class="waves-cart-page">
+  <div class="waves-cart-shell">
+
+    <header class="waves-cart-top">
+      <div class="waves-cart-heading">
+        <span class="waves-cart-icon">🛒</span>
+        <h1 class="waves-cart-title">Tu Carrito</h1>
+
+        <span class="waves-cart-badge">
+          <?php echo intval( WC()->cart->get_cart_contents_count() ); ?> Productos
+        </span>
+      </div>
+    </header>
+
+    <div class="waves-cart-card">
 
 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -114,12 +129,36 @@ do_action( 'woocommerce_before_cart' ); ?>
 						// Meta data.
 						echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
 
+						// Mini descripción (Talle / Color) desde la variación del carrito
+
+
+
+					
+
+					
+
+						if ($talle_name || $color_name) : ?>
+						<?php endif; ?>
+
+
+						<?php
 						// Backorder notification.
 						if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-							echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
+							echo wp_kses_post(
+								apply_filters(
+									'woocommerce_cart_item_backorder_notification',
+									'<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>',
+									$product_id
+								)
+							);
 						}
-						?>
-						</td>
+
+							// Backorder notification.
+							if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
+								echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
+							}
+							?>
+							</td>
 
 						<td class="product-price" data-title="<?php esc_attr_e( 'Price', 'woocommerce' ); ?>">
 							<?php
@@ -171,22 +210,78 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 			<?php do_action( 'woocommerce_cart_contents' ); ?>
 
+			<tr class="waves-cart-summary-row">
+			<td colspan="1">
+				<div class="waves-cart-summary-wrap">
+				<div class="waves-cart-summary-card">
+
+					<div class="waves-cart-summary-title">
+					<span class="dot"></span>
+					Resumen
+					</div>
+
+					<div class="waves-cart-summary-grid">
+					<div class="item">
+						<div class="label">Total productos</div>
+						<div class="value"><?php wc_cart_totals_subtotal_html(); ?></div>
+					</div>
+
+					</div>
+
+					<div class="waves-cart-summary-hint">
+					El total puede variar según envío / cupones.
+					</div>
+
+				</div>
+				</div>
+			</td>
+			</tr>
+
+
 			<tr>
 				<td colspan="6" class="actions">
+					<div class="waves-cart-actions">
 
-					<?php if ( wc_coupons_enabled() ) { ?>
-						<div class="coupon">
-							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_html_e( 'Apply coupon', 'woocommerce' ); ?></button>
+						<?php if ( wc_coupons_enabled() ) { ?>
+						<div class="waves-coupon">
+							<label for="coupon_code" class="screen-reader-text"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label>
+
+							<input type="text"
+								name="coupon_code"
+								class="input-text"
+								id="coupon_code"
+								value=""
+								placeholder="Código de cupón" />
+
+							<button type="submit"
+									class="button waves-btn waves-btn-primary"
+									name="apply_coupon"
+									value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
+							Aplicar cupón
+							</button>
+
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
-					<?php } ?>
+						<?php } ?>
 
-					<button type="submit" class="button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+						<div class="waves-cart-actions-right">
+							<button type="submit"
+									class="button waves-btn waves-btn-soft"
+									name="update_cart"
+									value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
+							Actualizar carrito
+							</button>
 
-					<?php do_action( 'woocommerce_cart_actions' ); ?>
+						<?php do_action( 'woocommerce_cart_actions' ); ?>
+
+		
+						</div>
+
+					</div>
 
 					<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 				</td>
+
 			</tr>
 
 			<?php do_action( 'woocommerce_after_cart_contents' ); ?>
@@ -195,18 +290,13 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<?php do_action( 'woocommerce_after_cart_table' ); ?>
 </form>
 
+    </div><!-- .waves-cart-card -->
+  </div><!-- .waves-cart-shell -->
+</div><!-- .waves-cart-page -->
+
+
 <?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 
-<div class="cart-collaterals">
-	<?php
-		/**
-		 * Cart collaterals hook.
-		 *
-		 * @hooked woocommerce_cross_sell_display
-		 * @hooked woocommerce_cart_totals - 10
-		 */
-		do_action( 'woocommerce_cart_collaterals' );
-	?>
-</div>
+
 
 <?php do_action( 'woocommerce_after_cart' ); ?>
