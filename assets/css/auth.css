@@ -1,0 +1,380 @@
+/* ============================================================
+   RESET / HIDE NATIVO WOOCOMMERCE
+============================================================ */
+
+.woocommerce-form-login,
+.woocommerce-form-register,
+.woocommerce-account .col2-set,
+.woocommerce-account .col2-set .col-1,
+.woocommerce-account .col2-set .col-2 {
+  display: none !important;
+}
+
+/* ============================================================
+   CONTENEDOR GENERAL
+============================================================ */
+
+.waves-auth-page {
+  min-height: calc(100vh - 120px);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(20,40,120,.25), transparent),
+    radial-gradient(800px 500px at 80% 90%, rgba(0,150,255,.15), transparent),
+    #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* ============================================================
+   CARD PRINCIPAL
+============================================================ */
+
+.waves-auth-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  width: 100%;
+  max-width: 980px;
+  min-height: 520px;
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.65),
+    inset 0 0 0 1px rgba(255,255,255,.08);
+  animation: fadeUp .8s ease forwards;
+}
+
+/* ============================================================
+   IMAGEN / BRAND
+============================================================ */
+
+.waves-auth-image {
+  position: relative;
+  background-image: url('/wp-content/themes/Waves-Surf-Shop/assets/images/brands/waves.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay oscuro + degradado */
+.waves-auth-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.15)
+    );
+}
+
+/* Texto branding opcional */
+.waves-auth-image::after {
+  content: "WAVES SURF SHOP";
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  opacity: .85;
+}
+
+/* ============================================================
+   FORMULARIO
+============================================================ */
+
+.waves-auth-form {
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Título */
+.waves-auth-form h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #0d1b4c;
+}
+
+/* Subtítulo */
+.waves-auth-form p {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+/* ============================================================
+   USER REGISTRATION / INPUTS
+============================================================ */
+
+.waves-auth-form .ur-frontend-form {
+  max-width: 360px;
+  margin: 0 auto;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Inputs */
+.waves-auth-form input[type="text"],
+.waves-auth-form input[type="email"],
+.waves-auth-form input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  transition: all .25s ease;
+  background: #fafafa;
+}
+
+.waves-auth-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+}
+
+/* Labels */
+.waves-auth-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* ============================================================
+   BOTÓN
+============================================================ */
+
+.waves-auth-form button,
+.waves-auth-form input[type="submit"] {
+  margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #0d09a1);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all .3s ease;
+  box-shadow: 0 10px 25px rgba(37,99,235,.45);
+}
+
+.waves-auth-form button:hover,
+.waves-auth-form input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(37,99,235,.10);
+}
+
+/* ============================================================
+   LINKS
+============================================================ */
+
+.waves-auth-form a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.waves-auth-form a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   ANIMACIÓN
+============================================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+  .waves-auth-card {
+    grid-template-columns: 1fr;
+  }
+
+  .waves-auth-image {
+    display: none;
+  }
+
+  .waves-auth-form {
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .waves-auth-form h2 {
+    font-size: 26px;
+  }
+
+  .waves-auth-form {
+    padding: 40px 22px;
+  }
+}
+
+.waves-auth-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(0,0,0,.65), rgba(0,0,0,.25));
+  backdrop-filter: blur(1.5px);
+}
+
+.waves-auth-form input {
+  padding-left: 44px;
+}
+
+.waves-auth-form .ur-field-wrap {
+  position: relative;
+}
+
+.waves-auth-form .ur-field-wrap::before {
+  content: "✉️";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .5;
+}
+
+.waves-auth-form button {
+  font-size: 16px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.waves-auth-form .back-login {
+  margin-top: 18px;
+  font-size: 13px;
+  opacity: .7;
+  display: inline-block;
+}
+
+.waves-auth-note {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .waves-auth-page {
+    background:
+      radial-gradient(600px 300px at 50% 0%, rgba(37,99,235,.25), transparent),
+      #000;
+  }
+}
+
+
+/***********************/
+/*      GOOGLE       */
+/*******************/
+.waves-social-login {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.waves-social-login p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* Botón Google */
+.waves-social-login .nsl-button-google {
+  width: 100%;
+  border-radius: 14px !important;
+  padding: 14px !important;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+.waves-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.waves-divider::before,
+.waves-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* SOCIAL LOGIN */
+.waves-social-login {
+  margin-bottom: 20px;
+}
+
+.waves-social-login .nsl-button-google {
+  width: 100% !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+/* DIVISOR */
+.waves-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.waves-divider::before,
+.waves-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* LINK ABAJO */
+.waves-auth-link {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.nsl-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.nsl-container-buttons {
+  display: flex !important;
+  justify-content: center;
+}
+
+.nsl-container {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

@@ -6,10 +6,6 @@ do_action('woocommerce_before_account_navigation'); ?>
 
 <div class="myaccount-container">
 
-    <aside class="myaccount-sidebar">
-        <?php wc_get_template('myaccount/navigation.php'); ?>
-    </aside>
-
     <main class="myaccount-content">
         <?php
             /**
