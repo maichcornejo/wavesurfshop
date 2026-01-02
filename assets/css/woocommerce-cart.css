@@ -1656,5 +1656,6 @@ tr.waves-cart-summary-row > td{
     height: auto !important;
     max-width: 100% !important;
     object-fit: contain !important;
+    
   }
 }
