@@ -1,18 +1,19 @@
 /* ================================
-   FOOTER – White / Modern Style
+   FOOTER – White / Modern Style (INVERTIDO)
 ================================ */
 
 .main-footer-cc {
     background-color: #ffffff;
-    color: #1f3a5f; /* Azul principal */
+    color: #111111; /* texto principal negro */
     font-family: 'Inter', sans-serif;
     padding-top: 60px;
     padding-bottom: 25px;
 }
 
-
+/* OJO: antes lo estabas forzando a negro con !important */
 footer.main-footer-cc {
-    background: #000000 !important;
+    background: #ffffff !important;
+    color: #111111;
 }
 
 /* Contenedor */
@@ -41,7 +42,7 @@ footer.main-footer-cc {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 18px;
-    color: #ffffff;
+    color: #1f3a5f; /* azul principal */
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -56,7 +57,7 @@ footer.main-footer-cc {
     width: 95px;
     border: 1px solid #dfe6ee;
     padding: 6px;
-    background: #fff;
+    background: #ffffff;
 }
 
 /* Texto empresa */
@@ -64,11 +65,11 @@ footer.main-footer-cc {
     font-size: 14px;
     line-height: 1.7;
     margin-bottom: 22px;
-    color: #ffffff;
+    color: #222222; /* gris oscuro */
 }
 
 .empresa-text .read-more {
-    color: #ffffff;
+    color: #2f80ed; /* azul acento */
     text-decoration: none;
     font-weight: 600;
 }
@@ -89,13 +90,13 @@ footer.main-footer-cc {
 }
 
 .social-links-cc a {
-    color: #ffffff;
+    color: #1f3a5f; /* azul */
     font-size: 20px;
     transition: color 0.3s ease;
 }
 
 .social-links-cc a:hover {
-    color: #ffffff;
+    color: #2f80ed; /* azul acento */
 }
 
 /* Links */
@@ -110,17 +111,17 @@ footer.main-footer-cc {
 }
 
 .footer-links-cc a {
-    color: #ffffff;
+    color: #111111; /* negro */
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s ease;
 }
 
 .footer-links-cc a:hover {
-    color: #1f3a5f;
+    color: #2f80ed; /* azul acento */
 }
 
-/* Botón arrepentimiento */
+/* Botón arrepentimiento (queda igual, ya era “light friendly”) */
 .btn-arrepentimiento {
     background: transparent;
     border: 2px solid #2f80ed;
@@ -143,7 +144,7 @@ footer.main-footer-cc {
 .security-logos img {
     height: 30px;
     margin-right: 10px;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 /* Staff */
@@ -170,10 +171,58 @@ footer.main-footer-cc {
 
 .copyright-cc,
 .design-by {
-    color: #7a8fa6;
+    color: #5f6f82; /* gris más legible en blanco */
     margin: 0;
 }
 
 /* Utilities */
 .d-flex { display: flex; }
 .justify-content-between { justify-content: space-between; }
+
+/* Fondo + color base */
+footer.main-footer-cc{
+  background:#fff !important;
+  color:#111 !important;
+}
+
+/* Si el tema fuerza blanco en todo: lo pisamos dentro del footer */
+footer.main-footer-cc,
+footer.main-footer-cc *{
+  color:#111 !important;
+}
+
+/* Títulos */
+footer.main-footer-cc .footer-heading-cc{
+  color:#1f3a5f !important; /* azul principal */
+}
+
+/* Texto */
+footer.main-footer-cc .empresa-text{
+  color:#222 !important;
+}
+
+/* Links */
+footer.main-footer-cc a{
+  color:#1f3a5f !important;
+  text-decoration:none;
+}
+footer.main-footer-cc a:hover{
+  color:#2f80ed !important;
+}
+
+/* Redes (iconos) */
+footer.main-footer-cc .social-links-cc a{
+  color:#1f3a5f !important;
+}
+footer.main-footer-cc .social-links-cc a:hover{
+  color:#2f80ed !important;
+}
+
+/* Footer bottom */
+footer.main-footer-cc .footer-bottom-cc{
+  border-top:1px solid #e5ecf3 !important;
+}
+footer.main-footer-cc .copyright-cc,
+footer.main-footer-cc .design-by{
+  color:#5f6f82 !important;
+}

@@ -647,7 +647,9 @@ button[name="update_cart"] {
     font-weight: 600;
     color: #2275d8;
 }
-
+.p{
+  margin-top: disabled !important;
+}
 /* ==============================================
    WAVES SURF SHOP — CHECKOUT BUTTON (PREMIUM UI)
    ============================================== */
@@ -790,4 +792,870 @@ button[name="update_cart"] {
 .shipping-loading,
 .sucursal-loading {
   display: none !important;
+}
+
+
+/* =========================================
+   WAVES CART — MOCKUP STYLE (FINAL)
+   Pegar al FINAL del CSS del carrito
+========================================= */
+
+.woocommerce-cart .site-content,
+.woocommerce-cart .content-area,
+.woocommerce-cart .site-main {
+  background: #eef2f7;
+}
+
+/* Layout general */
+.waves-cart-page {
+  padding: 36px 0 70px;
+}
+
+.waves-cart-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* Header "Tu Carrito" */
+.waves-cart-top {
+  margin-bottom: 18px;
+}
+
+.waves-cart-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.waves-cart-icon {
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(13, 9, 161, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waves-cart-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  color: #0b1220;
+  letter-spacing: -0.3px;
+}
+
+.waves-cart-badge {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(34, 117, 216, 0.10);
+  color: #2275d8;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Card contenedora */
+.waves-cart-card {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(230,235,242,0.9);
+  border-radius: 26px;
+  padding: 22px 18px;
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.10);
+  backdrop-filter: blur(6px);
+}
+
+/* Tabla -> look de "lista" */
+.woocommerce-cart-form table.shop_table {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.woocommerce-cart-form thead {
+  display: none !important;
+}
+
+.woocommerce-cart-form tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cada item como tarjeta */
+.woocommerce-cart-form tbody tr.cart_item {
+  display: grid;
+  grid-template-columns: 120px 1fr 150px 240px;
+  gap: 16px 22px;
+  align-items: center;
+
+  background: rgba(255,255,255,0.70);
+  border: 1px solid #e6ebf2;
+  border-radius: 18px;
+  padding: 34px 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  position: relative;
+}
+
+/* Celdas sin “table look” */
+.woocommerce-cart-form tbody tr.cart_item td {
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Remove: arriba a la derecha como X */
+.woocommerce-cart-form tbody tr.cart_item td.product-remove {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.woocommerce-cart-form tbody tr.cart_item a.remove {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 12px !important;
+  background: rgba(255, 0, 0, 0.08) !important;
+  color: #ff1a1a !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  transition: .2s ease;
+}
+
+.woocommerce-cart-form tbody tr.cart_item a.remove:hover {
+  background: rgba(255, 0, 0, 0.16) !important;
+}
+
+/* Thumb */
+.woocommerce-cart-form tbody tr.cart_item td.product-thumbnail img {
+  width: 110px;
+  height: auto;
+  border-radius: 14px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Nombre */
+.woocommerce-cart-form tbody tr.cart_item td.product-name a {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0b1220;
+  text-decoration: none;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name a:hover {
+  text-decoration: underline;
+}
+
+/* Atributos (tu template waves-cart-attributes) -> en una línea con separador */
+.waves-cart-attributes {
+  margin-top: 8px;
+  padding: 0;
+  background: transparent;
+  border-left: 0;
+  box-shadow: none;
+  border-radius: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+.waves-attr-row {
+  display: inline-flex;
+  gap: 6px;
+  border-bottom: 0;
+}
+
+.waves-attr-row:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: #c2cbd6;
+}
+
+.waves-attr-label {
+  font-weight: 800;
+  color: #334155;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.waves-attr-value {
+  font-weight: 800;
+  color: #475569;
+}
+
+/* Precio (columna derecha) */
+.woocommerce-cart-form tbody tr.cart_item td.product-price {
+  justify-self: end;
+  font-size: 24px;
+  font-weight: 900;
+  color: #0b1220;
+}
+
+/* Cantidad (tu qty-wrapper) */
+.woocommerce-cart-form tbody tr.cart_item td.product-quantity {
+  justify-self: end;
+}
+
+.qty-wrapper {
+  background: #f3f6fb;
+  border: 1px solid #e6ebf2;
+  padding: 10px 12px;
+  border-radius: 16px;
+  gap: 10px;
+}
+
+.qty-wrapper input.qty {
+  width: 52px !important;
+  font-size: 18px;
+  font-weight: 900;
+  color: #0b1220;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: transparent;
+  color: #2275d8;
+  box-shadow: none;
+  font-size: 22px;
+  border: 1px solid #d7e2f1;
+}
+
+.qty-btn:hover {
+  background: rgba(34,117,216,0.10);
+}
+
+/* Subtotal: fila abajo, alineado a la derecha */
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding-top: 14px !important;
+  border-top: 1px solid #e6ebf2;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 10px;
+
+  font-size: 18px;
+  font-weight: 900;
+  color: #0b1220;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal::before {
+  content: "Subtotal:";
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+/* Barra de acciones (cupón + botones) */
+.woocommerce-cart-form tbody tr td.actions {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.waves-cart-actions {
+  margin-top: 4px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid #e6ebf2;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.waves-coupon {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.waves-coupon input#coupon_code {
+  height: 52px;
+  max-width: 320px;
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #d7e2f1;
+  background: #f6f8fc;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.waves-cart-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Botones */
+.waves-btn {
+  height: 52px;
+  padding: 0 22px !important;
+  border-radius: 14px !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  border: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.waves-btn-primary {
+  background: linear-gradient(135deg, #0d09a1, #2275d8) !important;
+  color: #fff !important;
+  box-shadow: 0 14px 28px rgba(34,117,216,0.28);
+}
+
+.waves-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(13,9,161,0.35);
+}
+
+.waves-btn-soft {
+  background: #eef2f7 !important;
+  color: #334155 !important;
+  border: 1px solid #d7e2f1 !important;
+  box-shadow: none;
+}
+
+.waves-btn-soft:hover {
+  background: #e8eef6 !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .woocommerce-cart-form tbody tr.cart_item {
+    grid-template-columns: 92px 1fr;
+    gap: 12px 14px;
+    padding: 16px;
+  }
+
+  .woocommerce-cart-form tbody tr.cart_item td.product-price,
+  .woocommerce-cart-form tbody tr.cart_item td.product-quantity {
+    justify-self: start;
+  }
+
+  .woocommerce-cart-form tbody tr.cart_item td.product-price {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+  }
+
+  .woocommerce-cart-form tbody tr.cart_item td.product-quantity {
+    grid-column: 1 / -1;
+  }
+
+  .waves-cart-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .waves-coupon {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .waves-cart-actions-right {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .waves-btn,
+  .waves-coupon input#coupon_code {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* OPCIONAL: si NO querés mostrar totales/colaterales todavía */
+.woocommerce-cart .cart-collaterals {
+  display: none !important;
+}
+
+/* ============================
+   MINI DESCRIPCIÓN (Talle/Color)
+   Woo imprime: dl.variation
+============================ */
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation {
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dt,
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dd {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dt {
+  font-weight: 800;
+  color: #334155;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dd {
+  font-weight: 900;
+  color: #475569;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dd p {
+  margin: 0 !important;
+}
+
+/* separador | entre pares (dd después de cada atributo) */
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dd {
+  position: relative;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation dd:not(:last-of-type)::after {
+  content: "|";
+  margin: 0 10px;
+  color: rgba(100,116,139,0.35);
+}
+
+/* ============================
+   SEPARACIÓN SUTIL DEL SUBTOTAL
+============================ */
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal {
+  grid-column: 2 / -1;            /* empieza desde la columna del título */
+  margin-top: 12px;
+  padding-top: 14px !important;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(230,235,242,0.0),
+    rgba(230,235,242,0.9),
+    rgba(230,235,242,0.0)
+  );
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal::before {
+  content: "Subtotal:";
+  font-size: 13px;
+  font-weight: 900;
+  color: #64748b;
+}
+
+@media (max-width: 860px) {
+  .woocommerce-cart-form tbody tr.cart_item td.product-subtotal {
+    grid-column: 1 / -1;
+  }
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal{
+  grid-column: 2 / -1;
+  margin-top: 12px;
+  padding-top: 14px !important;
+  position: relative;
+}
+
+.woocommerce-cart-form tbody tr.cart_item td.product-subtotal::after{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height:1px;
+  background: linear-gradient(90deg,
+    rgba(230,235,242,0.0),
+    rgba(230,235,242,0.9),
+    rgba(230,235,242,0.0)
+  );
+}
+
+/* Mini descripción debajo del título */
+.waves-mini-desc{
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.waves-mini-item b{
+  font-weight: 900;
+  color: #334155;
+}
+
+/* separador | sutil entre items */
+.waves-mini-item:not(:last-child)::after{
+  content: "|";
+  margin: 0 10px;
+  color: rgba(100,116,139,0.35);
+}
+
+/* Si Woo sigue imprimiendo variation/item-meta y no lo querés, lo ocultamos */
+.woocommerce-cart-form tbody tr.cart_item td.product-name dl.variation,
+.woocommerce-cart-form tbody tr.cart_item td.product-name .wc-item-meta{
+  display: none !important;
+}
+
+
+/* Woo pone td.actions a la derecha: lo reseteamos */
+.woocommerce-cart-form table.shop_table td.actions{
+  text-align: left !important;
+  width: 1200px;
+}
+
+/* Barra: izquierda cupón / derecha continuar */
+.waves-cart-actions{
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30vh;
+}
+
+/* Cupón ocupa el lado izquierdo */
+.waves-coupon{
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Input: que se estire y no corte “Código…” */
+.waves-coupon input#coupon_code{
+  flex: 1 1 420px;
+  max-width: none;
+  min-width: 260px;
+}
+
+/* Derecha: solo continuar */
+.waves-cart-actions-right{
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* Ocultar botón update pero mantenerlo clickeable por JS */
+.waves-hidden-update{
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Mobile */
+@media (max-width: 860px){
+  .waves-cart-actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .waves-coupon{
+    width: 100%;
+  }
+
+  .waves-cart-actions-right{
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .waves-btn-continue{
+    width: 100%;
+  }
+}
+
+.woocommerce-cart-form button[name="update_cart"]{
+  display: none !important;
+}
+
+/* ===== RESUMEN (TOTAL) – PREMIUM ===== */
+.waves-cart-summary-row td{
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.waves-cart-summary-wrap{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 22px 6px;
+}
+
+.waves-cart-summary-card{
+  width: min(520px, 100%);
+  background: #fff;
+  border: 1px solid rgba(20, 40, 80, .10);
+  border-radius: 18px;
+  box-shadow: 0 14px 35px rgba(10, 25, 60, .08);
+  padding: 16px 18px;
+}
+
+.waves-cart-summary-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight: 800;
+  font-size: 13px;
+  color: #0b1220;
+  margin-bottom: 12px;
+  letter-spacing: .02em;
+}
+
+.waves-cart-summary-title .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(30, 90, 255, .18);
+  border: 1px solid rgba(30, 90, 255, .35);
+}
+
+.waves-cart-summary-grid{
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap: 14px;
+}
+
+.waves-cart-summary-grid .divider{
+  width: 1px;
+  height: 44px;
+  background: rgba(20, 40, 80, .10);
+}
+
+.waves-cart-summary-grid .item{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.waves-cart-summary-grid .label{
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(11, 18, 32, .55);
+}
+
+.waves-cart-summary-grid .value{
+  font-size: 18px;
+  font-weight: 900;
+  color: #0b1220;
+}
+
+.waves-cart-summary-grid .item.is-total .value{
+  font-size: 22px;
+}
+
+.waves-cart-summary-hint{
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(11, 18, 32, .55);
+}
+
+/* Mobile */
+@media (max-width: 640px){
+  .waves-cart-summary-wrap{ padding: 12px 14px 6px; }
+  .waves-cart-summary-grid{
+    grid-template-columns: 1fr;
+  }
+  .waves-cart-summary-grid .divider{
+    width: 100%;
+    height: 1px;
+  }
+  .waves-cart-summary-grid .item.is-total .value{
+    font-size: 20px;
+  }
+}
+
+/* Hacer que el resumen NO se comporte como celda */
+tr.waves-cart-summary-row,
+tr.waves-cart-summary-row > td{
+  display: block !important;
+  width: 100% !important;
+}
+
+tr.waves-cart-summary-row > td{
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* =========================
+   FIX RESPONSIVE (CARRITO)
+   Pegalo al final
+========================= */
+
+.woocommerce-cart-form table.shop_table td.actions{
+  width: auto !important;
+  text-align: left !important;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 860px){
+  .waves-cart-actions{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2vh;
+  }
+
+  .waves-coupon{
+    width: 100%;
+  }
+
+  .waves-coupon input#coupon_code{
+    flex: none;
+    max-width: none;
+    min-width: 260px;
+  }
+  .waves-cart-actions-right{
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .waves-btn,
+  .waves-btn-continue{
+    width: 100%;
+  }
+}
+
+/* Ocultar el precio de variación (el que aparece abajo) y dejar stock */
+.woocommerce div.product form.cart .single_variation_wrap .woocommerce-variation-price{
+  display: none !important;
+}
+
+/* =========================
+   FIX MOBILE CART (WAVES)
+========================= */
+
+/* 1) Apagar los "labels" responsive de Woo (Producto:, Precio:, etc.) */
+@media (max-width: 860px){
+  .woocommerce-cart-form table.shop_table_responsive tr td::before{
+    content: none !important;
+    display: none !important;
+  }
+  .woocommerce-cart-form table.shop_table_responsive tr td{
+    text-align: left !important;
+  }
+}
+
+/* 2) Ajustar la tarjeta del item para mobile */
+@media (max-width: 640px){
+
+  /* tu card grid en mobile, pero más compacto y usable */
+  .woocommerce-cart-form tbody tr.cart_item{
+    grid-template-columns: 74px 1fr !important;
+    gap: 10px 12px !important;
+    padding: 14px !important;
+  }
+
+  /* thumb más chico y que no desborde */
+  .woocommerce-cart-form tbody tr.cart_item td.product-thumbnail img{
+    width: 74px !important;
+    padding: 4px !important;
+    border-radius: 12px !important;
+  }
+
+  /* IMPORTANTÍSIMO: permitir que el texto "encaje" bien dentro del grid */
+  .woocommerce-cart-form tbody tr.cart_item td.product-name{
+    min-width: 0 !important;
+  }
+
+  /* título más chico y sin cortes raros */
+  .woocommerce-cart-form tbody tr.cart_item td.product-name a{
+    display: block !important;
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  /* precio/qty abajo full width (como ya venías) pero más prolijo */
+  .woocommerce-cart-form tbody tr.cart_item td.product-price{
+    grid-column: 1 / -1 !important;
+    font-size: 18px !important;
+    justify-self: start !important;
+    margin-top: 6px !important;
+  }
+
+  .woocommerce-cart-form tbody tr.cart_item td.product-quantity{
+    grid-column: 1 / -1 !important;
+    justify-self: start !important;
+  }
+
+  /* qty ocupa todo el ancho para que no quede apretado */
+  .qty-wrapper{
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  /* subtotal más chico y sin empujar el layout */
+  .woocommerce-cart-form tbody tr.cart_item td.product-subtotal{
+    font-size: 16px !important;
+  }
+}
+
+/* =========================
+   FORZAR THUMBNAIL EN MOBILE
+========================= */
+@media (max-width: 768px){
+
+  /* Mostrar SIEMPRE la celda del thumbnail */
+  .woocommerce #content table.cart .product-thumbnail,
+  .woocommerce table.cart .product-thumbnail,
+  .woocommerce-page #content table.cart .product-thumbnail,
+  .woocommerce-page table.cart .product-thumbnail{
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Si el theme oculta el link o la imagen */
+  .woocommerce table.cart .product-thumbnail a,
+  .woocommerce table.cart .product-thumbnail img{
+    display: block !important;
+  }
+
+  /* Que no se deforme y se adapte */
+  .woocommerce table.cart .product-thumbnail img{
+    width: 74px !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    
+  }
 }

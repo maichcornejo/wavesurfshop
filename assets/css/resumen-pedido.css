@@ -1,0 +1,1169 @@
+/* ===============================
+   RESUMEN DEL PEDIDO – WAVES
+================================ */
+
+.resumen-pedido {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* TÍTULO */
+.resumen-pedido h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #0f172a;
+}
+
+/* CAJAS */
+.resumen-box {
+  background: #ffffff;
+  border: 1px solid #e5ecf3;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* SUBTÍTULOS */
+.resumen-box h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+/* ITEMS */
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 15px;
+  border-bottom: 1px dashed #e5ecf3;
+}
+
+.resumen-item:last-child {
+  border-bottom: none;
+}
+
+/* CUPONES */
+.resumen-cupones {
+  margin-top: 12px;
+}
+
+.resumen-cupon {
+  color: #15803d;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* SUBTOTAL */
+.resumen-subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ===============================
+   ENVÍO
+================================ */
+
+.resumen-shipping .woocommerce-shipping-calculator {
+  margin-top: 10px;
+}
+
+.resumen-shipping select,
+.resumen-shipping input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.resumen-shipping button {
+  margin-top: 12px;
+  background: #1f3a8a;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.resumen-shipping button:hover {
+  background: #162c6b;
+}
+
+/* ===============================
+   TOTAL
+================================ */
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1f3a8a, #2563eb);
+  color: #fff;
+}
+
+/* ===============================
+   PAGO
+================================ */
+
+.resumen-pago h3 {
+  margin-bottom: 16px;
+}
+
+.resumen-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-pago {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: #0f172a;
+  color: #fff;
+  transition: 0.25s;
+}
+
+.btn-pago:hover {
+  background: #2563eb;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 640px) {
+  .resumen-pedido h1 {
+    font-size: 28px;
+  }
+
+  .resumen-total {
+    font-size: 18px;
+  }
+}
+.shipping-calculator-form {
+  display: block !important;
+}
+.shipping-calculator-button {
+  display: none;
+}
+/* Campos de envío */
+.resumen-shipping select,
+.resumen-shipping input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+/* Labels */
+.resumen-shipping label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Botón submit interno */
+.resumen-shipping button,
+.resumen-shipping input[type="submit"] {
+  background: #1f3a8a;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resumen-shipping button:hover {
+  background: #162c6b;
+}
+/* ===============================
+   PAGO – OPCIONES
+================================ */
+
+.resumen-pago {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pago-opcion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e5ecf3;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pago-opcion:hover {
+  border-color: #2563eb;
+  background: #f8fafc;
+}
+
+.pago-opcion input {
+  accent-color: #2563eb;
+}
+
+.waves-btn-pagar {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===============================
+   RESUMEN TOTAL – LOADING
+================================ */
+
+.resumen-total {
+  position: relative;
+  overflow: hidden;
+  transition: opacity .25s ease;
+}
+
+/* contenido normal */
+.resumen-total-inner {
+  transition: opacity .25s ease;
+}
+
+/* loader */
+.resumen-total-loader {
+  position: absolute;
+  inset: 0;
+  background: rgba(240, 240, 240, 0.85);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+/* estado cargando */
+.resumen-total.is-loading .resumen-total-inner {
+  opacity: .35;
+}
+
+.resumen-total.is-loading .resumen-total-loader {
+  opacity: 1;
+}
+
+/* spinner */
+.resumen-total-loader .spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #cfd4dc;
+  border-top-color: #1f3a8a; /* azul Waves */
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* =========================================================
+   WAVES – RESUMEN PEDIDO (MOOV STYLE)
+   Pegalo AL FINAL del CSS actual
+========================================================= */
+
+:root{
+  --w-bg: #0b0f1a;
+  --w-card: rgba(255,255,255,.06);
+  --w-card2: rgba(255,255,255,.08);
+  --w-border: rgba(255,255,255,.10);
+  --w-text: rgba(255,255,255,.92);
+  --w-muted: rgba(255,255,255,.65);
+  --w-soft: rgba(255,255,255,.10);
+  --w-accent: #3b82f6;
+  --w-accent2: #60a5fa;
+  --w-good: #22c55e;
+  --w-bad: #fb7185;
+  --w-radius: 18px;
+}
+
+/* Fondo general */
+body{
+  background: var(--w-bg);
+}
+
+/* Contenedor + layout 2 columnas */
+.resumen-pedido{
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 18px;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--w-text);
+}
+
+.resumen-pedido h1{
+  font-size: 34px;
+  color: var(--w-text);
+  margin: 0 0 18px;
+  letter-spacing: -0.5px;
+}
+
+/* Grid: izquierda (productos) + derecha (envío/total/pago) */
+.resumen-pedido{
+  display: grid;
+  grid-template-columns: 1.25fr .85fr;
+  gap: 18px;
+}
+
+@media (max-width: 980px){
+  .resumen-pedido{ grid-template-columns: 1fr; }
+}
+
+/* Card base */
+.resumen-box{
+  background: linear-gradient(180deg, var(--w-card2), var(--w-card));
+  border: 1px solid var(--w-border);
+  border-radius: var(--w-radius);
+  padding: 18px;
+  margin-bottom: 0; /* lo maneja el grid gap */
+  box-shadow: 0 18px 55px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+}
+
+.resumen-box h3{
+  color: var(--w-text);
+  font-size: 18px;
+  margin: 0 0 14px;
+  letter-spacing: -0.2px;
+}
+
+/* Productos */
+.resumen-item{
+  border-bottom: 1px dashed rgba(255,255,255,.10);
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--w-text);
+}
+.resumen-item span{ color: var(--w-muted); }
+.resumen-item strong{ color: var(--w-text); }
+
+.resumen-cupon{
+  color: var(--w-good);
+  font-size: 13px;
+}
+
+.resumen-subtotal{
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  font-size: 15px;
+  color: var(--w-text);
+}
+.resumen-subtotal strong{ color: var(--w-text); }
+
+/* =========================================================
+   ENVÍO – FORM
+========================================================= */
+
+.resumen-envio .woocommerce-shipping-calculator{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 980px){
+  .resumen-envio .woocommerce-shipping-calculator{
+    grid-template-columns: 1fr;
+  }
+}
+
+.resumen-envio .waves-field label{
+  font-size: 12px;
+  color: var(--w-muted);
+  display: block;
+  margin: 0 0 6px;
+}
+
+.resumen-envio select,
+.resumen-envio input{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.25);
+  color: var(--w-text);
+  outline: none;
+  transition: .2s ease;
+}
+
+.resumen-envio select:focus,
+.resumen-envio input:focus{
+  border-color: rgba(59,130,246,.65);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.18);
+}
+
+.waves-btn-calcular,
+.resumen-envio button[type="submit"]{
+  grid-column: 1 / -1;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.55);
+  background: linear-gradient(135deg, rgba(59,130,246,.9), rgba(96,165,250,.85));
+  color: #071019;
+  font-weight: 800;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.waves-btn-calcular:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+/* =========================================================
+   PICKER (Retiro / Envío) estilo cards
+========================================================= */
+
+.waves-shipping-picker{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 6px 0 12px;
+}
+
+.waves-shipcard{
+  width: 100%;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.22);
+  border-radius: 16px;
+  padding: 12px 12px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: .18s ease;
+  color: var(--w-text);
+  text-align: left;
+}
+
+.waves-shipcard:hover{
+  border-color: rgba(59,130,246,.45);
+  transform: translateY(-1px);
+}
+
+.waves-shipcard.is-active{
+  border-color: rgba(59,130,246,.75);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.14);
+}
+
+.waves-ship-ico{
+  width: 36px; height: 36px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(59,130,246,.18);
+  border: 1px solid rgba(59,130,246,.30);
+  flex: 0 0 auto;
+}
+
+.waves-ship-txt strong{
+  display:block;
+  font-size: 14px;
+  line-height: 1.1;
+  letter-spacing: -.2px;
+}
+.waves-ship-txt small{
+  display:block;
+  font-size: 12px;
+  color: var(--w-muted);
+}
+
+/* =========================================================
+   RATES – lista premium (radios como cards)
+========================================================= */
+
+.waves-methods-message{
+  margin: 6px 0 10px;
+  color: var(--w-muted);
+}
+
+.waves-rates-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.waves-rate{
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.20);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: .18s ease;
+}
+
+.waves-rate:hover{
+  border-color: rgba(59,130,246,.40);
+}
+
+.waves-rate label{
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 14px;
+  cursor: pointer;
+}
+
+.waves-rate input[type="radio"]{
+  width: 16px; height: 16px;
+  accent-color: var(--w-accent);
+}
+
+.waves-rate-label{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.waves-rate-title{
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: -.2px;
+  color: var(--w-text);
+}
+
+.waves-rate-price{
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--w-text);
+  padding-left: 10px;
+  white-space: nowrap;
+}
+
+.waves-rate-meta{
+  grid-column: 2 / -1;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  color: var(--w-muted);
+  font-size: 12px;
+}
+
+/* “Seleccionado” visual */
+.waves-rate input[type="radio"]:checked{
+  filter: drop-shadow(0 0 8px rgba(59,130,246,.35));
+}
+.waves-rate:has(input[type="radio"]:checked){
+  border-color: rgba(59,130,246,.75);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+  background: rgba(59,130,246,.10);
+}
+
+/* =========================================================
+   TOTAL – sticky + loader prolijo
+========================================================= */
+
+.resumen-total{
+  position: sticky;
+  top: 14px;
+  display: block; /* anulamos tu flex anterior */
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: radial-gradient(120% 120% at 20% 0%, rgba(59,130,246,.35), rgba(0,0,0,.35) 60%),
+              linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  box-shadow: 0 20px 70px rgba(0,0,0,.55);
+  color: var(--w-text);
+}
+
+@media (max-width: 980px){
+  .resumen-total{ position: relative; top: 0; }
+}
+
+.resumen-total-inner{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.resumen-total span{
+  font-size: 13px;
+  color: var(--w-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.resumen-total strong{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.4px;
+}
+
+/* loader (tu lógica queda igual) */
+.resumen-total-loader{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+
+.resumen-total.is-loading .resumen-total-loader{ opacity: 1; }
+.resumen-total.is-loading .resumen-total-inner{ opacity: .35; }
+
+.resumen-total-loader .spinner{
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(255,255,255,.20);
+  border-top-color: rgba(59,130,246,.95);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========================================================
+   PAGO – botón grande tipo checkout
+========================================================= */
+
+.resumen-pago{
+  gap: 12px;
+}
+
+.btn-pago{
+  height: 50px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.35);
+  color: var(--w-text);
+  font-weight: 900;
+  letter-spacing: .2px;
+  transition: .18s ease;
+}
+
+.btn-pago:hover{
+  border-color: rgba(59,130,246,.55);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.14);
+  transform: translateY(-1px);
+}
+
+/* CTA principal (si querés que "Pagar ahora" destaque más) */
+.btn-pago[data-method="checkout"]{
+  background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(59,130,246,.18));
+  border-color: rgba(59,130,246,.35);
+}
+
+/* =========================================================
+   Fixes de tu CSS viejo que no matchea clases nuevas
+========================================================= */
+
+/* Evitar que estilos viejos de .resumen-shipping te confundan */
+.resumen-shipping { display: none !important; }
+/* ===== POPUPS + CARDS (Waves) ===== */
+
+.waves-shipping-picker{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px){
+  .waves-shipping-picker{ grid-template-columns: 1fr; }
+}
+
+.waves-shipcard{
+  width:100%;
+  border: 1px solid rgba(15,23,42,.10);
+  background: #0b1220;
+  color:#fff;
+  border-radius: 14px;
+  padding: 14px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  position:relative;
+  transition:.18s ease;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+.waves-shipcard:hover{
+  transform: translateY(-1px);
+  border-color: rgba(59,130,246,.45);
+  box-shadow: 0 16px 36px rgba(0,0,0,.22);
+}
+
+.waves-shipcard.is-active{
+  border-color: rgba(59,130,246,.75);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.15), 0 16px 36px rgba(0,0,0,.22);
+}
+
+.waves-ship-ico{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(59,130,246,.16);
+  border: 1px solid rgba(59,130,246,.25);
+  flex:0 0 auto;
+  font-size: 18px;
+}
+
+.waves-ship-txt strong{
+  display:block;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.2px;
+}
+
+.waves-ship-txt small{
+  display:block;
+  font-size: 12px;
+  opacity: .8;
+  margin-top: 2px;
+}
+
+.waves-ship-badge{
+  margin-left:auto;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  opacity:.9;
+  white-space:nowrap;
+}
+
+.waves-ship-badge.waves-ok{
+  border-color: rgba(34,197,94,.35);
+  background: rgba(34,197,94,.12);
+}
+
+/* ===== MODAL ===== */
+
+.waves-modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  z-index: 9999;
+}
+
+.waves-modal.is-open{ display:block; }
+
+.waves-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(2,6,23,.65);
+  backdrop-filter: blur(4px);
+}
+
+.waves-modal-panel{
+  position: relative;
+  width: min(560px, calc(100% - 24px));
+  margin: 10vh auto 0;
+  background: #0b1220;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.55);
+  padding: 18px;
+  color:#fff;
+}
+
+.waves-modal-close{
+  position:absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  font-size: 20px;
+  cursor:pointer;
+}
+
+.waves-modal h4{
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -.2px;
+}
+
+.waves-modal-sub{
+  margin: 0 0 14px;
+  font-size: 13px;
+  opacity: .85;
+}
+
+.waves-modal-form .waves-field{
+  margin-bottom: 12px;
+}
+
+.waves-grid-2{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px){
+  .waves-grid-2{ grid-template-columns: 1fr; }
+}
+
+.waves-modal label{
+  display:block;
+  font-size: 12px;
+  opacity: .85;
+  margin: 0 0 6px;
+}
+
+.waves-modal input,
+.waves-modal select{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color:#fff;
+  outline:none;
+  transition:.18s ease;
+}
+
+.waves-modal input:focus,
+.waves-modal select:focus{
+  border-color: rgba(59,130,246,.7);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.18);
+}
+
+.waves-modal-primary{
+  width:100%;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.55);
+  background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(96,165,250,.9));
+  color:#071019;
+  font-weight: 900;
+  cursor:pointer;
+  transition:.15s ease;
+}
+
+.waves-modal-primary:hover{
+  transform: translateY(-1px);
+}
+body::before{content:"CSS OK"; position:fixed; bottom:10px; right:10px; background:#000; color:#fff; padding:6px 10px; z-index:999999;}
+/* ==========================
+   CUPÓN – WAVES
+========================== */
+
+.waves-coupon-box{
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(15,23,42,.10);
+}
+
+.waves-coupon-head{
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+/* si estás con dark mode */
+body .resumen-box{
+  /* no tocamos, solo compat */
+}
+
+.waves-coupon-form{
+  display:flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.waves-coupon-input{
+  flex: 1 1 auto;
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.15);
+  outline: none;
+}
+
+.waves-coupon-btn{
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.55);
+  background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(96,165,250,.9));
+  color: #071019;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.waves-coupon-btn:hover{
+  transform: translateY(-1px);
+}
+
+.waves-coupon-alert{
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  border: 1px solid rgba(15,23,42,.12);
+}
+
+.waves-coupon-alert.is-success{
+  background: rgba(34,197,94,.10);
+  border-color: rgba(34,197,94,.25);
+  color: #166534;
+}
+
+.waves-coupon-alert.is-error{
+  background: rgba(244,63,94,.10);
+  border-color: rgba(244,63,94,.25);
+  color: #9f1239;
+}
+
+.waves-coupon-applied{
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: rgba(15,23,42,.75);
+}
+
+.waves-coupon-tags{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.waves-coupon-tag{
+  margin: 0;
+}
+
+.waves-coupon-remove{
+  border: 1px solid rgba(15,23,42,.12);
+  background: rgba(15,23,42,.04);
+  color: #0f172a;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.waves-coupon-remove b{
+  margin-left: 6px;
+  opacity: .7;
+}
+
+.resumen-box .waves-coupon-head{
+  color: rgba(255,255,255,.88) !important;
+}
+
+.resumen-box .waves-coupon-applied{
+  color: rgba(255,255,255,.70) !important;
+}
+
+/* input + botón en dark */
+.resumen-box .waves-coupon-input{
+  background: rgba(255,255,255,.04) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+
+.resumen-box .waves-coupon-input::placeholder{
+  color: rgba(255,255,255,.55) !important;
+}
+
+
+.resumen-box .waves-coupon-remove{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.90) !important;
+}
+
+/* =========================================
+   FIX GRID: el título no debe ocupar una celda
+========================================= */
+
+/* 1) El título ocupa toda la fila */
+.resumen-pedido > h1{
+  grid-column: 1 / -1;
+  margin-bottom: 12px; /* ajustá a gusto */
+}
+
+/* 2) Productos (la PRIMERA .resumen-box) a la columna derecha */
+.resumen-pedido > .resumen-box:first-of-type{
+  grid-column: 2;
+}
+
+/* 3) Total a la columna derecha */
+.resumen-pedido > .resumen-box.resumen-total{
+  grid-column: 2;
+}
+
+/* 4) Mobile: vuelve todo a 1 columna */
+@media (max-width: 980px){
+  .resumen-pedido > .resumen-box:first-of-type,
+  .resumen-pedido > .resumen-box.resumen-total{
+    grid-column: auto;
+  }
+}
+
+/* =========================================
+   FIX GRID ORDEN: debajo del título va ENTREGA
+========================================= */
+
+.container.resumen-pedido{
+  display: grid;
+  grid-template-columns: 1.35fr 1fr; /* izq más grande, der más chica */
+  gap: 26px;
+  align-items: start;
+
+  /* clave: rellena huecos (evita el “vacío” bajo el título) */
+  grid-auto-flow: row dense;
+}
+
+/* el título ocupa toda la fila */
+.container.resumen-pedido > h1{
+  grid-column: 1 / -1;
+  margin: 0 0 12px;
+}
+
+/* ya no hace falta margin-bottom si estás usando gap */
+.container.resumen-pedido > .resumen-box{
+  margin-bottom: 0;
+}
+
+/* PRODUCTOS (es el .resumen-box sin modificadores) -> arriba derecha */
+.container.resumen-pedido > .resumen-box:not(.resumen-envio):not(.resumen-total):not(.resumen-pago){
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* ENTREGA -> debajo del título (arriba izquierda) */
+.container.resumen-pedido > .resumen-box.resumen-envio{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* TOTAL -> derecha abajo */
+.container.resumen-pedido > .resumen-box.resumen-total{
+  grid-column: 2;
+  grid-row: 3;
+}
+
+/* PAGO -> izquierda abajo */
+.container.resumen-pedido > .resumen-box.resumen-pago{
+  grid-column: 1;
+  grid-row: 3;
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .container.resumen-pedido{
+    grid-template-columns: 1fr;
+  }
+
+  .container.resumen-pedido > .resumen-box:not(.resumen-envio):not(.resumen-total):not(.resumen-pago),
+  .container.resumen-pedido > .resumen-box.resumen-envio,
+  .container.resumen-pedido > .resumen-box.resumen-total,
+  .container.resumen-pedido > .resumen-box.resumen-pago{
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+
+/* =========================
+   FORM INLINE ENVÍO
+========================= */
+
+.waves-shipform{
+  margin-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 14px;
+}
+
+.waves-shipform-alert{
+  display:none;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.85);
+}
+.waves-shipform-alert.is-show{ display:block; }
+.waves-shipform-alert.is-error{
+  border-color: rgba(244,63,94,.35);
+  background: rgba(244,63,94,.12);
+}
+.waves-shipform-alert.is-ok{
+  border-color: rgba(34,197,94,.35);
+  background: rgba(34,197,94,.12);
+}
+
+.waves-shipform-panel{
+  display:none;
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+}
+.waves-shipform-panel.is-open{ display:block; }
+
+.waves-shipform-panel h4{
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: rgba(255,255,255,.92);
+}
+
+.waves-ship-apply{
+  width:100%;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.55);
+  background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(96,165,250,.9));
+  color:#071019;
+  font-weight: 900;
+  cursor:pointer;
+}
+.waves-ship-apply:hover{ transform: translateY(-1px); }
