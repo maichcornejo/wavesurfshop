@@ -64,10 +64,10 @@
                     <h3 class="footer-heading-cc">LEGALES</h3>
 
                     <ul class="footer-links-cc">
-                        <li><a href="#">Cómo realizar tu pedido</a></li>
+                        <li><a href="como-realizar-un-pedido">Cómo realizar tu pedido</a></li>
                         <li><a href="#">Términos y condiciones</a></li>
                         <li><a href="#">Políticas de devolución</a></li>
-                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="preguntas-frecuentes">Preguntas frecuentes</a></li>
                     </ul>
 
                 </div>
@@ -80,13 +80,14 @@
     <div class="footer-bottom-cc">
         <div class="container-cc d-flex justify-content-between">
             <p class="copyright-cc">
-                © <?php echo date('Y'); ?> Waves Surf Shop. Todos los derechos reservados. Web creada y administrada por nosotros :p
+                © <?php echo date('Y'); ?> Waves Surf Shop. Todos los derechos reservados. 
             </p>
             <p class="design-by">Design by: ControlZ studios</p>
         </div>
     </div>
 
 </footer>
+<?php wp_footer(); ?>
 
 
 </body>

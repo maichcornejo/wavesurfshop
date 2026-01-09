@@ -78,7 +78,6 @@
 .brand-track img:hover {
     opacity: 1;
     transform: scale(0.90);
-    filter: brightness(1.5) drop-shadow(0px 0px 14px rgba(255,255,255,0.5));
 }
 
 .premium-brand-carousel {
@@ -182,12 +181,12 @@
    HOVER → EFECTO PREMIUM
 ================================ */
 .gender-box:hover .gender-img-wrapper {
-    border-radius: 50%; /* círculo */
+    border-radius: 20%; /* círculo */
     transform: scale(1.02);
 }
 
 .gender-box:hover img {
-    transform: scale(1.15);
+    transform: scale(1.05);
 }
 
 .gender-box:hover .gender-label {
@@ -202,9 +201,6 @@
 }
 
 
-#home-wrapper {
-    margin-top: 30px;
-}
 
 /* BRANDS */
 .brands-row {
@@ -245,9 +241,7 @@
 }
 
 /* WooCommerce Sections */
-.wc-section {
-    margin-top: 60px;
-}
+
 .section-title {
     margin-bottom: 20px;
     font-weight: bold;
@@ -256,4 +250,94 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
+}
+
+header a {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+  .premium-brand-carousel {
+    padding: 20px 14px;
+  }
+
+  /* Flechas más chicas */
+  .premium-brand-carousel button {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .brand-prev {
+    left: 4px;
+  }
+
+  .brand-next {
+    right: 4px;
+  }
+
+  /* Track más compacto */
+  .brand-track {
+    gap: 36px;
+  }
+
+  /* Items */
+  .brand-track li {
+    min-width: 110px;
+  }
+
+  /* Logos */
+  .brand-track img {
+    height: 48px;
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .premium-brand-carousel {
+    padding: 16px 10px;
+  }
+
+  /* Opcional: ocultar flechas */
+  .premium-brand-carousel button {
+    display: none;
+  }
+
+  .brand-track {
+    gap: 28px;
+  }
+
+  .brand-track li {
+    min-width: 90px;
+  }
+
+  .brand-track img {
+    height: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .brand-track-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .brand-track li {
+    scroll-snap-align: center;
+  }
+
+  /* ocultar scrollbar */
+  .brand-track-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .brand-track img:hover {
+    transform: none;
+  }
 }

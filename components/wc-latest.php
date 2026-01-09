@@ -1,24 +1,37 @@
-<div class="wc-section container">
-    <h2 class="section-title">Nuevos Ingresos</h2>
+<div class="wc-section wide" data-wc-carousel>
+  <div class="container">
 
-    <?php
-    $args = [
-        'post_type' => 'product',
-        'posts_per_page' => 4,
-        'orderby' => 'date',
-        'order' => 'DESC'
-    ];
+    <div class="wc-header">
+        <div class="wc-title-wrap">
+            <h2 class="section-title">Nuevos Ingresos</h2>
+        </div>
 
-    $loop = new WP_Query($args);
+        <div class="wc-arrows">
+            <button type="button" class="wc-arrow prev" aria-label="Anterior">←</button>
+            <button type="button" class="wc-arrow next" aria-label="Siguiente">→</button>
+        </div>
+    </div>
 
-    if ($loop->have_posts()) :
-        echo '<div class="wc-grid">';
-        while ($loop->have_posts()) : $loop->the_post();
+
+    <div class="wc-carousel">
+      <ul class="products wc-track">
+        <?php
+          $loop = new WP_Query([
+            'post_type'      => 'product',
+            'posts_per_page' => 12,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+          ]);
+
+          while ($loop->have_posts()) :
+            $loop->the_post();
             wc_get_template_part('content', 'product');
-        endwhile;
-        echo '</div>';
-    endif;
+          endwhile;
 
-    wp_reset_postdata();
-    ?>
+          wp_reset_postdata();
+        ?>
+      </ul>
+    </div>
+
+  </div>
 </div>

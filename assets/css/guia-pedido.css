@@ -1,0 +1,147 @@
+/* ================================
+   ORDER GUIDE – WAVES PREMIUM
+================================ */
+
+.waves-order-guide {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 20px 100px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #0f172a;
+}
+
+/* ---------- HEADER ---------- */
+
+.order-guide-header {
+  max-width: 720px;
+  margin-bottom: 80px;
+}
+
+.order-guide-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.order-guide-header h1 {
+  font-size: clamp(36px, 5vw, 48px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.order-guide-intro {
+  font-size: 18px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ---------- STEPS WRAPPER ---------- */
+
+.order-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* línea vertical */
+.order-steps::before {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #cbd5e1,
+    transparent
+  );
+}
+
+/* ---------- STEP ---------- */
+
+.order-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* número */
+.order-step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.25);
+}
+
+/* contenido */
+.order-step-content {
+  background: #ffffff;
+  padding: 28px 32px;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px #f1f5f9;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.order-step-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.order-step-content p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* hover suave */
+.order-step:hover .order-step-content {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px #e2e8f0;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 640px) {
+
+  .order-steps::before {
+    left: 22px;
+  }
+
+  .order-step {
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+  }
+
+  .order-step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+  }
+
+  .order-step-content {
+    padding: 22px;
+  }
+}

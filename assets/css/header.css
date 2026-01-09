@@ -1,55 +1,57 @@
-/* ================================
+/* =================================
+   HEADER WAVES – LIMPIO Y DEFINITIVO
+================================= */
+
+/* RESET */
+.waves-header * {
+    box-sizing: border-box;
+}
+
+/* ===============================
    TOP BAR
 ================================ */
 .waves-topbar {
-    background: #1f3a5f; /* azul sobrio */
-    height: 6px;
+    background: #136be7; /* azul sobrio */
+    height: 30px;
 }
 
-/* ================================
+/* ===============================
    HEADER
 ================================ */
-.waves-header {
-    background: #ffffff !important;
+header.waves-header {
+    width: 100%;
+    background-color: #ffffff !important;
     border-bottom: 1px solid #e5ecf3; /* línea sutil */
     padding: 14px 0;
-    width: 100%;
     font-family: 'Poppins', sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03); /* sombra suave */
 }
 
-header.waves-header {
-    background: none !important;
-    background-color: #ffffff !important;
-}
-
-
-/* sombra MUY suave para separar del contenido */
-.waves-header {
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-}
-
+/* ===============================
+   INNER LAYOUT
+================================ */
 .header-inner {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 30px;
 }
 
-/* ================================
+/* ===============================
    LOGO
 ================================ */
 .header-logo img {
-    height: 54px;
+    height: 80px;
     width: auto;
 }
 
-/* ================================
+/* ===============================
    NAV
 ================================ */
 .header-menu .nav {
     display: flex;
-    list-style: none;
     gap: 32px;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -63,25 +65,25 @@ header.waves-header {
     position: relative;
 }
 
-/* underline moderno */
-.header-menu .nav li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background: #2f80ed;
-    transition: width 0.3s ease;
+.header-menu .nav li a {
+    text-decoration: none;
+    transition: color .25s ease, opacity .25s ease;
 }
 
-.header-menu .nav li a:hover::after {
-    width: 100%;
+.header-menu .nav li a:hover {
+    color: #2f80ed;
+    opacity: 0.85;
 }
 
-/* ================================
+
+/* ===============================
    SEARCH
 ================================ */
+.header-search {
+    display: flex;
+    align-items: center;
+}
+
 .header-search input {
     width: 240px;
     padding: 9px 14px;
@@ -91,17 +93,19 @@ header.waves-header {
 }
 
 .header-search button {
-    background: #2f80ed;
-    border-radius: 0 10px 10px 0;
-    padding: 9px 16px;
     border: none;
+    background: transparent;
+    padding: 0 14px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
 }
 
 .header-search button:hover {
     background: #1f3a5f;
 }
 
-/* ================================
+/* ===============================
    ACTIONS
 ================================ */
 .header-actions {
@@ -118,14 +122,63 @@ header.waves-header {
 
 .header-account a:hover,
 .header-cart a:hover {
-    color: #2f80ed;
+    color: #2275d8;
 }
 
+/* ===============================
+   CART COUNT
+================================ */
 .cart-count {
     background: #2f80ed;
-    color: #fff;
+    color: #ffffff;
     padding: 2px 7px;
     border-radius: 50%;
     font-size: 11px;
     margin-left: 4px;
 }
+.header-menu .nav li a {
+    text-decoration: none;
+    transition: color .25s ease, opacity .25s ease;
+}
+
+.header-menu .nav li a:hover {
+    color: #2f80ed;
+    opacity: 0.85;
+}
+
+.waves-header {
+  overflow-x: hidden;
+}
+
+@media (max-width: 992px) {
+  .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-search {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .header-search input {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-search button {
+    display: none !important;
+  }
+}
+
+@media (max-width: 992px) {
+    .header-logo img {
+        height: 60px !important;
+        width: auto;
+    }
+}
+

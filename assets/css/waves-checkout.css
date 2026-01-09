@@ -1,0 +1,372 @@
+/* =========================================
+   WAVES CHECKOUT – MOCKUP STYLE
+   assets/css/waves-checkout.css
+========================================= */
+
+:root{
+  --w-bg: #070b14;
+  --w-card: rgba(255,255,255,.06);
+  --w-card2: rgba(255,255,255,.08);
+  --w-border: rgba(255,255,255,.10);
+  --w-text: rgba(255,255,255,.92);
+  --w-muted: rgba(255,255,255,.62);
+  --w-accent: #3b82f6;
+  --w-accent2:#60a5fa;
+  --w-radius: 18px;
+  --w-shadow: 0 22px 70px rgba(0,0,0,.55);
+}
+
+/* Fondo general */
+body.woocommerce-checkout{
+  background: radial-gradient(120% 120% at 30% 10%, rgba(59,130,246,.18), transparent 55%),
+              radial-gradient(110% 110% at 70% 0%, rgba(255,255,255,.06), transparent 45%),
+              var(--w-bg);
+  color: var(--w-text);
+}
+
+/* Ocultar “Zona de coincidencia…” (notice verde) */
+body.woocommerce-checkout .woocommerce-message{
+  display:none !important;
+}
+
+/* Contenedor */
+body.woocommerce-checkout .woocommerce{
+  max-width: 1100px;
+  margin: 44px auto;
+  padding: 0 18px;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Título grande */
+body.woocommerce-checkout .waves-checkout-title{
+  margin: 0 0 18px;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  color: var(--w-text);
+}
+
+/* Layout general: izquierda (envío + pago) / derecha (productos + total) */
+body.woocommerce-checkout form.checkout{
+  display:grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 18px;
+  align-items:start;
+}
+
+@media (max-width: 980px){
+  body.woocommerce-checkout form.checkout{ grid-template-columns: 1fr; }
+}
+
+/* Card base */
+body.woocommerce-checkout .waves-card{
+  background: linear-gradient(180deg, var(--w-card2), var(--w-card));
+  border: 1px solid var(--w-border);
+  border-radius: var(--w-radius);
+  box-shadow: var(--w-shadow);
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================
+   Columna derecha: Productos + Total
+========================================= */
+
+/* Card “Productos” */
+body.woocommerce-checkout .waves-products-card{
+  padding: 16px 16px 10px;
+}
+
+body.woocommerce-checkout .waves-card h3{
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -.2px;
+  color: var(--w-text);
+}
+
+/* Tabla del review como lista */
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table{
+  width:100%;
+  border:0;
+  background:transparent;
+  border-collapse: collapse;
+}
+
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table thead{
+  display:none;
+}
+
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table tbody tr{
+  border-bottom: 1px dashed rgba(255,255,255,.10);
+}
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table tbody td{
+  padding: 10px 0;
+  color: var(--w-text);
+}
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table tbody td.product-name{
+  font-size: 13px;
+  color: rgba(255,255,255,.78);
+}
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table tbody td.product-total{
+  text-align:right;
+  font-weight: 900;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Mantenerlo en DOM pero esconderlo visualmente sin romper updates */
+body.woocommerce-checkout #order_review .woocommerce-checkout-review-order-table tr.order-total{
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+
+/* Card “TOTAL” */
+body.woocommerce-checkout .waves-total-card{
+  margin-top: 14px;
+  padding: 18px;
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  background: radial-gradient(120% 120% at 20% 0%, rgba(59,130,246,.30), rgba(0,0,0,.35) 65%),
+              linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+}
+
+body.woocommerce-checkout .waves-total-card .waves-total-label{
+  font-size: 12px;
+  color: rgba(255,255,255,.70);
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+body.woocommerce-checkout .waves-total-card .waves-total-amount{
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--w-text);
+}
+
+/* =========================================
+   Columna izquierda: Entrega + Pago
+========================================= */
+
+body.woocommerce-checkout .waves-delivery-card{
+  padding: 16px;
+}
+
+body.woocommerce-checkout .waves-delivery-sub{
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: rgba(255,255,255,.62);
+}
+
+/* Selector cards (Retiro / Envío) */
+body.woocommerce-checkout .waves-shipcards{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+@media (max-width: 560px){
+  body.woocommerce-checkout .waves-shipcards{ grid-template-columns: 1fr; }
+}
+
+body.woocommerce-checkout .waves-shipcard{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.20);
+  cursor:pointer;
+  transition: .18s ease;
+  min-height: 62px;
+}
+
+body.woocommerce-checkout .waves-shipcard:hover{
+  border-color: rgba(59,130,246,.45);
+  transform: translateY(-1px);
+}
+
+body.woocommerce-checkout .waves-shipcard.is-active{
+  border-color: rgba(59,130,246,.78);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.14);
+  background: rgba(59,130,246,.10);
+}
+
+body.woocommerce-checkout .waves-ship-ico{
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(59,130,246,.16);
+  border: 1px solid rgba(59,130,246,.22);
+  flex: 0 0 auto;
+}
+
+body.woocommerce-checkout .waves-ship-txt strong{
+  display:block;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: -.2px;
+}
+body.woocommerce-checkout .waves-ship-txt small{
+  display:block;
+  font-size: 12px;
+  color: rgba(255,255,255,.60);
+}
+
+body.woocommerce-checkout .waves-ship-badge{
+  margin-left:auto;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  white-space: nowrap;
+  color: rgba(255,255,255,.80);
+}
+
+body.woocommerce-checkout .waves-ship-badge.ok{
+  border-color: rgba(34,197,94,.35);
+  background: rgba(34,197,94,.12);
+}
+
+/* Lista de métodos de envío (Correo Argentino rates) */
+body.woocommerce-checkout .waves-rates{
+  list-style:none;
+  margin: 12px 0 0;
+  padding: 0;
+  display:grid;
+  gap: 10px;
+}
+
+body.woocommerce-checkout .waves-rate{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  overflow:hidden;
+}
+
+body.woocommerce-checkout .waves-rate label{
+  display:grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 10px;
+  align-items:center;
+  padding: 12px;
+  cursor:pointer;
+}
+
+body.woocommerce-checkout .waves-rate input[type="radio"]{
+  width: 16px; height: 16px;
+  accent-color: var(--w-accent);
+}
+
+body.woocommerce-checkout .waves-rate .title{
+  font-weight: 900;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.88);
+}
+body.woocommerce-checkout .waves-rate .meta{
+  grid-column: 2 / -1;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.62);
+  font-size: 12px;
+}
+
+body.woocommerce-checkout .waves-rate .price{
+  font-weight: 900;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.92);
+  white-space: nowrap;
+}
+
+body.woocommerce-checkout .waves-rate:has(input[type="radio"]:checked){
+  border-color: rgba(59,130,246,.78);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+  background: rgba(59,130,246,.10);
+}
+
+/* Card pago */
+body.woocommerce-checkout .waves-pay-card{
+  margin-top: 14px;
+  padding: 16px;
+}
+
+/* Ocultar el listado default de payment para usar botones */
+body.woocommerce-checkout #payment ul.payment_methods{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display:grid;
+  gap: 12px;
+}
+
+body.woocommerce-checkout #payment ul.payment_methods li{
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* Estilo “botón” por método */
+body.woocommerce-checkout #payment ul.payment_methods li label{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.25);
+  color: rgba(255,255,255,.90);
+  font-weight: 900;
+  cursor:pointer;
+  transition: .18s ease;
+}
+
+body.woocommerce-checkout #payment ul.payment_methods li label:hover{
+  border-color: rgba(59,130,246,.55);
+  box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+  transform: translateY(-1px);
+}
+
+/* cuando está seleccionado */
+body.woocommerce-checkout #payment ul.payment_methods li:has(input[type="radio"]:checked) label{
+  border-color: rgba(59,130,246,.75);
+  background: linear-gradient(135deg, rgba(59,130,246,.85), rgba(96,165,250,.75));
+  color: #071019;
+}
+
+/* Descripción de pasarela (si aparece) */
+body.woocommerce-checkout #payment .payment_box{
+  margin: 10px 0 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  color: rgba(255,255,255,.82);
+}
+
+/* Botón finalizar pedido */
+body.woocommerce-checkout #place_order{
+  width: 100%;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,130,246,.55);
+  background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(96,165,250,.9));
+  color: #071019;
+  font-weight: 900;
+  cursor:pointer;
+  transition: .15s ease;
+  margin-top: 14px;
+}
+body.woocommerce-checkout #place_order:hover{
+  transform: translateY(-1px);
+}

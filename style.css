@@ -4,175 +4,9 @@ Template: shoes-store-elementor
 Version: 1.0
 */
 
-/* ----------------------------- */
-/* HEADER PREMIUM NEGRO */
-/* ----------------------------- */
-
-.waves-header {
-    background:#ffffff;
-    padding:18px 0;
-    border-bottom:1px solid rgba(255,255,255,0.1);
+html:root {
+  --primary-theme-color: #0d09a1 !important;
 }
-
-.header-inner {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:40px;
-}
-
-/* LOGO */
-.header-left .site-logo {
-    max-height:65px;
-    width:auto;
-    object-fit:contain;
-}
-
-/* ----------------------------- */ 
-/* TOP BAR PREMIUM NEGRO */ 
-/* ----------------------------- */ 
-.waves-topbar { 
-    background:#000000; 
-    color:#ffffff; 
-    padding:6px 0; 
-    text-align:center; 
-    font-size:14px; 
-    font-weight:500; 
-    letter-spacing:0.4px;
- }
-
-/* ----------------------------- */
-/* MENÚ HORIZONTAL NORMAL */
-/* ----------------------------- */
-
-.header-menu {
-    flex:1; /* ocupa espacio para centrar */
-    display:flex;
-    justify-content:center;
-}
-
-.header-menu .nav {
-    display:flex;
-    gap:35px;
-    margin:0;
-    padding:0;
-}
-
-.header-menu li {
-    list-style:none;
-}
-
-.header-menu a {
-    font-size:15px;
-    font-weight:600;
-    text-transform:uppercase;
-    color:#ffffff !important;
-    opacity:0.85;
-    transition:.25s ease-in-out;
-    letter-spacing:0.5px;
-}
-
-.header-menu a:hover,
-.header-menu .current-menu-item a {
-    color:#2275d8 !important;
-    opacity:1;
-}
-
-/* ----------------------------- */
-/* ACCIONES DERECHA */
-/* ----------------------------- */
-
-.header-actions {
-    display:flex;
-    align-items:center;
-    gap:18px;
-}
-
-/* ICONOS */
-.header-actions i {
-    font-size:22px;
-    color:#ffffff;
-    opacity:0.85;
-    transition:.2s;
-}
-
-.header-actions i:hover {
-    color:#2275d8;
-    opacity:1;
-}
-
-/* CART BADGE */
-.cart-count {
-    background:#2275d8;
-    color:#ffffff;
-    padding:2px 7px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:700;
-}
-
-/* ----------------------------- */
-/* BUSCADOR COMPACTO */
-/* ----------------------------- */
-
-.header-search form {
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.header-search input[type="search"] {
-    background:#111 !important;
-    border:1px solid #333 !important;
-    border-radius:25px !important;
-    padding:7px 16px !important;
-    color:white !important;
-    width:190px !important;
-    transition:.25s;
-}
-
-.header-search button {
-    background:#2275d8 !important;
-    border:none !important;
-    color:white !important;
-    padding:7px 18px !important;
-    border-radius:25px !important;
-    font-size:14px;
-    font-weight:600;
-}
-
-.header-search button:hover {
-    background:#0d09a1 !important;
-}
-
-/* ----------------------------- */
-/* RESPONSIVE */
-/* ----------------------------- */
-
-@media (max-width:992px) {
-
-    .header-inner {
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .header-menu {
-        order:3;
-        width:100%;
-        margin-top:10px;
-    }
-
-    .header-menu .nav {
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:20px;
-    }
-
-    .header-actions { 
-        order:2; 
-    }
-}
-
 
 
 /* ----------------------------- */
@@ -268,7 +102,7 @@ Version: 1.0
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: var(--azul-oscuro);
+    color: var(--blanco);
     margin-bottom: 15px;
     text-transform: uppercase;
 }
@@ -295,7 +129,7 @@ Version: 1.0
 .empresa-text {
     font-size: 14px;
     line-height: 1.55;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -316,7 +150,7 @@ Version: 1.0
 
 .social-links-cc a {
     font-size: 20px;
-    color: var(--negro);
+    color: var(--blanco);
     transition: 0.25s;
 }
 
@@ -328,7 +162,7 @@ Version: 1.0
    LINKS
 ---------------------------- */
 .footer-links-cc li a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     transition: 0.25s;
 }
@@ -403,4 +237,38 @@ Version: 1.0
     margin: 0;
 }
 
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+  position: relative;
+  padding-right: 50px;
+}
 
+.waves-close-notice {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.waves-close-notice:hover {
+  opacity: 1;
+}
+
+
+
+/* Paginación Woo: current en blanco */
+.woocommerce nav.woocommerce-pagination ul li span.current{
+  color: #fff !important; /* para que se lea sobre blanco */
+  border: 1px solid rgba(0,0,0,.12) !important; /* opcional, queda prolijo */
+}
+
+.woocommerce nav.woocommerce-pagination ul li a{
+  border-radius: 10px;
+}
