@@ -14,12 +14,12 @@ $terms = get_terms([
 // Directorios posibles (según tu screenshot los logos están en /assets/images/brands/)
 $logo_locations = [
   [
-    'dir' => get_stylesheet_directory() . '/assets/images/brands',
-    'uri' => get_stylesheet_directory_uri() . '/assets/images/brands',
+    'dir' => get_stylesheet_directory() . '/assets/images/marcas',
+    'uri' => get_stylesheet_directory_uri() . '/assets/images/marcas',
   ],
   [
-    'dir' => get_stylesheet_directory() . '/images/brands',
-    'uri' => get_stylesheet_directory_uri() . '/images/brands',
+    'dir' => get_stylesheet_directory() . '/images/marcas',
+    'uri' => get_stylesheet_directory_uri() . '/images/marcas',
   ],
 ];
 ?>

@@ -1,92 +1,508 @@
 /* =========================
-   FILTROS — WAVES (PRO)
+   SIDEBAR FILTROS — FIX LONG
 ========================= */
 
-.shop-filters {
-  background: linear-gradient(180deg, #0f0f0f, #050505);
-  color: #fff;
-  border-radius: 28px;
-  padding: 40px 32px;
-  border: 1px solid rgba(255,255,255,.06);
-  box-shadow: 0 20px 50px rgba(0,0,0,.45);
-  margin-left: -20px; /* más a la izquierda */
+.shop-layout{
+  align-items: flex-start;
+  gap: 40px;
 }
 
-/* Título */
-.shop-filters h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 32px;
-  letter-spacing: .06em;
+.shop-filters{
+  position: sticky;
+  top: 110px; /* ajustá según tu header */
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.18) transparent;
 }
 
-/* Bloque */
-.filter-block {
-  margin-bottom: 40px;
+.shop-filters::-webkit-scrollbar{ width: 8px; }
+.shop-filters::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.14);
+  border-radius: 999px;
+}
+.shop-filters::-webkit-scrollbar-track{ background: transparent; }
+
+/* Header filtros + reset */
+.filters-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
-/* Subtítulo */
-.filter-block h4 {
-  font-size: 13px;
+.filters-reset{
+  appearance:none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color:#e5e7eb;
   font-weight: 600;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor:pointer;
+  transition: .2s ease;
+}
+.filters-reset:hover{ background: rgba(255,255,255,.10); }
+
+/* Bloques colapsables */
+.filter-block{ margin-bottom: 22px; }
+
+.filter-toggle{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+  transition: .2s ease;
+}
+
+.filter-toggle:hover{ background: rgba(255,255,255,.06); }
+
+.filter-toggle .label{
+  font-size: 12px;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: #9ca3af;
-  margin-bottom: 18px;
+  font-weight: 700;
 }
 
-/* Contenedor de opciones */
-.filter-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px 16px;
+.filter-toggle .meta{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  color: rgba(255,255,255,.65);
+  font-size: 12px;
+  font-weight: 700;
 }
 
-/* Checkbox premium */
-.filter-checkbox {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 18px;
+.filter-body{
+  padding: 12px 6px 6px;
+}
+
+.filter-body[hidden]{ display:none; }
+
+.filter-search{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.filter-search::placeholder{ color: rgba(255,255,255,.45); }
+
+/* Limitar altura de cada bloque (evita “muralla” de chips) */
+.filter-options{
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* “Ver más” */
+.filter-more{
+  margin-top: 10px;
+  width: 100%;
+  appearance:none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color:#e5e7eb;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  cursor:pointer;
+  transition: .2s ease;
+}
+.filter-more:hover{ background: rgba(255,255,255,.09); }
+
+/* Talles como grilla compacta */
+.filter-options.is-size{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-height: 260px;
+}
+
+.filter-options.is-size .filter-checkbox{
+  justify-content:center;
+  padding: 10px 0;
+}
+
+/* Mobile: filtros no sticky */
+@media (max-width: 980px){
+  .shop-filters{
+    position: relative;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+    margin-left: 0;
+  }
+}
+
+/* =========================================================
+   WAVES — SIDEBAR FILTROS (V2 PREMIUM)
+   Reemplaza tu bloque anterior por ESTE
+========================================================= */
+
+.shop-layout{
+  align-items: flex-start;
+  gap: 44px;
+}
+
+/* Card sidebar */
+.shop-layout .shop-filters{
+  position: sticky;
+  top: 110px;
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+
+  padding: 28px 22px;
+  border-radius: 26px;
+
+  background:
+    radial-gradient(1200px 600px at 20% 0%, rgba(63, 230, 214, .12), transparent 55%),
+    radial-gradient(900px 500px at 80% 18%, rgba(255, 255, 255, .08), transparent 55%),
+    linear-gradient(180deg, #0b0c10 0%, #05060a 100%);
+
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  color: #e9eef5;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Scrollbar */
+.shop-layout .shop-filters{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.16) transparent;
+}
+.shop-layout .shop-filters::-webkit-scrollbar{ width: 8px; }
+.shop-layout .shop-filters::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.14);
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
+}
+.shop-layout .shop-filters::-webkit-scrollbar-track{ background: transparent; }
+
+/* Header */
+.shop-layout .shop-filters .filters-head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.shop-layout .shop-filters h3{
+  margin: 0 !important;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+.shop-layout .shop-filters .filters-reset{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.86);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.shop-layout .shop-filters .filters-reset:hover{
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.20);
+  transform: translateY(-1px);
+}
+
+/* Bloques */
+.shop-layout .shop-filters .filter-block{
+  margin: 16px 0 20px;
+}
+
+.shop-layout .shop-filters .filter-toggle{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 12px 12px;
+  border-radius: 16px;
+
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
-  color: #e5e7eb;
-  cursor: pointer;
-  transition: all .25s ease;
+
+  cursor:pointer;
+  transition: background .2s ease, border-color .2s ease, transform .15s ease;
+}
+.shop-layout .shop-filters .filter-toggle:hover{
+  background: rgba(255,255,255,.07);
+  border-color: rgba(255,255,255,.12);
+  transform: translateY(-1px);
 }
 
-.filter-checkbox:hover {
-  background: rgba(255,255,255,.1);
+.shop-layout .shop-filters .filter-toggle .label{
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
 }
 
-.filter-checkbox input {
-  display: none;
+.shop-layout .shop-filters .filter-toggle .meta{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255,255,255,.72);
 }
 
-.filter-checkbox:has(input:checked) {
-  background: linear-gradient(135deg, #ffffff, #d1d5db);
-  color: #000;
-  box-shadow: 0 6px 18px rgba(255,255,255,.18);
+.shop-layout .shop-filters .filter-body{
+  padding: 12px 6px 4px;
 }
+.shop-layout .shop-filters .filter-body[hidden]{ display:none !important; }
 
-/* =========================
-   PRECIO
-========================= */
-
-.filter-price {
-  margin-top: 8px;
-}
-
-#price-filter {
+/* Buscador */
+.shop-layout .shop-filters .filter-search{
   width: 100%;
-  margin-top: 14px;
+  padding: 11px 12px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  color: rgba(255,255,255,.92);
+  outline: none;
+
+  margin: 8px 0 12px;
+  transition: border-color .2s ease, background .2s ease;
+}
+.shop-layout .shop-filters .filter-search::placeholder{
+  color: rgba(255,255,255,.45);
+}
+.shop-layout .shop-filters .filter-search:focus{
+  border-color: rgba(63, 230, 214, .45);
+  background: rgba(0,0,0,.30);
 }
 
-#price-output {
-  margin-top: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #9ff0d6;
+/* Contenedor opciones (chips) */
+.shop-layout .shop-filters .filter-options{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px 10px;
+
+  max-height: 240px;
+  overflow: auto;
+  padding-right: 6px;
 }
+
+/* CHIP (la clave: ocultar el checkbox nativo sí o sí) */
+.shop-layout .shop-filters label.filter-checkbox{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.10);
+
+  color: rgba(255,255,255,.88);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: transform .15s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+}
+
+/* Oculta el cuadradito nativo aunque el tema lo fuerce */
+.shop-layout .shop-filters label.filter-checkbox > input{
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+}
+
+/* Hover */
+.shop-layout .shop-filters label.filter-checkbox:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.16);
+  transform: translateY(-1px);
+}
+
+/* Seleccionado (Chrome ok con :has) */
+.shop-layout .shop-filters label.filter-checkbox:has(> input:checked){
+  background: linear-gradient(135deg, rgba(63,230,214,.92), rgba(255,255,255,.92));
+  border-color: rgba(255,255,255,.35);
+  color: #05060a;
+  box-shadow: 0 10px 26px rgba(63,230,214,.18);
+}
+
+/* “Ver más” */
+.shop-layout .shop-filters .filter-more{
+  margin-top: 10px;
+  width: 100%;
+  appearance: none;
+
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.86);
+
+  font-weight: 900;
+  font-size: 12px;
+  padding: 11px 12px;
+  border-radius: 14px;
+
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.shop-layout .shop-filters .filter-more:hover{
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.18);
+  transform: translateY(-1px);
+}
+
+/* Talles: grilla */
+.shop-layout .shop-filters .filter-options.is-size{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-height: 280px;
+}
+.shop-layout .shop-filters .filter-options.is-size label.filter-checkbox{
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 16px;
+}
+
+/* Precio */
+.shop-layout .shop-filters #price-filter{
+  width: 100%;
+  margin-top: 10px;
+}
+.shop-layout .shop-filters #price-output{
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 900;
+  color: rgba(63,230,214,.95);
+}
+
+/* Mobile */
+@media (max-width: 980px){
+  .shop-layout .shop-filters{
+    position: relative;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (min-width: 1400px){
+  .post-type-archive-product .container,
+  .tax-product_cat .container,
+  .tax-product_tag .container{
+    max-width: 1750px !important;
+  }
+}
+
+/* ===== WAVES: Sidebar más ancho ===== */
+.shop-layout{
+  display: grid;
+  grid-template-columns: 320px 1fr; /* antes estaba muy chico */
+  gap: 46px;
+  align-items: start;
+}
+
+/* Si tu tema no usa grid, igual forzamos el ancho del aside */
+.shop-layout .shop-filters{
+  width: 320px;
+  padding: 30px 24px;  /* un toque más aire */
+  border-radius: 28px;
+}
+
+/* En pantallas MUY grandes, un poco más ancho */
+@media (min-width: 1400px){
+  .shop-layout{
+    grid-template-columns: 340px 1fr;
+  }
+  .shop-layout .shop-filters{
+    width: 340px;
+  }
+}
+
+/* ===== WAVES: Cards de producto más compactas ===== */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product{
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+/* Reduce el padding interno (depende del tema; cubrimos varios casos) */
+.woocommerce ul.products li.product .woocommerce-loop-product__link,
+.woocommerce-page ul.products li.product .woocommerce-loop-product__link{
+  padding: 14px 14px 12px !important;
+}
+
+/* Imagen: que no se vea enorme */
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img{
+  max-height: 240px;
+  object-fit: contain;
+  margin: 0 auto 10px !important;
+}
+
+/* Títulos + precio más prolijos */
+.woocommerce ul.products li.product .woocommerce-loop-product__title{
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  margin: 8px 0 6px !important;
+}
+
+.woocommerce ul.products li.product .price{
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+
+/* ===== WAVES: Más columnas en desktop para que no se vean gigantes ===== */
+@media (min-width: 1200px){
+  .woocommerce ul.products,
+  .woocommerce-page ul.products{
+    display: grid !important;
+    gap: 28px !important;
+  }
+
+  /* Woo a veces pone width por item */
+  .woocommerce ul.products li.product,
+  .woocommerce-page ul.products li.product{
+    width: auto !important;
+    margin: 0 !important;
+    float: none !important;
+  }
+}
+

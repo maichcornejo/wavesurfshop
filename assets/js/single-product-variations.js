@@ -3,54 +3,40 @@ jQuery(function ($) {
   const $form = $('.variations_form');
   if (!$form.length) return;
 
-  // Variaciones de Woo (CLAVE para imagen por color)
   const variations = $form.data('product_variations') || [];
 
-  /* =====================================================
-     CLICK EN COLOR (SWATCH)
-     - sincroniza select
-     - cambia imagen aunque NO haya talle
-  ===================================================== */
-  $('.waves-color-swatches').on('click', '.color-swatch', function () {
+  // ✅ DEBUG helper
+  function logVariationStock(variation, context = '') {
+    console.group(`📦 STOCK DEBUG (${context})`);
 
-    const $swatch = $(this);
-    const $radio  = $swatch.find('input[type="radio"]');
-    if (!$radio.length) return;
-
-    const value = $radio.val();
-    const name  = $radio.attr('name'); // attribute_pa_color
-
-    // UI
-    $('.color-swatch').removeClass('active');
-    $swatch.addClass('active');
-    $radio.prop('checked', true);
-
-    // sincroniza el select REAL de Woo
-    const $select = $form.find(`select[name="${name}"]`);
-    if ($select.length) {
-      $select.val(value).trigger('change');
+    if (!variation) {
+      console.warn('No variation object');
+      console.groupEnd();
+      return;
     }
 
-    /* ===== CAMBIO DE IMAGEN SOLO POR COLOR ===== */
-    const variationByColor = variations.find(v =>
-      v.attributes[name] === value && v.image && v.image.src
-    );
+    console.info('variation_id:', variation.variation_id);
+    console.info('is_in_stock:', variation.is_in_stock);
 
-    if (variationByColor) {
-      const $img = $('.product-gallery img.wp-post-image').first();
-      if ($img.length) {
+    // Woo suele traer esto (a veces viene null/undefined según config)
+    console.info('stock_quantity:', variation.stock_quantity);
+    console.info('backorders_allowed:', variation.backorders_allowed);
+    console.info('max_qty:', variation.max_qty);
+    console.info('min_qty:', variation.min_qty);
 
-        if (!$img.data('original-src')) {
-          $img.data('original-src', $img.attr('src'));
-        }
+    // Texto/HTML que Woo muestra en la caja de variación
+    console.info('availability_html:', variation.availability_html);
+    console.info('variation_description:', variation.variation_description);
 
-        $img
-          .attr('src', variationByColor.image.src)
-          .removeAttr('srcset')
-          .removeAttr('sizes');
-      }
-    }
-  });
+    // Qué atributos quedaron elegidos
+    console.info('attributes:', variation.attributes);
+
+    // Si existe tu barra
+    const stockEl = document.querySelector('.waves-stock');
+    console.info('.waves-stock exists?', !!stockEl);
+
+    console.groupEnd();
+  }
 
   /* =====================================================
      VARIACIÓN COMPLETA (COLOR + TALLE)
@@ -58,6 +44,10 @@ jQuery(function ($) {
   ===================================================== */
   $form.on('found_variation', function (e, variation) {
 
+    // ✅ LOG del stock
+    logVariationStock(variation, 'found_variation');
+
+    // (tu código de imagen sigue igual)
     if (!variation || !variation.image || !variation.image.src) return;
 
     const $img = $('.product-gallery img.wp-post-image').first();
@@ -72,30 +62,20 @@ jQuery(function ($) {
       .removeAttr('srcset')
       .removeAttr('sizes');
 
-    // animación
     $img.css({ opacity: 0, transform: 'scale(0.96)' });
     setTimeout(() => {
       $img.css({ opacity: 1, transform: 'scale(1)' });
     }, 120);
   });
 
-  /* =====================================================
-     RESET
-  ===================================================== */
-  $form.on('reset_data', function () {
+  // ✅ opcional: también cuando Woo muestra variación (algunos themes usan este evento)
+  $form.on('show_variation', function (e, variation) {
+    logVariationStock(variation, 'show_variation');
+  });
 
-    const $img = $('.product-gallery img.wp-post-image').first();
-    const original = $img.data('original-src');
-
-    if (original) {
-      $img
-        .attr('src', original)
-        .removeAttr('srcset')
-        .removeAttr('sizes');
-    }
-
-    $('.color-swatch').removeClass('active');
-    $('.waves-color-swatches input[type="radio"]').prop('checked', false);
+  // ✅ cuando se oculta / queda inválida
+  $form.on('hide_variation', function () {
+    console.info('📦 STOCK DEBUG (hide_variation) -> variación inválida / incompleta');
   });
 
 });
@@ -275,9 +255,17 @@ jQuery(function ($) {
   ===================================================== */
 $('.waves-color-swatches').on('click', '.color-swatch', function () {
   const color = $(this).find('input').val();
+
+  // 🔥 sincronizar el select REAL de Woo
+  const $colorSelect = $form.find('select[name="attribute_pa_color"]');
+  if ($colorSelect.length) {
+    $colorSelect.val(color).trigger('change');
+  }
+
   updateSizeAvailability(color);
   setTimeout(autoSelectFirstAvailableSize, 50);
 });
+
 
   /* =====================================================
      RESET
@@ -290,9 +278,11 @@ $('.waves-color-swatches').on('click', '.color-swatch', function () {
 
 
 function autoSelectFirstAvailableSize() {
-  const $first = $('.waves-size-grid .size-box:not(.disabled)').first();
+  const $first = jQuery('.waves-size-grid .size-box:not(.disabled)').first();
   if ($first.length) $first.trigger('click');
 }
+
+
 
 
 jQuery(function ($) {

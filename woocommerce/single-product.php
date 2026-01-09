@@ -41,7 +41,7 @@ do_action('woocommerce_before_main_content');
         </span>
       </button>
 
-      <h1><?php the_title(); ?></h1>
+      <h1 style="color: #fff"><?php the_title(); ?></h1>
 
       <div class="price-2">
           <?php woocommerce_template_single_price(); ?>
@@ -87,7 +87,7 @@ do_action('woocommerce_before_main_content');
                 </div>
                 <div
                   class="waves-size-grid"
-                  data-attribute="attribute_pa_talle-calzado">
+                  data-attribute="attribute_pa_talle">
 
                   <?php foreach ( $options as $option ) : ?>
                     <button

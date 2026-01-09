@@ -71,19 +71,26 @@ if ($product->is_type('variable')) {
 
         <?php if (!empty($color_map)) : ?>
             <div class="product-colors">
-                <?php
-                $i = 0;
-                foreach ($color_map as $color => $image) :
-                    if ($i >= 4) break;
-                ?>
-                    <span
-                        class="color-dot"
-                        data-color="<?php echo esc_attr($color); ?>"
-                        data-image="<?php echo esc_url($image); ?>">
-                    </span>
-                <?php
-                    $i++;
-                endforeach;
+            <?php
+            $i = 0;
+            foreach ($color_map as $color => $image) :
+                if ($i >= 4) break;
+
+                // $color suele venir como slug: "blanco-negro" o "blanco/negro"
+                $parts = preg_split('/[\/\-]+/', strtolower($color));
+                $left  = $parts[0] ?? $color;
+                $right = $parts[1] ?? $left; // si no hay segundo, queda monocolor
+            ?>
+                <span
+                    class="color-dot"
+                    data-left="<?php echo esc_attr($left); ?>"
+                    data-right="<?php echo esc_attr($right); ?>"
+                    data-color="<?php echo esc_attr($color); ?>"
+                    data-image="<?php echo esc_url($image); ?>">
+                </span>
+            <?php
+                $i++;
+            endforeach;
 
                 if (count($color_map) > 4) :
                     echo '<span class="color-more">+' . (count($color_map) - 4) . '</span>';

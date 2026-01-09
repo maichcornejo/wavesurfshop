@@ -14,57 +14,77 @@ do_action('woocommerce_before_main_content');
 
   <aside class="shop-filters">
 
-    <h3>Filtrar</h3>
+    <div class="filters-head">
+      <h3 style="margin:0; color:#fff">Filtrar</h3>
+      <button type="button" class="filters-reset" id="filters-reset">Limpiar</button>
+    </div>
 
     <?php
-    /**
-     * ATRIBUTOS DINÁMICOS
-     * Ej: pa_talle, pa_color, pa_marca
-     */
     $attributes = wc_get_attribute_taxonomies();
 
     foreach ($attributes as $attribute) :
+      $taxonomy = wc_attribute_taxonomy_name($attribute->attribute_name);
+      if (!taxonomy_exists($taxonomy)) continue;
 
-        $taxonomy = wc_attribute_taxonomy_name($attribute->attribute_name);
+      $terms = get_terms([
+        'taxonomy'   => $taxonomy,
+        'hide_empty' => true,
+      ]);
 
-        if (!taxonomy_exists($taxonomy)) continue;
+      if (empty($terms)) continue;
 
-        // Obtener términos SOLO si hay productos en esta query
-        $terms = get_terms([
-            'taxonomy'   => $taxonomy,
-            'hide_empty' => true,
-        ]);
-
-        if (empty($terms)) continue;
+      $count_terms = count($terms);
+      $is_size = ($attribute->attribute_name === 'talle' || stripos($attribute->attribute_label, 'talle') !== false);
     ?>
+      <div class="filter-block" data-taxonomy="<?php echo esc_attr($taxonomy); ?>">
 
-    <div class="filter-block">
-      <h4><?php echo esc_html($attribute->attribute_label); ?></h4>
+        <button type="button" class="filter-toggle" aria-expanded="true">
+          <span class="label"><?php echo esc_html($attribute->attribute_label); ?></span>
+          <span class="meta">
+            <span class="selected-count">0</span>
+            <span class="chev">▾</span>
+          </span>
+        </button>
 
-      <div class="filter-options">
-        <?php foreach ($terms as $term) : ?>
-          <label class="filter-checkbox">
-            <input type="checkbox"
-                  class="filter-term"
-                  data-taxonomy="<?php echo esc_attr($taxonomy); ?>"
-                  value="<?php echo esc_attr($term->slug); ?>">
-            <?php echo esc_html($term->name); ?>
-          </label>
-        <?php endforeach; ?>
+        <div class="filter-body">
+          <?php if ($count_terms > 12): ?>
+            <input type="text" class="filter-search" placeholder="Buscar...">
+          <?php endif; ?>
+
+          <div class="filter-options <?php echo $is_size ? 'is-size' : ''; ?>" data-limit="14">
+            <?php foreach ($terms as $term) : ?>
+              <label class="filter-checkbox" data-term-name="<?php echo esc_attr(mb_strtolower($term->name)); ?>">
+                <input type="checkbox"
+                      class="filter-term"
+                      data-taxonomy="<?php echo esc_attr($taxonomy); ?>"
+                      value="<?php echo esc_attr($term->slug); ?>">
+                <?php echo esc_html($term->name); ?>
+              </label>
+            <?php endforeach; ?>
+          </div>
+
+          <?php if ($count_terms > 14): ?>
+            <button type="button" class="filter-more">Ver más</button>
+          <?php endif; ?>
+        </div>
+
       </div>
-    </div>
-
-
     <?php endforeach; ?>
 
     <!-- PRECIO -->
     <div class="filter-block">
-      <h4>Precio</h4>
-      <input type="range" id="price-filter" min="0" max="1000000" step="1000">
-      <span id="price-output"></span>
+      <button type="button" class="filter-toggle" aria-expanded="true">
+        <span class="label">Precio</span>
+        <span class="meta"><span class="chev">▾</span></span>
+      </button>
+      <div class="filter-body">
+        <input type="range" id="price-filter" min="0" max="1000000" step="1000">
+        <span id="price-output"></span>
+      </div>
     </div>
 
   </aside>
+
 
   <main class="shop-results">
 
@@ -80,6 +100,7 @@ do_action('woocommerce_before_main_content');
         <?php endwhile; ?>
 
         <?php woocommerce_product_loop_end(); ?>
+        <?php do_action('woocommerce_after_shop_loop'); ?>
 
       <?php else : ?>
         <p>No se encontraron productos.</p>

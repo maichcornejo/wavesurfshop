@@ -261,3 +261,14 @@ html:root {
   opacity: 1;
 }
 
+
+
+/* Paginación Woo: current en blanco */
+.woocommerce nav.woocommerce-pagination ul li span.current{
+  color: #fff !important; /* para que se lea sobre blanco */
+  border: 1px solid rgba(0,0,0,.12) !important; /* opcional, queda prolijo */
+}
+
+.woocommerce nav.woocommerce-pagination ul li a{
+  border-radius: 10px;
+}
